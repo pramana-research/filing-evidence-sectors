@@ -1,0 +1,3109 @@
+{
+  "cutoff": "2026-11-21",
+  "checked": "2026-11-21",
+  "sectors": {
+    "Banks": {
+      "companies": [
+        "JPM",
+        "BAC",
+        "WFC",
+        "C",
+        "USB",
+        "PNC",
+        "TFC",
+        "COF",
+        "MTB",
+        "FITB"
+      ],
+      "ineligible": [],
+      "replacements": [],
+      "short_by": 0
+    },
+    "Technology": {
+      "companies": [
+        "AAPL",
+        "MSFT",
+        "NVDA",
+        "ORCL",
+        "ADBE",
+        "CSCO",
+        "IBM",
+        "INTC",
+        "CRM",
+        "QCOM"
+      ],
+      "ineligible": [],
+      "replacements": [],
+      "short_by": 0
+    },
+    "Media": {
+      "companies": [
+        "DIS",
+        "CMCSA",
+        "NFLX",
+        "FOXA",
+        "NWSA",
+        "SIRI",
+        "LYV",
+        "OMC",
+        "NYT",
+        "NXST"
+      ],
+      "ineligible": [
+        "WBD",
+        "PSKY"
+      ],
+      "replacements": [
+        "NYT",
+        "NXST"
+      ],
+      "short_by": 0
+    },
+    "Telecom": {
+      "companies": [
+        "T",
+        "VZ",
+        "TMUS",
+        "CHTR",
+        "LUMN",
+        "TDS",
+        "IRDM",
+        "CABO",
+        "SATS",
+        "GSAT"
+      ],
+      "ineligible": [],
+      "replacements": [],
+      "short_by": 0
+    },
+    "Insurance": {
+      "companies": [
+        "PGR",
+        "TRV",
+        "ALL",
+        "MET",
+        "PRU",
+        "AIG",
+        "CB",
+        "AFL",
+        "HIG",
+        "CINF"
+      ],
+      "ineligible": [],
+      "replacements": [],
+      "short_by": 0
+    },
+    "Metals and mining": {
+      "companies": [
+        "FCX",
+        "NEM",
+        "NUE",
+        "STLD",
+        "CLF",
+        "AA",
+        "SCCO",
+        "RS",
+        "CMC",
+        "MP"
+      ],
+      "ineligible": [],
+      "replacements": [],
+      "short_by": 0
+    },
+    "Energy (power and utilities)": {
+      "companies": [
+        "NEE",
+        "DUK",
+        "SO",
+        "D",
+        "AEP",
+        "EXC",
+        "SRE",
+        "XEL",
+        "PCG",
+        "ED"
+      ],
+      "ineligible": [],
+      "replacements": [],
+      "short_by": 0
+    },
+    "Oil and gas": {
+      "companies": [
+        "CVX",
+        "COP",
+        "EOG",
+        "OXY",
+        "DVN",
+        "PSX",
+        "MPC",
+        "VLO",
+        "SLB",
+        "APA"
+      ],
+      "ineligible": [
+        "XOM"
+      ],
+      "replacements": [
+        "APA"
+      ],
+      "short_by": 0
+    },
+    "Healthcare": {
+      "companies": [
+        "JNJ",
+        "PFE",
+        "LLY",
+        "MRK",
+        "ABBV",
+        "UNH",
+        "TMO",
+        "ABT",
+        "MDT",
+        "CVS"
+      ],
+      "ineligible": [],
+      "replacements": [],
+      "short_by": 0
+    },
+    "Real estate": {
+      "companies": [
+        "PLD",
+        "O",
+        "SPG",
+        "AMT",
+        "EQIX",
+        "PSA",
+        "WELL",
+        "DLR",
+        "CCI",
+        "VTR"
+      ],
+      "ineligible": [
+        "AVB",
+        "EQR"
+      ],
+      "replacements": [
+        "CCI",
+        "VTR"
+      ],
+      "short_by": 0
+    }
+  },
+  "companies": {
+    "JPM": {
+      "ticker": "JPM",
+      "cik": 19617,
+      "filings": {
+        "10-K": {
+          "accession": "0001628280-26-008131",
+          "filed": "2026-02-13",
+          "report_date": "2025-12-31",
+          "primary_document": "jpm-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001628280-26-069523",
+          "filed": "2026-11-03",
+          "report_date": "2026-09-30",
+          "primary_document": "jpm-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "JPMORGAN CHASE & CO"
+    },
+    "BAC": {
+      "ticker": "BAC",
+      "cik": 70858,
+      "filings": {
+        "10-K": {
+          "accession": "0000070858-26-000157",
+          "filed": "2026-02-25",
+          "report_date": "2025-12-31",
+          "primary_document": "bac-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000070858-26-000548",
+          "filed": "2026-10-30",
+          "report_date": "2026-09-30",
+          "primary_document": "bac-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "BANK OF AMERICA CORP /DE/"
+    },
+    "WFC": {
+      "ticker": "WFC",
+      "cik": 72971,
+      "filings": {
+        "10-K": {
+          "accession": "0000072971-26-000133",
+          "filed": "2026-02-24",
+          "report_date": "2025-12-31",
+          "primary_document": "wfc-20251231_d2.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000072971-26-000327",
+          "filed": "2026-10-28",
+          "report_date": "2026-09-30",
+          "primary_document": "wfc-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "WELLS FARGO & COMPANY/MN"
+    },
+    "C": {
+      "ticker": "C",
+      "cik": 831001,
+      "filings": {
+        "10-K": {
+          "accession": "0000831001-26-000011",
+          "filed": "2026-02-20",
+          "report_date": "2025-12-31",
+          "primary_document": "c-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000831001-26-000056",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "c-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "CITIGROUP INC"
+    },
+    "USB": {
+      "ticker": "USB",
+      "cik": 36104,
+      "filings": {
+        "10-K": {
+          "accession": "0000036104-26-000011",
+          "filed": "2026-02-23",
+          "report_date": "2025-12-31",
+          "primary_document": "usb-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000036104-26-000058",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "usb-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "US BANCORP \\DE\\"
+    },
+    "PNC": {
+      "ticker": "PNC",
+      "cik": 713676,
+      "filings": {
+        "10-K": {
+          "accession": "0000713676-26-000020",
+          "filed": "2026-02-20",
+          "report_date": "2025-12-31",
+          "primary_document": "pnc-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001628280-26-069377",
+          "filed": "2026-11-03",
+          "report_date": "2026-09-30",
+          "primary_document": "pnc-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "PNC FINANCIAL SERVICES GROUP, INC."
+    },
+    "TFC": {
+      "ticker": "TFC",
+      "cik": 92230,
+      "filings": {
+        "10-K": {
+          "accession": "0000092230-26-000030",
+          "filed": "2026-02-24",
+          "report_date": "2025-12-31",
+          "primary_document": "tfc-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000092230-26-000129",
+          "filed": "2026-10-28",
+          "report_date": "2026-09-30",
+          "primary_document": "tfc-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "TRUIST FINANCIAL CORP"
+    },
+    "COF": {
+      "ticker": "COF",
+      "cik": 927628,
+      "filings": {
+        "10-K": {
+          "accession": "0000927628-26-000024",
+          "filed": "2026-02-19",
+          "report_date": "2025-12-31",
+          "primary_document": "cof-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000927628-26-000152",
+          "filed": "2026-11-03",
+          "report_date": "2026-09-30",
+          "primary_document": "cof-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "CAPITAL ONE FINANCIAL CORP"
+    },
+    "MTB": {
+      "ticker": "MTB",
+      "cik": 36270,
+      "filings": {
+        "10-K": {
+          "accession": "0000036270-26-000010",
+          "filed": "2026-02-18",
+          "report_date": "2025-12-31",
+          "primary_document": "mtb-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000036270-26-000060",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "mtb-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "M&T BANK CORP"
+    },
+    "FITB": {
+      "ticker": "FITB",
+      "cik": 35527,
+      "filings": {
+        "10-K": {
+          "accession": "0000035527-26-000124",
+          "filed": "2026-02-24",
+          "report_date": "2025-12-31",
+          "primary_document": "fitb-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000035527-26-000243",
+          "filed": "2026-11-03",
+          "report_date": "2026-09-30",
+          "primary_document": "fitb-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "FIFTH THIRD BANCORP"
+    },
+    "KEY": {
+      "ticker": "KEY",
+      "cik": 91576,
+      "filings": {
+        "10-K": {
+          "accession": "0001628280-26-010546",
+          "filed": "2026-02-23",
+          "report_date": "2025-12-31",
+          "primary_document": "key-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000091576-26-000023",
+          "filed": "2026-11-03",
+          "report_date": "2026-09-30",
+          "primary_document": "key-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "KEYCORP /NEW/"
+    },
+    "RF": {
+      "ticker": "RF",
+      "cik": 1281761,
+      "filings": {
+        "10-K": {
+          "accession": "0001281761-26-000019",
+          "filed": "2026-02-24",
+          "report_date": "2025-12-31",
+          "primary_document": "rf-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001281761-26-000073",
+          "filed": "2026-11-09",
+          "report_date": "2026-09-30",
+          "primary_document": "rf-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "REGIONS FINANCIAL CORP"
+    },
+    "HBAN": {
+      "ticker": "HBAN",
+      "cik": 49196,
+      "filings": {
+        "10-K": {
+          "accession": "0000049196-26-000015",
+          "filed": "2026-02-13",
+          "report_date": "2025-12-31",
+          "primary_document": "hban-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000049196-26-000090",
+          "filed": "2026-10-27",
+          "report_date": "2026-09-30",
+          "primary_document": "hban-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "HUNTINGTON BANCSHARES INC /MD/"
+    },
+    "AAPL": {
+      "ticker": "AAPL",
+      "cik": 320193,
+      "filings": {
+        "10-K": {
+          "accession": "0000320193-26-000026",
+          "filed": "2026-11-03",
+          "report_date": "2026-09-26",
+          "primary_document": "aapl-20260926.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000320193-26-000020",
+          "filed": "2026-07-31",
+          "report_date": "2026-06-27",
+          "primary_document": "aapl-20260627.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Apple Inc."
+    },
+    "MSFT": {
+      "ticker": "MSFT",
+      "cik": 789019,
+      "filings": {
+        "10-K": {
+          "accession": "0001193125-26-323660",
+          "filed": "2026-07-29",
+          "report_date": "2026-06-30",
+          "primary_document": "msft-20260630.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001193125-26-436133",
+          "filed": "2026-10-28",
+          "report_date": "2026-09-30",
+          "primary_document": "msft-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "MICROSOFT CORP"
+    },
+    "NVDA": {
+      "ticker": "NVDA",
+      "cik": 1045810,
+      "filings": {
+        "10-K": {
+          "accession": "0001045810-26-000021",
+          "filed": "2026-02-25",
+          "report_date": "2026-01-25",
+          "primary_document": "nvda-20260125.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001045810-26-000075",
+          "filed": "2026-08-26",
+          "report_date": "2026-07-26",
+          "primary_document": "nvda-20260726.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "NVIDIA CORP"
+    },
+    "ORCL": {
+      "ticker": "ORCL",
+      "cik": 1341439,
+      "filings": {
+        "10-K": {
+          "accession": "0001193125-26-277521",
+          "filed": "2026-06-22",
+          "report_date": "2026-05-31",
+          "primary_document": "orcl-20260531.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001193125-26-389274",
+          "filed": "2026-09-11",
+          "report_date": "2026-08-31",
+          "primary_document": "orcl-20260831.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "ORACLE CORP"
+    },
+    "ADBE": {
+      "ticker": "ADBE",
+      "cik": 796343,
+      "filings": {
+        "10-K": {
+          "accession": "0000796343-26-000003",
+          "filed": "2026-01-15",
+          "report_date": "2025-11-28",
+          "primary_document": "adbe-20251128.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000796343-26-000156",
+          "filed": "2026-09-22",
+          "report_date": "2026-08-28",
+          "primary_document": "adbe-20260828.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "ADOBE INC."
+    },
+    "CSCO": {
+      "ticker": "CSCO",
+      "cik": 858877,
+      "filings": {
+        "10-K": {
+          "accession": "0000858877-26-000132",
+          "filed": "2026-09-02",
+          "report_date": "2026-07-25",
+          "primary_document": "csco-20260725.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000858877-26-000185",
+          "filed": "2026-11-17",
+          "report_date": "2026-10-24",
+          "primary_document": "csco-20261024.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "CISCO SYSTEMS, INC."
+    },
+    "IBM": {
+      "ticker": "IBM",
+      "cik": 51143,
+      "filings": {
+        "10-K": {
+          "accession": "0000051143-26-000010",
+          "filed": "2026-02-24",
+          "report_date": "2025-12-31",
+          "primary_document": "ibm-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000051143-26-000095",
+          "filed": "2026-10-22",
+          "report_date": "2026-09-30",
+          "primary_document": "ibm-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "INTERNATIONAL BUSINESS MACHINES CORP"
+    },
+    "INTC": {
+      "ticker": "INTC",
+      "cik": 50863,
+      "filings": {
+        "10-K": {
+          "accession": "0000050863-26-000011",
+          "filed": "2026-01-23",
+          "report_date": "2025-12-27",
+          "primary_document": "intc-20251227.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000050863-26-000191",
+          "filed": "2026-10-30",
+          "report_date": "2026-09-26",
+          "primary_document": "intc-20260926.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "INTEL CORP"
+    },
+    "CRM": {
+      "ticker": "CRM",
+      "cik": 1108524,
+      "filings": {
+        "10-K": {
+          "accession": "0001108524-26-000060",
+          "filed": "2026-03-02",
+          "report_date": "2026-01-31",
+          "primary_document": "crm-20260131.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001108524-26-000190",
+          "filed": "2026-08-27",
+          "report_date": "2026-07-31",
+          "primary_document": "crm-20260731.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Salesforce, Inc."
+    },
+    "QCOM": {
+      "ticker": "QCOM",
+      "cik": 804328,
+      "filings": {
+        "10-K": {
+          "accession": "0000804328-26-000128",
+          "filed": "2026-11-04",
+          "report_date": "2026-09-27",
+          "primary_document": "qcom-20260927.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000804328-26-000086",
+          "filed": "2026-07-29",
+          "report_date": "2026-06-28",
+          "primary_document": "qcom-20260628.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "QUALCOMM INC/DE"
+    },
+    "AMD": {
+      "ticker": "AMD",
+      "cik": 2488,
+      "filings": {
+        "10-K": {
+          "accession": "0000002488-26-000018",
+          "filed": "2026-02-04",
+          "report_date": "2025-12-27",
+          "primary_document": "amd-20251227.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000002488-26-000191",
+          "filed": "2026-11-04",
+          "report_date": "2026-09-26",
+          "primary_document": "amd-20260926.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "ADVANCED MICRO DEVICES INC"
+    },
+    "TXN": {
+      "ticker": "TXN",
+      "cik": 97476,
+      "filings": {
+        "10-K": {
+          "accession": "0000097476-26-000059",
+          "filed": "2026-02-06",
+          "report_date": "2025-12-31",
+          "primary_document": "txn-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000097476-26-000169",
+          "filed": "2026-10-23",
+          "report_date": "2026-09-30",
+          "primary_document": "txn-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "TEXAS INSTRUMENTS INC"
+    },
+    "INTU": {
+      "ticker": "INTU",
+      "cik": 896878,
+      "filings": {
+        "10-K": {
+          "accession": "0000896878-26-000037",
+          "filed": "2026-09-09",
+          "report_date": "2026-07-31",
+          "primary_document": "intu-20260731.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000896878-26-000045",
+          "filed": "2026-11-19",
+          "report_date": "2026-10-31",
+          "primary_document": "intu-20261031.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "INTUIT INC."
+    },
+    "DIS": {
+      "ticker": "DIS",
+      "cik": 1744489,
+      "filings": {
+        "10-K": {
+          "accession": "0001744489-26-000066",
+          "filed": "2026-11-17",
+          "report_date": "2026-10-03",
+          "primary_document": "dis-20261003.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001744489-26-000057",
+          "filed": "2026-08-05",
+          "report_date": "2026-06-27",
+          "primary_document": "dis-20260627.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Walt Disney Co"
+    },
+    "CMCSA": {
+      "ticker": "CMCSA",
+      "cik": 1166691,
+      "filings": {
+        "10-K": {
+          "accession": "0001628280-26-004994",
+          "filed": "2026-02-03",
+          "report_date": "2025-12-31",
+          "primary_document": "cmcsa-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001628280-26-066863",
+          "filed": "2026-10-22",
+          "report_date": "2026-09-30",
+          "primary_document": "cmcsa-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "COMCAST CORP"
+    },
+    "NFLX": {
+      "ticker": "NFLX",
+      "cik": 1065280,
+      "filings": {
+        "10-K": {
+          "accession": "0001065280-26-000034",
+          "filed": "2026-01-23",
+          "report_date": "2025-12-31",
+          "primary_document": "nflx-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001065280-26-000291",
+          "filed": "2026-10-21",
+          "report_date": "2026-09-30",
+          "primary_document": "nflx-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "NETFLIX INC"
+    },
+    "WBD": {
+      "ticker": "WBD",
+      "cik": null,
+      "filings": {},
+      "problems": [
+        "ticker not in the SEC ticker map"
+      ],
+      "eligible": false
+    },
+    "PSKY": {
+      "ticker": "PSKY",
+      "cik": null,
+      "filings": {},
+      "problems": [
+        "ticker not in the SEC ticker map"
+      ],
+      "eligible": false
+    },
+    "FOXA": {
+      "ticker": "FOXA",
+      "cik": 1754301,
+      "filings": {
+        "10-K": {
+          "accession": "0001628280-26-053960",
+          "filed": "2026-08-06",
+          "report_date": "2026-06-30",
+          "primary_document": "fox-20260630.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001628280-26-068670",
+          "filed": "2026-11-02",
+          "report_date": "2026-09-30",
+          "primary_document": "fox-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Fox Corp"
+    },
+    "NWSA": {
+      "ticker": "NWSA",
+      "cik": 1564708,
+      "filings": {
+        "10-K": {
+          "accession": "0001564708-26-000175",
+          "filed": "2026-08-07",
+          "report_date": "2026-06-30",
+          "primary_document": "nws-20260630.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001564708-26-000250",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "nws-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "NEWS CORP"
+    },
+    "SIRI": {
+      "ticker": "SIRI",
+      "cik": 908937,
+      "filings": {
+        "10-K": {
+          "accession": "0000908937-26-000006",
+          "filed": "2026-02-05",
+          "report_date": "2025-12-31",
+          "primary_document": "siri-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000908937-26-000028",
+          "filed": "2026-10-29",
+          "report_date": "2026-09-30",
+          "primary_document": "siri-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "SIRIUS XM HOLDINGS INC."
+    },
+    "LYV": {
+      "ticker": "LYV",
+      "cik": 1335258,
+      "filings": {
+        "10-K": {
+          "accession": "0001335258-26-000009",
+          "filed": "2026-02-19",
+          "report_date": "2025-12-31",
+          "primary_document": "lyv-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001335258-26-000053",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "lyv-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Live Nation Entertainment, Inc."
+    },
+    "OMC": {
+      "ticker": "OMC",
+      "cik": 29989,
+      "filings": {
+        "10-K": {
+          "accession": "0000029989-26-000006",
+          "filed": "2026-02-20",
+          "report_date": "2025-12-31",
+          "primary_document": "omc-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000029989-26-000026",
+          "filed": "2026-10-23",
+          "report_date": "2026-09-30",
+          "primary_document": "omc-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "OMNICOM GROUP INC."
+    },
+    "NYT": {
+      "ticker": "NYT",
+      "cik": 71691,
+      "filings": {
+        "10-K": {
+          "accession": "0000071691-26-000011",
+          "filed": "2026-02-27",
+          "report_date": "2025-12-31",
+          "primary_document": "nyt-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000071691-26-000041",
+          "filed": "2026-11-04",
+          "report_date": "2026-09-30",
+          "primary_document": "nyt-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "NEW YORK TIMES CO"
+    },
+    "NXST": {
+      "ticker": "NXST",
+      "cik": 1142417,
+      "filings": {
+        "10-K": {
+          "accession": "0001193125-26-078361",
+          "filed": "2026-02-27",
+          "report_date": "2025-12-31",
+          "primary_document": "nxst-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001193125-26-449939",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "nxst-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "NEXSTAR MEDIA GROUP, INC."
+    },
+    "TGNA": {
+      "ticker": "TGNA",
+      "cik": null,
+      "filings": {},
+      "problems": [
+        "ticker not in the SEC ticker map"
+      ],
+      "eligible": false
+    },
+    "T": {
+      "ticker": "T",
+      "cik": 732717,
+      "filings": {
+        "10-K": {
+          "accession": "0000732717-26-000120",
+          "filed": "2026-02-09",
+          "report_date": "2025-12-31",
+          "primary_document": "t-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000732717-26-000372",
+          "filed": "2026-10-21",
+          "report_date": "2026-09-30",
+          "primary_document": "t-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "AT&T INC."
+    },
+    "VZ": {
+      "ticker": "VZ",
+      "cik": 732712,
+      "filings": {
+        "10-K": {
+          "accession": "0000732712-26-000007",
+          "filed": "2026-02-17",
+          "report_date": "2025-12-31",
+          "primary_document": "vz-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000732712-26-000052",
+          "filed": "2026-10-29",
+          "report_date": "2026-09-30",
+          "primary_document": "vz-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "VERIZON COMMUNICATIONS INC"
+    },
+    "TMUS": {
+      "ticker": "TMUS",
+      "cik": 1283699,
+      "filings": {
+        "10-K": {
+          "accession": "0001283699-26-000010",
+          "filed": "2026-02-11",
+          "report_date": "2025-12-31",
+          "primary_document": "tmus-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001283699-26-000129",
+          "filed": "2026-10-28",
+          "report_date": "2026-09-30",
+          "primary_document": "tmus-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "T-Mobile US, Inc."
+    },
+    "CHTR": {
+      "ticker": "CHTR",
+      "cik": 1091667,
+      "filings": {
+        "10-K": {
+          "accession": "0001091667-26-000017",
+          "filed": "2026-01-30",
+          "report_date": "2025-12-31",
+          "primary_document": "chtr-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001091667-26-000073",
+          "filed": "2026-11-06",
+          "report_date": "2026-09-30",
+          "primary_document": "chtr-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "CHARTER COMMUNICATIONS, INC. /MO/"
+    },
+    "LUMN": {
+      "ticker": "LUMN",
+      "cik": 18926,
+      "filings": {
+        "10-K": {
+          "accession": "0000018926-26-000014",
+          "filed": "2026-02-20",
+          "report_date": "2025-12-31",
+          "primary_document": "lumn-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000018926-26-000073",
+          "filed": "2026-11-04",
+          "report_date": "2026-09-30",
+          "primary_document": "lumn-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Lumen Technologies, Inc."
+    },
+    "TDS": {
+      "ticker": "TDS",
+      "cik": 1051512,
+      "filings": {
+        "10-K": {
+          "accession": "0001051512-26-000011",
+          "filed": "2026-02-24",
+          "report_date": "2025-12-31",
+          "primary_document": "tds-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001051512-26-000078",
+          "filed": "2026-11-06",
+          "report_date": "2026-09-30",
+          "primary_document": "tds-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "TELEPHONE & DATA SYSTEMS INC /DE/"
+    },
+    "IRDM": {
+      "ticker": "IRDM",
+      "cik": 1418819,
+      "filings": {
+        "10-K": {
+          "accession": "0001418819-26-000009",
+          "filed": "2026-02-12",
+          "report_date": "2025-12-31",
+          "primary_document": "irdm-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001418819-26-000052",
+          "filed": "2026-10-20",
+          "report_date": "2026-09-30",
+          "primary_document": "irdm-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Iridium Communications Inc."
+    },
+    "CABO": {
+      "ticker": "CABO",
+      "cik": 1632127,
+      "filings": {
+        "10-K": {
+          "accession": "0001632127-26-000005",
+          "filed": "2026-02-26",
+          "report_date": "2025-12-31",
+          "primary_document": "cabo-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001632127-26-000038",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "cabo-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Cable One, Inc."
+    },
+    "SATS": {
+      "ticker": "SATS",
+      "cik": 1920406,
+      "filings": {
+        "10-K": {
+          "accession": "0001628280-26-019879",
+          "filed": "2026-03-19",
+          "report_date": "2025-12-31",
+          "primary_document": "asst-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001628280-26-071332",
+          "filed": "2026-11-06",
+          "report_date": "2026-09-30",
+          "primary_document": "asst-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Strive, Inc."
+    },
+    "GSAT": {
+      "ticker": "GSAT",
+      "cik": 1366868,
+      "filings": {
+        "10-K": {
+          "accession": "0001366868-26-000012",
+          "filed": "2026-02-27",
+          "report_date": "2025-12-31",
+          "primary_document": "gsat-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001366868-26-000046",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "gsat-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Globalstar, Inc."
+    },
+    "SHEN": {
+      "ticker": "SHEN",
+      "cik": 354963,
+      "filings": {
+        "10-K": {
+          "accession": "0000354963-26-000125",
+          "filed": "2026-02-26",
+          "report_date": "2025-12-31",
+          "primary_document": "shen-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000354963-26-000266",
+          "filed": "2026-10-28",
+          "report_date": "2026-09-30",
+          "primary_document": "shen-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "SHENANDOAH TELECOMMUNICATIONS CO/VA/"
+    },
+    "ATNI": {
+      "ticker": "ATNI",
+      "cik": 879585,
+      "filings": {
+        "10-K": {
+          "accession": "0001104659-26-028515",
+          "filed": "2026-03-16",
+          "report_date": "2025-12-31",
+          "primary_document": "atni-20251231x10k.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001628280-26-071545",
+          "filed": "2026-11-06",
+          "report_date": "2026-09-30",
+          "primary_document": "atni-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "ATN International, Inc."
+    },
+    "VSAT": {
+      "ticker": "VSAT",
+      "cik": 797721,
+      "filings": {
+        "10-K": {
+          "accession": "0001193125-26-248290",
+          "filed": "2026-05-29",
+          "report_date": "2026-03-31",
+          "primary_document": "vsat-20260331.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001193125-26-452035",
+          "filed": "2026-11-06",
+          "report_date": "2026-09-30",
+          "primary_document": "vsat-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "VIASAT INC"
+    },
+    "PGR": {
+      "ticker": "PGR",
+      "cik": 80661,
+      "filings": {
+        "10-K": {
+          "accession": "0000080661-26-000086",
+          "filed": "2026-03-02",
+          "report_date": "2025-12-31",
+          "primary_document": "pgr-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000080661-26-000379",
+          "filed": "2026-11-02",
+          "report_date": "2026-09-30",
+          "primary_document": "pgr-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "PROGRESSIVE CORP/OH/"
+    },
+    "TRV": {
+      "ticker": "TRV",
+      "cik": 86312,
+      "filings": {
+        "10-K": {
+          "accession": "0000086312-26-000065",
+          "filed": "2026-02-12",
+          "report_date": "2025-12-31",
+          "primary_document": "trv-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000086312-26-000181",
+          "filed": "2026-10-16",
+          "report_date": "2026-09-30",
+          "primary_document": "trv-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "TRAVELERS COMPANIES, INC."
+    },
+    "ALL": {
+      "ticker": "ALL",
+      "cik": 899051,
+      "filings": {
+        "10-K": {
+          "accession": "0000899051-26-000031",
+          "filed": "2026-02-20",
+          "report_date": "2025-12-31",
+          "primary_document": "all-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000899051-26-000157",
+          "filed": "2026-11-04",
+          "report_date": "2026-09-30",
+          "primary_document": "all-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "ALLSTATE CORP"
+    },
+    "MET": {
+      "ticker": "MET",
+      "cik": 1099219,
+      "filings": {
+        "10-K": {
+          "accession": "0001099219-26-000013",
+          "filed": "2026-02-19",
+          "report_date": "2025-12-31",
+          "primary_document": "met-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001099219-26-000062",
+          "filed": "2026-11-06",
+          "report_date": "2026-09-30",
+          "primary_document": "met-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "METLIFE INC"
+    },
+    "PRU": {
+      "ticker": "PRU",
+      "cik": 1137774,
+      "filings": {
+        "10-K": {
+          "accession": "0001137774-26-000048",
+          "filed": "2026-02-12",
+          "report_date": "2025-12-31",
+          "primary_document": "pru-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001137774-26-000221",
+          "filed": "2026-11-04",
+          "report_date": "2026-09-30",
+          "primary_document": "pru-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "PRUDENTIAL FINANCIAL INC"
+    },
+    "AIG": {
+      "ticker": "AIG",
+      "cik": 5272,
+      "filings": {
+        "10-K": {
+          "accession": "0000005272-26-000023",
+          "filed": "2026-02-12",
+          "report_date": "2025-12-31",
+          "primary_document": "aig-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000005272-26-000104",
+          "filed": "2026-11-04",
+          "report_date": "2026-09-30",
+          "primary_document": "aig-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "AMERICAN INTERNATIONAL GROUP, INC."
+    },
+    "CB": {
+      "ticker": "CB",
+      "cik": 896159,
+      "filings": {
+        "10-K": {
+          "accession": "0000896159-26-000005",
+          "filed": "2026-02-27",
+          "report_date": "2025-12-31",
+          "primary_document": "cb-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000896159-26-000021",
+          "filed": "2026-10-28",
+          "report_date": "2026-09-30",
+          "primary_document": "cb-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Chubb Ltd"
+    },
+    "AFL": {
+      "ticker": "AFL",
+      "cik": 4977,
+      "filings": {
+        "10-K": {
+          "accession": "0001628280-26-011402",
+          "filed": "2026-02-25",
+          "report_date": "2025-12-31",
+          "primary_document": "afl-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001628280-26-070776",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "afl-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "AFLAC INC"
+    },
+    "HIG": {
+      "ticker": "HIG",
+      "cik": 874766,
+      "filings": {
+        "10-K": {
+          "accession": "0000874766-26-000012",
+          "filed": "2026-02-20",
+          "report_date": "2025-12-31",
+          "primary_document": "hig-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000874766-26-000078",
+          "filed": "2026-10-26",
+          "report_date": "2026-09-30",
+          "primary_document": "hig-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "HARTFORD INSURANCE GROUP, INC."
+    },
+    "CINF": {
+      "ticker": "CINF",
+      "cik": 20286,
+      "filings": {
+        "10-K": {
+          "accession": "0000020286-26-000008",
+          "filed": "2026-02-23",
+          "report_date": "2025-12-31",
+          "primary_document": "cinf-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000020286-26-000060",
+          "filed": "2026-10-26",
+          "report_date": "2026-09-30",
+          "primary_document": "cinf-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "CINCINNATI FINANCIAL CORP"
+    },
+    "PFG": {
+      "ticker": "PFG",
+      "cik": 1126328,
+      "filings": {
+        "10-K": {
+          "accession": "0001104659-26-017031",
+          "filed": "2026-02-18",
+          "report_date": "2025-12-31",
+          "primary_document": "pfg-20251231x10k.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001104659-26-120103",
+          "filed": "2026-10-29",
+          "report_date": "2026-09-30",
+          "primary_document": "pfg-20260930x10q.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "PRINCIPAL FINANCIAL GROUP INC"
+    },
+    "L": {
+      "ticker": "L",
+      "cik": 60086,
+      "filings": {
+        "10-K": {
+          "accession": "0000060086-26-000008",
+          "filed": "2026-02-10",
+          "report_date": "2025-12-31",
+          "primary_document": "l-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000060086-26-000056",
+          "filed": "2026-11-02",
+          "report_date": "2026-09-30",
+          "primary_document": "l-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "LOEWS CORP"
+    },
+    "ACGL": {
+      "ticker": "ACGL",
+      "cik": 947484,
+      "filings": {
+        "10-K": {
+          "accession": "0000947484-26-000017",
+          "filed": "2026-02-26",
+          "report_date": "2025-12-31",
+          "primary_document": "acgl-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000947484-26-000152",
+          "filed": "2026-11-04",
+          "report_date": "2026-09-30",
+          "primary_document": "acgl-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "ARCH CAPITAL GROUP LTD."
+    },
+    "FCX": {
+      "ticker": "FCX",
+      "cik": 831259,
+      "filings": {
+        "10-K": {
+          "accession": "0000831259-26-000012",
+          "filed": "2026-02-13",
+          "report_date": "2025-12-31",
+          "primary_document": "fcx-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000831259-26-000051",
+          "filed": "2026-11-06",
+          "report_date": "2026-09-30",
+          "primary_document": "fcx-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "FREEPORT-MCMORAN INC"
+    },
+    "NEM": {
+      "ticker": "NEM",
+      "cik": 1164727,
+      "filings": {
+        "10-K": {
+          "accession": "0001164727-26-000010",
+          "filed": "2026-02-19",
+          "report_date": "2025-12-31",
+          "primary_document": "nem-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001164727-26-000043",
+          "filed": "2026-10-22",
+          "report_date": "2026-09-30",
+          "primary_document": "nem-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "NEWMONT Corp /DE/"
+    },
+    "NUE": {
+      "ticker": "NUE",
+      "cik": 73309,
+      "filings": {
+        "10-K": {
+          "accession": "0001193125-26-071575",
+          "filed": "2026-02-25",
+          "report_date": "2025-12-31",
+          "primary_document": "nue-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001193125-26-454565",
+          "filed": "2026-11-10",
+          "report_date": "2026-10-03",
+          "primary_document": "nue-20261003.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "NUCOR CORP"
+    },
+    "STLD": {
+      "ticker": "STLD",
+      "cik": 1022671,
+      "filings": {
+        "10-K": {
+          "accession": "0001104659-26-021395",
+          "filed": "2026-02-27",
+          "report_date": "2025-12-31",
+          "primary_document": "stld-20251231x10k.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001104659-26-118461",
+          "filed": "2026-10-23",
+          "report_date": "2026-09-30",
+          "primary_document": "stld-20260930x10q.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "STEEL DYNAMICS INC"
+    },
+    "CLF": {
+      "ticker": "CLF",
+      "cik": 764065,
+      "filings": {
+        "10-K": {
+          "accession": "0000764065-26-000025",
+          "filed": "2026-02-09",
+          "report_date": "2025-12-31",
+          "primary_document": "clf-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000764065-26-000115",
+          "filed": "2026-10-20",
+          "report_date": "2026-09-30",
+          "primary_document": "clf-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "CLEVELAND-CLIFFS INC."
+    },
+    "AA": {
+      "ticker": "AA",
+      "cik": 1675149,
+      "filings": {
+        "10-K": {
+          "accession": "0001193125-26-077167",
+          "filed": "2026-02-26",
+          "report_date": "2025-12-31",
+          "primary_document": "aa-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001193125-26-437885",
+          "filed": "2026-10-29",
+          "report_date": "2026-09-30",
+          "primary_document": "aa-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Alcoa Corp"
+    },
+    "SCCO": {
+      "ticker": "SCCO",
+      "cik": 1001838,
+      "filings": {
+        "10-K": {
+          "accession": "0001104659-26-021492",
+          "filed": "2026-02-27",
+          "report_date": "2025-12-31",
+          "primary_document": "scco-20251231x10k.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001104659-26-120639",
+          "filed": "2026-10-30",
+          "report_date": "2026-09-30",
+          "primary_document": "scco-20260930x10q.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "SOUTHERN COPPER CORP/"
+    },
+    "RS": {
+      "ticker": "RS",
+      "cik": 861884,
+      "filings": {
+        "10-K": {
+          "accession": "0001104659-26-020651",
+          "filed": "2026-02-26",
+          "report_date": "2025-12-31",
+          "primary_document": "rs-20251231x10k.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001104659-26-119157",
+          "filed": "2026-10-27",
+          "report_date": "2026-09-30",
+          "primary_document": "rs-20260930x10q.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "RELIANCE, INC."
+    },
+    "CMC": {
+      "ticker": "CMC",
+      "cik": 22444,
+      "filings": {
+        "10-K": {
+          "accession": "0000022444-26-000065",
+          "filed": "2026-10-16",
+          "report_date": "2026-08-31",
+          "primary_document": "cmc-20260831.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000022444-26-000041",
+          "filed": "2026-06-29",
+          "report_date": "2026-05-31",
+          "primary_document": "cmc-20260531.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "COMMERCIAL METALS Co"
+    },
+    "MP": {
+      "ticker": "MP",
+      "cik": 1801368,
+      "filings": {
+        "10-K": {
+          "accession": "0001801368-26-000008",
+          "filed": "2026-02-26",
+          "report_date": "2025-12-31",
+          "primary_document": "mp-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001801368-26-000057",
+          "filed": "2026-11-06",
+          "report_date": "2026-09-30",
+          "primary_document": "mp-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "MP Materials Corp. / DE"
+    },
+    "ATI": {
+      "ticker": "ATI",
+      "cik": 1018963,
+      "filings": {
+        "10-K": {
+          "accession": "0001628280-26-010140",
+          "filed": "2026-02-20",
+          "report_date": "2025-12-28",
+          "primary_document": "ati-20251228.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001628280-26-068145",
+          "filed": "2026-10-29",
+          "report_date": "2026-09-27",
+          "primary_document": "ati-20260927.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "ATI INC"
+    },
+    "CRS": {
+      "ticker": "CRS",
+      "cik": 17843,
+      "filings": {
+        "10-K": {
+          "accession": "0000017843-26-000034",
+          "filed": "2026-08-12",
+          "report_date": "2026-06-30",
+          "primary_document": "crs-20260630.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000017843-26-000045",
+          "filed": "2026-10-22",
+          "report_date": "2026-09-30",
+          "primary_document": "crs-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "CARPENTER TECHNOLOGY CORP"
+    },
+    "KALU": {
+      "ticker": "KALU",
+      "cik": 811596,
+      "filings": {
+        "10-K": {
+          "accession": "0001193125-26-059575",
+          "filed": "2026-02-19",
+          "report_date": "2025-12-31",
+          "primary_document": "kalu-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001193125-26-429090",
+          "filed": "2026-10-22",
+          "report_date": "2026-09-30",
+          "primary_document": "kalu-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "KAISER ALUMINUM CORP"
+    },
+    "NEE": {
+      "ticker": "NEE",
+      "cik": 753308,
+      "filings": {
+        "10-K": {
+          "accession": "0000753308-26-000015",
+          "filed": "2026-02-13",
+          "report_date": "2025-12-31",
+          "primary_document": "nee-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000753308-26-000081",
+          "filed": "2026-10-21",
+          "report_date": "2026-09-30",
+          "primary_document": "nee-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "NEXTERA ENERGY INC"
+    },
+    "DUK": {
+      "ticker": "DUK",
+      "cik": 1326160,
+      "filings": {
+        "10-K": {
+          "accession": "0001326160-26-000014",
+          "filed": "2026-02-26",
+          "report_date": "2025-12-31",
+          "primary_document": "duk-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001326160-26-000051",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "duk-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Duke Energy CORP"
+    },
+    "SO": {
+      "ticker": "SO",
+      "cik": 92122,
+      "filings": {
+        "10-K": {
+          "accession": "0000092122-26-000006",
+          "filed": "2026-02-19",
+          "report_date": "2025-12-31",
+          "primary_document": "so-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000092122-26-000069",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "so-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "SOUTHERN CO"
+    },
+    "D": {
+      "ticker": "D",
+      "cik": 715957,
+      "filings": {
+        "10-K": {
+          "accession": "0001193125-26-063120",
+          "filed": "2026-02-23",
+          "report_date": "2025-12-31",
+          "primary_document": "d-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001193125-26-440697",
+          "filed": "2026-10-30",
+          "report_date": "2026-09-30",
+          "primary_document": "d-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "DOMINION ENERGY, INC"
+    },
+    "AEP": {
+      "ticker": "AEP",
+      "cik": 4904,
+      "filings": {
+        "10-K": {
+          "accession": "0000004904-26-000013",
+          "filed": "2026-02-12",
+          "report_date": "2025-12-31",
+          "primary_document": "aep-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000004904-26-000072",
+          "filed": "2026-10-28",
+          "report_date": "2026-09-30",
+          "primary_document": "aep-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "AMERICAN ELECTRIC POWER CO INC"
+    },
+    "EXC": {
+      "ticker": "EXC",
+      "cik": 1109357,
+      "filings": {
+        "10-K": {
+          "accession": "0001109357-26-000018",
+          "filed": "2026-02-12",
+          "report_date": "2025-12-31",
+          "primary_document": "exc-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001109357-26-000095",
+          "filed": "2026-10-30",
+          "report_date": "2026-09-30",
+          "primary_document": "exc-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "EXELON CORP"
+    },
+    "SRE": {
+      "ticker": "SRE",
+      "cik": 1032208,
+      "filings": {
+        "10-K": {
+          "accession": "0001032208-26-000010",
+          "filed": "2026-02-26",
+          "report_date": "2025-12-31",
+          "primary_document": "sre-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001032208-26-000054",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "sre-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "SEMPRA"
+    },
+    "XEL": {
+      "ticker": "XEL",
+      "cik": 72903,
+      "filings": {
+        "10-K": {
+          "accession": "0000072903-26-000009",
+          "filed": "2026-02-25",
+          "report_date": "2025-12-31",
+          "primary_document": "xel-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000072903-26-000181",
+          "filed": "2026-10-29",
+          "report_date": "2026-09-30",
+          "primary_document": "xel-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "XCEL ENERGY INC"
+    },
+    "PCG": {
+      "ticker": "PCG",
+      "cik": 1004980,
+      "filings": {
+        "10-K": {
+          "accession": "0001004980-26-000009",
+          "filed": "2026-02-12",
+          "report_date": "2025-12-31",
+          "primary_document": "pcg-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001004980-26-000055",
+          "filed": "2026-10-22",
+          "report_date": "2026-09-30",
+          "primary_document": "pcg-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "PG&E Corp"
+    },
+    "ED": {
+      "ticker": "ED",
+      "cik": 1047862,
+      "filings": {
+        "10-K": {
+          "accession": "0001047862-26-000031",
+          "filed": "2026-02-19",
+          "report_date": "2025-12-31",
+          "primary_document": "ed-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001047862-26-000155",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "ed-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "CONSOLIDATED EDISON INC"
+    },
+    "PEG": {
+      "ticker": "PEG",
+      "cik": 788784,
+      "filings": {
+        "10-K": {
+          "accession": "0001193125-26-077446",
+          "filed": "2026-02-26",
+          "report_date": "2025-12-31",
+          "primary_document": "peg-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001193125-26-443789",
+          "filed": "2026-11-02",
+          "report_date": "2026-09-30",
+          "primary_document": "peg-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "PUBLIC SERVICE ENTERPRISE GROUP INC"
+    },
+    "EIX": {
+      "ticker": "EIX",
+      "cik": 827052,
+      "filings": {
+        "10-K": {
+          "accession": "0000827052-26-000012",
+          "filed": "2026-02-18",
+          "report_date": "2025-12-31",
+          "primary_document": "eix-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000827052-26-000073",
+          "filed": "2026-10-29",
+          "report_date": "2026-09-30",
+          "primary_document": "eix-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "EDISON INTERNATIONAL"
+    },
+    "WEC": {
+      "ticker": "WEC",
+      "cik": 783325,
+      "filings": {
+        "10-K": {
+          "accession": "0000783325-26-000018",
+          "filed": "2026-02-20",
+          "report_date": "2025-12-31",
+          "primary_document": "wec-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000783325-26-000107",
+          "filed": "2026-10-30",
+          "report_date": "2026-09-30",
+          "primary_document": "wec-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "WEC ENERGY GROUP, INC."
+    },
+    "XOM": {
+      "ticker": "XOM",
+      "cik": 2115436,
+      "filings": {
+        "10-Q": {
+          "accession": "0002115436-26-000020",
+          "filed": "2026-11-02",
+          "report_date": "2026-09-30",
+          "primary_document": "xom-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [
+        "no 10-K filed on or before 2026-11-21"
+      ],
+      "eligible": false,
+      "name": "ExxonMobil Holdings Corp"
+    },
+    "CVX": {
+      "ticker": "CVX",
+      "cik": 93410,
+      "filings": {
+        "10-K": {
+          "accession": "0000093410-26-000078",
+          "filed": "2026-02-24",
+          "report_date": "2025-12-31",
+          "primary_document": "cvx-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000093410-26-000200",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "cvx-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "CHEVRON CORP"
+    },
+    "COP": {
+      "ticker": "COP",
+      "cik": 1163165,
+      "filings": {
+        "10-K": {
+          "accession": "0001163165-26-000009",
+          "filed": "2026-02-17",
+          "report_date": "2025-12-31",
+          "primary_document": "cop-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001163165-26-000045",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "cop-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "CONOCOPHILLIPS"
+    },
+    "EOG": {
+      "ticker": "EOG",
+      "cik": 821189,
+      "filings": {
+        "10-K": {
+          "accession": "0000821189-26-000054",
+          "filed": "2026-02-24",
+          "report_date": "2025-12-31",
+          "primary_document": "eog-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000821189-26-000227",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "eog-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "EOG RESOURCES INC"
+    },
+    "OXY": {
+      "ticker": "OXY",
+      "cik": 797468,
+      "filings": {
+        "10-K": {
+          "accession": "0001628280-26-009059",
+          "filed": "2026-02-18",
+          "report_date": "2025-12-31",
+          "primary_document": "oxy-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001628280-26-072198",
+          "filed": "2026-11-09",
+          "report_date": "2026-09-30",
+          "primary_document": "oxy-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "OCCIDENTAL PETROLEUM CORP /DE/"
+    },
+    "DVN": {
+      "ticker": "DVN",
+      "cik": 1090012,
+      "filings": {
+        "10-K": {
+          "accession": "0001193125-26-056485",
+          "filed": "2026-02-18",
+          "report_date": "2025-12-31",
+          "primary_document": "dvn-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001193125-26-451216",
+          "filed": "2026-11-06",
+          "report_date": "2026-09-30",
+          "primary_document": "dvn-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "DEVON ENERGY CORP/DE"
+    },
+    "PSX": {
+      "ticker": "PSX",
+      "cik": 1534701,
+      "filings": {
+        "10-K": {
+          "accession": "0001534701-26-000006",
+          "filed": "2026-02-20",
+          "report_date": "2025-12-31",
+          "primary_document": "psx-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001534701-26-000037",
+          "filed": "2026-10-28",
+          "report_date": "2026-09-30",
+          "primary_document": "psx-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Phillips 66"
+    },
+    "MPC": {
+      "ticker": "MPC",
+      "cik": 1510295,
+      "filings": {
+        "10-K": {
+          "accession": "0001510295-26-000009",
+          "filed": "2026-02-26",
+          "report_date": "2025-12-31",
+          "primary_document": "mpc-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001510295-26-000071",
+          "filed": "2026-11-03",
+          "report_date": "2026-09-30",
+          "primary_document": "mpc-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Marathon Petroleum Corp"
+    },
+    "VLO": {
+      "ticker": "VLO",
+      "cik": 1035002,
+      "filings": {
+        "10-K": {
+          "accession": "0001628280-26-011499",
+          "filed": "2026-02-25",
+          "report_date": "2025-12-31",
+          "primary_document": "vlo-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001628280-26-067679",
+          "filed": "2026-10-28",
+          "report_date": "2026-09-30",
+          "primary_document": "vlo-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "VALERO ENERGY CORP/TX"
+    },
+    "SLB": {
+      "ticker": "SLB",
+      "cik": 87347,
+      "filings": {
+        "10-K": {
+          "accession": "0001193125-26-021017",
+          "filed": "2026-01-23",
+          "report_date": "2025-12-31",
+          "primary_document": "slb-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001193125-26-435577",
+          "filed": "2026-10-28",
+          "report_date": "2026-09-30",
+          "primary_document": "slb-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "SLB LIMITED/NV"
+    },
+    "APA": {
+      "ticker": "APA",
+      "cik": 1841666,
+      "filings": {
+        "10-K": {
+          "accession": "0001841666-26-000015",
+          "filed": "2026-02-26",
+          "report_date": "2025-12-31",
+          "primary_document": "apa-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001841666-26-000071",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "apa-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "APA Corp"
+    },
+    "FANG": {
+      "ticker": "FANG",
+      "cik": 1539838,
+      "filings": {
+        "10-K": {
+          "accession": "0001539838-26-000010",
+          "filed": "2026-02-25",
+          "report_date": "2025-12-31",
+          "primary_document": "fang-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001539838-26-000183",
+          "filed": "2026-11-04",
+          "report_date": "2026-09-30",
+          "primary_document": "fang-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Diamondback Energy, Inc."
+    },
+    "HAL": {
+      "ticker": "HAL",
+      "cik": 45012,
+      "filings": {
+        "10-K": {
+          "accession": "0000045012-26-000015",
+          "filed": "2026-02-06",
+          "report_date": "2025-12-31",
+          "primary_document": "hal-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000045012-26-000074",
+          "filed": "2026-10-23",
+          "report_date": "2026-09-30",
+          "primary_document": "hal-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "HALLIBURTON CO"
+    },
+    "JNJ": {
+      "ticker": "JNJ",
+      "cik": 200406,
+      "filings": {
+        "10-K": {
+          "accession": "0000200406-26-000016",
+          "filed": "2026-02-11",
+          "report_date": "2025-12-28",
+          "primary_document": "jnj-20251228.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000200406-26-000197",
+          "filed": "2026-10-21",
+          "report_date": "2026-09-27",
+          "primary_document": "jnj-20260927.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "JOHNSON & JOHNSON"
+    },
+    "PFE": {
+      "ticker": "PFE",
+      "cik": 78003,
+      "filings": {
+        "10-K": {
+          "accession": "0000078003-26-000026",
+          "filed": "2026-02-26",
+          "report_date": "2025-12-31",
+          "primary_document": "pfe-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000078003-26-000127",
+          "filed": "2026-11-03",
+          "report_date": "2026-09-27",
+          "primary_document": "pfe-20260927.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "PFIZER INC"
+    },
+    "LLY": {
+      "ticker": "LLY",
+      "cik": 59478,
+      "filings": {
+        "10-K": {
+          "accession": "0000059478-26-000013",
+          "filed": "2026-02-12",
+          "report_date": "2025-12-31",
+          "primary_document": "lly-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000059478-26-000108",
+          "filed": "2026-10-29",
+          "report_date": "2026-09-30",
+          "primary_document": "lly-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "ELI LILLY & Co"
+    },
+    "MRK": {
+      "ticker": "MRK",
+      "cik": 310158,
+      "filings": {
+        "10-K": {
+          "accession": "0000310158-26-000063",
+          "filed": "2026-02-24",
+          "report_date": "2025-12-31",
+          "primary_document": "mrk-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000310158-26-000248",
+          "filed": "2026-11-04",
+          "report_date": "2026-09-30",
+          "primary_document": "mrk-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Merck & Co., Inc."
+    },
+    "ABBV": {
+      "ticker": "ABBV",
+      "cik": 1551152,
+      "filings": {
+        "10-K": {
+          "accession": "0001551152-26-000008",
+          "filed": "2026-02-20",
+          "report_date": "2025-12-31",
+          "primary_document": "abbv-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001551152-26-000037",
+          "filed": "2026-11-03",
+          "report_date": "2026-09-30",
+          "primary_document": "abbv-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "AbbVie Inc."
+    },
+    "UNH": {
+      "ticker": "UNH",
+      "cik": 731766,
+      "filings": {
+        "10-K": {
+          "accession": "0000731766-26-000062",
+          "filed": "2026-03-02",
+          "report_date": "2025-12-31",
+          "primary_document": "unh-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000731766-26-000266",
+          "filed": "2026-11-03",
+          "report_date": "2026-09-30",
+          "primary_document": "unh-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "UNITEDHEALTH GROUP INC"
+    },
+    "TMO": {
+      "ticker": "TMO",
+      "cik": 97745,
+      "filings": {
+        "10-K": {
+          "accession": "0000097745-26-000018",
+          "filed": "2026-02-26",
+          "report_date": "2025-12-31",
+          "primary_document": "tmo-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000097745-26-000179",
+          "filed": "2026-10-30",
+          "report_date": "2026-09-26",
+          "primary_document": "tmo-20260926.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "THERMO FISHER SCIENTIFIC INC."
+    },
+    "ABT": {
+      "ticker": "ABT",
+      "cik": 1800,
+      "filings": {
+        "10-K": {
+          "accession": "0001628280-26-010185",
+          "filed": "2026-02-20",
+          "report_date": "2025-12-31",
+          "primary_document": "abt-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001628280-26-070154",
+          "filed": "2026-11-04",
+          "report_date": "2026-09-30",
+          "primary_document": "abt-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "ABBOTT LABORATORIES"
+    },
+    "MDT": {
+      "ticker": "MDT",
+      "cik": 1613103,
+      "filings": {
+        "10-K": {
+          "accession": "0001628280-26-044354",
+          "filed": "2026-06-18",
+          "report_date": "2026-04-24",
+          "primary_document": "mdt-20260424.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001628280-26-060473",
+          "filed": "2026-09-03",
+          "report_date": "2026-07-31",
+          "primary_document": "mdt-20260731.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Medtronic plc"
+    },
+    "CVS": {
+      "ticker": "CVS",
+      "cik": 64803,
+      "filings": {
+        "10-K": {
+          "accession": "0000064803-26-000010",
+          "filed": "2026-02-10",
+          "report_date": "2025-12-31",
+          "primary_document": "cvs-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000064803-26-000108",
+          "filed": "2026-11-04",
+          "report_date": "2026-09-30",
+          "primary_document": "cvs-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "CVS HEALTH Corp"
+    },
+    "BMY": {
+      "ticker": "BMY",
+      "cik": 14272,
+      "filings": {
+        "10-K": {
+          "accession": "0000014272-26-000004",
+          "filed": "2026-02-11",
+          "report_date": "2025-12-31",
+          "primary_document": "bmy-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000014272-26-000024",
+          "filed": "2026-10-29",
+          "report_date": "2026-09-30",
+          "primary_document": "bmy-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "BRISTOL MYERS SQUIBB CO"
+    },
+    "AMGN": {
+      "ticker": "AMGN",
+      "cik": 318154,
+      "filings": {
+        "10-K": {
+          "accession": "0000318154-26-000010",
+          "filed": "2026-02-13",
+          "report_date": "2025-12-31",
+          "primary_document": "amgn-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000318154-26-000155",
+          "filed": "2026-11-04",
+          "report_date": "2026-09-30",
+          "primary_document": "amgn-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "AMGEN INC"
+    },
+    "CI": {
+      "ticker": "CI",
+      "cik": 1739940,
+      "filings": {
+        "10-K": {
+          "accession": "0001739940-26-000006",
+          "filed": "2026-02-26",
+          "report_date": "2025-12-31",
+          "primary_document": "ci-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001739940-26-000071",
+          "filed": "2026-11-05",
+          "report_date": "2026-09-30",
+          "primary_document": "ci-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Cigna Group"
+    },
+    "PLD": {
+      "ticker": "PLD",
+      "cik": 1045609,
+      "filings": {
+        "10-K": {
+          "accession": "0001193125-26-051453",
+          "filed": "2026-02-13",
+          "report_date": "2025-12-31",
+          "primary_document": "pld-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001193125-26-436160",
+          "filed": "2026-10-28",
+          "report_date": "2026-09-30",
+          "primary_document": "pld-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Prologis, Inc."
+    },
+    "O": {
+      "ticker": "O",
+      "cik": 726728,
+      "filings": {
+        "10-K": {
+          "accession": "0000726728-26-000011",
+          "filed": "2026-02-25",
+          "report_date": "2025-12-31",
+          "primary_document": "o-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000726728-26-000059",
+          "filed": "2026-11-03",
+          "report_date": "2026-09-30",
+          "primary_document": "o-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "REALTY INCOME CORP"
+    },
+    "SPG": {
+      "ticker": "SPG",
+      "cik": 1063761,
+      "filings": {
+        "10-K": {
+          "accession": "0001104659-26-019419",
+          "filed": "2026-02-25",
+          "report_date": "2025-12-31",
+          "primary_document": "spg-20251231x10k.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001104659-26-123591",
+          "filed": "2026-11-06",
+          "report_date": "2026-09-30",
+          "primary_document": "spg-20260930x10q.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "SIMON PROPERTY GROUP INC."
+    },
+    "AMT": {
+      "ticker": "AMT",
+      "cik": 1053507,
+      "filings": {
+        "10-K": {
+          "accession": "0001053507-26-000035",
+          "filed": "2026-02-24",
+          "report_date": "2025-12-31",
+          "primary_document": "amt-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001053507-26-000157",
+          "filed": "2026-10-27",
+          "report_date": "2026-09-30",
+          "primary_document": "amt-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "AMERICAN TOWER CORP /MA/"
+    },
+    "EQIX": {
+      "ticker": "EQIX",
+      "cik": 1101239,
+      "filings": {
+        "10-K": {
+          "accession": "0001101239-26-000032",
+          "filed": "2026-02-11",
+          "report_date": "2025-12-31",
+          "primary_document": "eqix-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001101239-26-000180",
+          "filed": "2026-10-28",
+          "report_date": "2026-09-30",
+          "primary_document": "eqix-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "EQUINIX INC"
+    },
+    "PSA": {
+      "ticker": "PSA",
+      "cik": 1393311,
+      "filings": {
+        "10-K": {
+          "accession": "0001628280-26-007696",
+          "filed": "2026-02-12",
+          "report_date": "2025-12-31",
+          "primary_document": "psa-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001628280-26-067286",
+          "filed": "2026-10-26",
+          "report_date": "2026-09-30",
+          "primary_document": "psa-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Public Storage"
+    },
+    "WELL": {
+      "ticker": "WELL",
+      "cik": 766704,
+      "filings": {
+        "10-K": {
+          "accession": "0000766704-26-000010",
+          "filed": "2026-02-12",
+          "report_date": "2025-12-31",
+          "primary_document": "well-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000766704-26-000046",
+          "filed": "2026-10-27",
+          "report_date": "2026-09-30",
+          "primary_document": "well-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "WELLTOWER INC."
+    },
+    "DLR": {
+      "ticker": "DLR",
+      "cik": 1297996,
+      "filings": {
+        "10-K": {
+          "accession": "0001104659-26-015365",
+          "filed": "2026-02-13",
+          "report_date": "2025-12-31",
+          "primary_document": "dlr-20251231x10k.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001104659-26-120710",
+          "filed": "2026-10-30",
+          "report_date": "2026-09-30",
+          "primary_document": "dlr-20260930x10q.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "DIGITAL REALTY TRUST, INC."
+    },
+    "AVB": {
+      "ticker": "AVB",
+      "cik": null,
+      "filings": {},
+      "problems": [
+        "ticker not in the SEC ticker map"
+      ],
+      "eligible": false
+    },
+    "EQR": {
+      "ticker": "EQR",
+      "cik": null,
+      "filings": {},
+      "problems": [
+        "ticker not in the SEC ticker map"
+      ],
+      "eligible": false
+    },
+    "CCI": {
+      "ticker": "CCI",
+      "cik": 1051470,
+      "filings": {
+        "10-K": {
+          "accession": "0001051470-26-000016",
+          "filed": "2026-02-23",
+          "report_date": "2025-12-31",
+          "primary_document": "cci-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001051470-26-000090",
+          "filed": "2026-11-04",
+          "report_date": "2026-09-30",
+          "primary_document": "cci-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "CROWN CASTLE INC."
+    },
+    "VTR": {
+      "ticker": "VTR",
+      "cik": 740260,
+      "filings": {
+        "10-K": {
+          "accession": "0000740260-26-000006",
+          "filed": "2026-02-06",
+          "report_date": "2025-12-31",
+          "primary_document": "vtr-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0000740260-26-000030",
+          "filed": "2026-10-28",
+          "report_date": "2026-09-30",
+          "primary_document": "vtr-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "Ventas, Inc."
+    },
+    "ARE": {
+      "ticker": "ARE",
+      "cik": 1035443,
+      "filings": {
+        "10-K": {
+          "accession": "0001035443-26-000013",
+          "filed": "2026-01-26",
+          "report_date": "2025-12-31",
+          "primary_document": "are-20251231.htm",
+          "inline_xbrl": true
+        },
+        "10-Q": {
+          "accession": "0001035443-26-000076",
+          "filed": "2026-10-26",
+          "report_date": "2026-09-30",
+          "primary_document": "are-20260930.htm",
+          "inline_xbrl": true
+        }
+      },
+      "problems": [],
+      "eligible": true,
+      "name": "ALEXANDRIA REAL ESTATE EQUITIES, INC."
+    }
+  }
+}

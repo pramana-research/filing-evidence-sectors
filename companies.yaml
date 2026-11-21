@@ -1,0 +1,28 @@
+# Filing-Evidence Sectors: companies (PROTOCOL.md §4.1). Ten sectors x ten companies, plus reserves used in order
+# when a company is ineligible (§4.2). Final list, 2026-11-21: the eligibility check (eligibility.py ->
+# eligibility.json) replaced WBD, PSKY (Media), XOM (Oil and gas), AVB, EQR (Real estate) with the next reserves.
+# Remaining reserves are used in order if a company fails during the build (§4.2, logged in PROTOCOL.md §14).
+filed_on_or_before: "2026-11-21"
+forms: ["10-K", "10-Q"]
+sectors:
+  Banks: [JPM, BAC, WFC, C, USB, PNC, TFC, COF, MTB, FITB]
+  Technology: [AAPL, MSFT, NVDA, ORCL, ADBE, CSCO, IBM, INTC, CRM, QCOM]
+  Media: [DIS, CMCSA, NFLX, NYT, NXST, FOXA, NWSA, SIRI, LYV, OMC]
+  Telecom: [T, VZ, TMUS, CHTR, LUMN, TDS, IRDM, CABO, SATS, GSAT]
+  Insurance: [PGR, TRV, ALL, MET, PRU, AIG, CB, AFL, HIG, CINF]
+  Metals and mining: [FCX, NEM, NUE, STLD, CLF, AA, SCCO, RS, CMC, MP]
+  Energy (power and utilities): [NEE, DUK, SO, D, AEP, EXC, SRE, XEL, PCG, ED]
+  Oil and gas: [APA, CVX, COP, EOG, OXY, DVN, PSX, MPC, VLO, SLB]
+  Healthcare: [JNJ, PFE, LLY, MRK, ABBV, UNH, TMO, ABT, MDT, CVS]
+  Real estate: [PLD, O, SPG, AMT, EQIX, PSA, WELL, DLR, CCI, VTR]
+reserves:
+  Banks: [KEY, RF, HBAN]
+  Technology: [AMD, TXN, INTU]
+  Media: [TGNA]
+  Telecom: [SHEN, ATNI, VSAT]
+  Insurance: [PFG, L, ACGL]
+  Metals and mining: [ATI, CRS, KALU]
+  Energy (power and utilities): [PEG, EIX, WEC]
+  Oil and gas: [FANG, HAL]
+  Healthcare: [BMY, AMGN, CI]
+  Real estate: [ARE]
