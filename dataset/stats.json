@@ -1,0 +1,1154 @@
+{
+  "seed": 20261121,
+  "questions": 10000,
+  "pages": 10452,
+  "per_sector": {
+    "Banks": 1000,
+    "Technology": 1000,
+    "Media": 1000,
+    "Telecom": 1000,
+    "Insurance": 1000,
+    "Metals and mining": 1000,
+    "Energy (power and utilities)": 1000,
+    "Oil and gas": 1000,
+    "Healthcare": 1000,
+    "Real estate": 1000
+  },
+  "slices": {
+    "Banks": {
+      "S1": {
+        "pool": 773,
+        "chosen": 140,
+        "target": 120,
+        "filled_beyond_target": 20,
+        "companies": 10,
+        "forms": {
+          "10-K": 70,
+          "10-Q": 70
+        }
+      },
+      "S2": {
+        "pool": 2145,
+        "chosen": 140,
+        "target": 120,
+        "filled_beyond_target": 20,
+        "companies": 10,
+        "forms": {
+          "10-K": 70,
+          "10-Q": 70
+        }
+      },
+      "S3": {
+        "pool": 559,
+        "chosen": 140,
+        "target": 120,
+        "filled_beyond_target": 20,
+        "companies": 9,
+        "forms": {
+          "10-Q": 140
+        }
+      },
+      "S4": {
+        "pool": 1998,
+        "chosen": 191,
+        "target": 160,
+        "filled_beyond_target": 31,
+        "companies": 9,
+        "forms": {
+          "10-K": 96,
+          "10-Q": 95
+        }
+      },
+      "S5": {
+        "pool": 107,
+        "chosen": 39,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 6,
+        "forms": {
+          "10-K": 29,
+          "10-Q": 10
+        }
+      },
+      "S6": {
+        "pool": 327,
+        "chosen": 120,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 61,
+          "10-Q": 59
+        }
+      },
+      "S7": {
+        "pool": 527,
+        "chosen": 130,
+        "target": 140,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 73,
+          "10-Q": 57
+        }
+      },
+      "S8": {
+        "pool": 132,
+        "chosen": 100,
+        "target": 100,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 53,
+          "10-Q": 47
+        },
+        "subtypes": {
+          "d": 32,
+          "a": 31,
+          "c": 10,
+          "b": 27
+        }
+      }
+    },
+    "Technology": {
+      "S1": {
+        "pool": 644,
+        "chosen": 155,
+        "target": 120,
+        "filled_beyond_target": 35,
+        "companies": 10,
+        "forms": {
+          "10-K": 78,
+          "10-Q": 77
+        }
+      },
+      "S2": {
+        "pool": 1532,
+        "chosen": 140,
+        "target": 120,
+        "filled_beyond_target": 20,
+        "companies": 10,
+        "forms": {
+          "10-K": 70,
+          "10-Q": 70
+        }
+      },
+      "S3": {
+        "pool": 254,
+        "chosen": 134,
+        "target": 120,
+        "filled_beyond_target": 14,
+        "companies": 7,
+        "forms": {
+          "10-Q": 134
+        }
+      },
+      "S4": {
+        "pool": 787,
+        "chosen": 200,
+        "target": 160,
+        "filled_beyond_target": 40,
+        "companies": 10,
+        "forms": {
+          "10-K": 122,
+          "10-Q": 78
+        }
+      },
+      "S5": {
+        "pool": 152,
+        "chosen": 64,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 6,
+        "forms": {
+          "10-K": 30,
+          "10-Q": 34
+        }
+      },
+      "S6": {
+        "pool": 204,
+        "chosen": 112,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 67,
+          "10-Q": 45
+        }
+      },
+      "S7": {
+        "pool": 261,
+        "chosen": 95,
+        "target": 140,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 58,
+          "10-Q": 37
+        }
+      },
+      "S8": {
+        "pool": 122,
+        "chosen": 100,
+        "target": 100,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 55,
+          "10-Q": 45
+        },
+        "subtypes": {
+          "d": 34,
+          "b": 25,
+          "c": 13,
+          "a": 28
+        }
+      }
+    },
+    "Media": {
+      "S1": {
+        "pool": 631,
+        "chosen": 140,
+        "target": 120,
+        "filled_beyond_target": 20,
+        "companies": 10,
+        "forms": {
+          "10-K": 71,
+          "10-Q": 69
+        }
+      },
+      "S2": {
+        "pool": 1567,
+        "chosen": 140,
+        "target": 120,
+        "filled_beyond_target": 20,
+        "companies": 10,
+        "forms": {
+          "10-K": 70,
+          "10-Q": 70
+        }
+      },
+      "S3": {
+        "pool": 305,
+        "chosen": 121,
+        "target": 120,
+        "filled_beyond_target": 1,
+        "companies": 8,
+        "forms": {
+          "10-Q": 121
+        }
+      },
+      "S4": {
+        "pool": 1178,
+        "chosen": 180,
+        "target": 160,
+        "filled_beyond_target": 20,
+        "companies": 10,
+        "forms": {
+          "10-Q": 88,
+          "10-K": 92
+        }
+      },
+      "S5": {
+        "pool": 368,
+        "chosen": 119,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 7,
+        "forms": {
+          "10-K": 58,
+          "10-Q": 61
+        }
+      },
+      "S6": {
+        "pool": 196,
+        "chosen": 90,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 61,
+          "10-Q": 29
+        }
+      },
+      "S7": {
+        "pool": 320,
+        "chosen": 110,
+        "target": 140,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 72,
+          "10-Q": 38
+        }
+      },
+      "S8": {
+        "pool": 152,
+        "chosen": 100,
+        "target": 100,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 54,
+          "10-Q": 46
+        },
+        "subtypes": {
+          "a": 29,
+          "b": 30,
+          "d": 26,
+          "c": 15
+        }
+      }
+    },
+    "Telecom": {
+      "S1": {
+        "pool": 599,
+        "chosen": 160,
+        "target": 120,
+        "filled_beyond_target": 40,
+        "companies": 10,
+        "forms": {
+          "10-K": 81,
+          "10-Q": 79
+        }
+      },
+      "S2": {
+        "pool": 1404,
+        "chosen": 160,
+        "target": 120,
+        "filled_beyond_target": 40,
+        "companies": 10,
+        "forms": {
+          "10-K": 80,
+          "10-Q": 80
+        }
+      },
+      "S3": {
+        "pool": 263,
+        "chosen": 132,
+        "target": 120,
+        "filled_beyond_target": 12,
+        "companies": 9,
+        "forms": {
+          "10-Q": 132
+        }
+      },
+      "S4": {
+        "pool": 1369,
+        "chosen": 208,
+        "target": 160,
+        "filled_beyond_target": 48,
+        "companies": 10,
+        "forms": {
+          "10-K": 111,
+          "10-Q": 97
+        }
+      },
+      "S5": {
+        "pool": 207,
+        "chosen": 79,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 8,
+        "forms": {
+          "10-K": 26,
+          "10-Q": 53
+        }
+      },
+      "S6": {
+        "pool": 160,
+        "chosen": 75,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 56,
+          "10-Q": 19
+        }
+      },
+      "S7": {
+        "pool": 319,
+        "chosen": 86,
+        "target": 140,
+        "filled_beyond_target": 0,
+        "companies": 9,
+        "forms": {
+          "10-Q": 44,
+          "10-K": 42
+        }
+      },
+      "S8": {
+        "pool": 122,
+        "chosen": 100,
+        "target": 100,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 48,
+          "10-Q": 52
+        },
+        "subtypes": {
+          "c": 7,
+          "a": 33,
+          "d": 35,
+          "b": 25
+        }
+      }
+    },
+    "Insurance": {
+      "S1": {
+        "pool": 898,
+        "chosen": 140,
+        "target": 120,
+        "filled_beyond_target": 20,
+        "companies": 10,
+        "forms": {
+          "10-K": 70,
+          "10-Q": 70
+        }
+      },
+      "S2": {
+        "pool": 2158,
+        "chosen": 136,
+        "target": 120,
+        "filled_beyond_target": 16,
+        "companies": 10,
+        "forms": {
+          "10-K": 68,
+          "10-Q": 68
+        }
+      },
+      "S3": {
+        "pool": 396,
+        "chosen": 120,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-Q": 120
+        }
+      },
+      "S4": {
+        "pool": 1600,
+        "chosen": 180,
+        "target": 160,
+        "filled_beyond_target": 20,
+        "companies": 10,
+        "forms": {
+          "10-K": 90,
+          "10-Q": 90
+        }
+      },
+      "S5": {
+        "pool": 698,
+        "chosen": 120,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 6,
+        "forms": {
+          "10-K": 60,
+          "10-Q": 60
+        }
+      },
+      "S6": {
+        "pool": 184,
+        "chosen": 94,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 70,
+          "10-Q": 24
+        }
+      },
+      "S7": {
+        "pool": 388,
+        "chosen": 110,
+        "target": 140,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 61,
+          "10-Q": 49
+        }
+      },
+      "S8": {
+        "pool": 128,
+        "chosen": 100,
+        "target": 100,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 55,
+          "10-Q": 45
+        },
+        "subtypes": {
+          "c": 15,
+          "a": 33,
+          "d": 27,
+          "b": 25
+        }
+      }
+    },
+    "Metals and mining": {
+      "S1": {
+        "pool": 880,
+        "chosen": 160,
+        "target": 120,
+        "filled_beyond_target": 40,
+        "companies": 10,
+        "forms": {
+          "10-K": 80,
+          "10-Q": 80
+        }
+      },
+      "S2": {
+        "pool": 1796,
+        "chosen": 160,
+        "target": 120,
+        "filled_beyond_target": 40,
+        "companies": 10,
+        "forms": {
+          "10-K": 80,
+          "10-Q": 80
+        }
+      },
+      "S3": {
+        "pool": 320,
+        "chosen": 157,
+        "target": 120,
+        "filled_beyond_target": 37,
+        "companies": 9,
+        "forms": {
+          "10-Q": 157
+        }
+      },
+      "S4": {
+        "pool": 1117,
+        "chosen": 201,
+        "target": 160,
+        "filled_beyond_target": 41,
+        "companies": 10,
+        "forms": {
+          "10-Q": 97,
+          "10-K": 104
+        }
+      },
+      "S5": {
+        "pool": 173,
+        "chosen": 73,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 6,
+        "forms": {
+          "10-K": 44,
+          "10-Q": 29
+        }
+      },
+      "S6": {
+        "pool": 167,
+        "chosen": 78,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 58,
+          "10-Q": 20
+        }
+      },
+      "S7": {
+        "pool": 240,
+        "chosen": 71,
+        "target": 140,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 42,
+          "10-Q": 29
+        }
+      },
+      "S8": {
+        "pool": 122,
+        "chosen": 100,
+        "target": 100,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 50,
+          "10-Q": 50
+        },
+        "subtypes": {
+          "d": 31,
+          "a": 30,
+          "c": 14,
+          "b": 25
+        }
+      }
+    },
+    "Energy (power and utilities)": {
+      "S1": {
+        "pool": 1033,
+        "chosen": 213,
+        "target": 120,
+        "filled_beyond_target": 93,
+        "companies": 10,
+        "forms": {
+          "10-K": 108,
+          "10-Q": 105
+        }
+      },
+      "S2": {
+        "pool": 2073,
+        "chosen": 200,
+        "target": 120,
+        "filled_beyond_target": 80,
+        "companies": 10,
+        "forms": {
+          "10-K": 101,
+          "10-Q": 99
+        }
+      },
+      "S3": {
+        "pool": 332,
+        "chosen": 176,
+        "target": 120,
+        "filled_beyond_target": 56,
+        "companies": 9,
+        "forms": {
+          "10-Q": 176
+        }
+      },
+      "S4": {
+        "pool": 417,
+        "chosen": 175,
+        "target": 160,
+        "filled_beyond_target": 15,
+        "companies": 9,
+        "forms": {
+          "10-Q": 54,
+          "10-K": 121
+        }
+      },
+      "S5": {
+        "pool": 31,
+        "chosen": 18,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 3,
+        "forms": {
+          "10-K": 17,
+          "10-Q": 1
+        }
+      },
+      "S6": {
+        "pool": 62,
+        "chosen": 38,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 6,
+        "forms": {
+          "10-K": 28,
+          "10-Q": 10
+        }
+      },
+      "S7": {
+        "pool": 276,
+        "chosen": 80,
+        "target": 140,
+        "filled_beyond_target": 0,
+        "companies": 9,
+        "forms": {
+          "10-K": 44,
+          "10-Q": 36
+        }
+      },
+      "S8": {
+        "pool": 126,
+        "chosen": 100,
+        "target": 100,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 51,
+          "10-Q": 49
+        },
+        "subtypes": {
+          "a": 30,
+          "d": 30,
+          "b": 26,
+          "c": 14
+        }
+      }
+    },
+    "Oil and gas": {
+      "S1": {
+        "pool": 484,
+        "chosen": 160,
+        "target": 120,
+        "filled_beyond_target": 40,
+        "companies": 7,
+        "forms": {
+          "10-K": 82,
+          "10-Q": 78
+        }
+      },
+      "S2": {
+        "pool": 1136,
+        "chosen": 160,
+        "target": 120,
+        "filled_beyond_target": 40,
+        "companies": 7,
+        "forms": {
+          "10-K": 80,
+          "10-Q": 80
+        }
+      },
+      "S3": {
+        "pool": 244,
+        "chosen": 127,
+        "target": 120,
+        "filled_beyond_target": 7,
+        "companies": 6,
+        "forms": {
+          "10-Q": 127
+        }
+      },
+      "S4": {
+        "pool": 1670,
+        "chosen": 208,
+        "target": 160,
+        "filled_beyond_target": 48,
+        "companies": 9,
+        "forms": {
+          "10-K": 112,
+          "10-Q": 96
+        }
+      },
+      "S5": {
+        "pool": 200,
+        "chosen": 78,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 6,
+        "forms": {
+          "10-K": 42,
+          "10-Q": 36
+        }
+      },
+      "S6": {
+        "pool": 160,
+        "chosen": 87,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 65,
+          "10-Q": 22
+        }
+      },
+      "S7": {
+        "pool": 293,
+        "chosen": 82,
+        "target": 140,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 47,
+          "10-Q": 35
+        }
+      },
+      "S8": {
+        "pool": 101,
+        "chosen": 98,
+        "target": 100,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 55,
+          "10-Q": 43
+        },
+        "subtypes": {
+          "d": 40,
+          "a": 31,
+          "c": 11,
+          "b": 16
+        }
+      }
+    },
+    "Healthcare": {
+      "S1": {
+        "pool": 595,
+        "chosen": 160,
+        "target": 120,
+        "filled_beyond_target": 40,
+        "companies": 10,
+        "forms": {
+          "10-K": 81,
+          "10-Q": 79
+        }
+      },
+      "S2": {
+        "pool": 1474,
+        "chosen": 160,
+        "target": 120,
+        "filled_beyond_target": 40,
+        "companies": 10,
+        "forms": {
+          "10-K": 80,
+          "10-Q": 80
+        }
+      },
+      "S3": {
+        "pool": 268,
+        "chosen": 143,
+        "target": 120,
+        "filled_beyond_target": 23,
+        "companies": 9,
+        "forms": {
+          "10-Q": 143
+        }
+      },
+      "S4": {
+        "pool": 906,
+        "chosen": 217,
+        "target": 160,
+        "filled_beyond_target": 57,
+        "companies": 10,
+        "forms": {
+          "10-K": 142,
+          "10-Q": 75
+        }
+      },
+      "S5": {
+        "pool": 145,
+        "chosen": 54,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 8,
+        "forms": {
+          "10-K": 28,
+          "10-Q": 26
+        }
+      },
+      "S6": {
+        "pool": 142,
+        "chosen": 80,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 56,
+          "10-Q": 24
+        }
+      },
+      "S7": {
+        "pool": 297,
+        "chosen": 86,
+        "target": 140,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 52,
+          "10-Q": 34
+        }
+      },
+      "S8": {
+        "pool": 142,
+        "chosen": 100,
+        "target": 100,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 55,
+          "10-Q": 45
+        },
+        "subtypes": {
+          "c": 10,
+          "d": 30,
+          "a": 33,
+          "b": 27
+        }
+      }
+    },
+    "Real estate": {
+      "S1": {
+        "pool": 851,
+        "chosen": 140,
+        "target": 120,
+        "filled_beyond_target": 20,
+        "companies": 9,
+        "forms": {
+          "10-K": 70,
+          "10-Q": 70
+        }
+      },
+      "S2": {
+        "pool": 2033,
+        "chosen": 140,
+        "target": 120,
+        "filled_beyond_target": 20,
+        "companies": 9,
+        "forms": {
+          "10-K": 70,
+          "10-Q": 70
+        }
+      },
+      "S3": {
+        "pool": 334,
+        "chosen": 140,
+        "target": 120,
+        "filled_beyond_target": 20,
+        "companies": 8,
+        "forms": {
+          "10-Q": 140
+        }
+      },
+      "S4": {
+        "pool": 996,
+        "chosen": 191,
+        "target": 160,
+        "filled_beyond_target": 31,
+        "companies": 9,
+        "forms": {
+          "10-K": 109,
+          "10-Q": 82
+        }
+      },
+      "S5": {
+        "pool": 258,
+        "chosen": 120,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 3,
+        "forms": {
+          "10-K": 60,
+          "10-Q": 60
+        }
+      },
+      "S6": {
+        "pool": 109,
+        "chosen": 65,
+        "target": 120,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 46,
+          "10-Q": 19
+        }
+      },
+      "S7": {
+        "pool": 490,
+        "chosen": 104,
+        "target": 140,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 57,
+          "10-Q": 47
+        }
+      },
+      "S8": {
+        "pool": 130,
+        "chosen": 100,
+        "target": 100,
+        "filled_beyond_target": 0,
+        "companies": 10,
+        "forms": {
+          "10-K": 54,
+          "10-Q": 46
+        },
+        "subtypes": {
+          "b": 26,
+          "c": 13,
+          "d": 31,
+          "a": 30
+        }
+      }
+    }
+  },
+  "excluded_as_v1": {
+    "S1": 115,
+    "S2": 128,
+    "S3": 115,
+    "S4": 122,
+    "S5": 82,
+    "S6": 94,
+    "S7": 111,
+    "S8": 9
+  },
+  "per_company": {
+    "SRE": 130,
+    "CVX": 130,
+    "DVN": 130,
+    "VLO": 130,
+    "WELL": 130,
+    "CRM": 129,
+    "TDS": 129,
+    "CVS": 128,
+    "AEP": 127,
+    "EOG": 127,
+    "LUMN": 123,
+    "EQIX": 123,
+    "NUE": 121,
+    "D": 121,
+    "MPC": 121,
+    "IBM": 120,
+    "NFLX": 120,
+    "APA": 120,
+    "JPM": 119,
+    "DUK": 117,
+    "ADBE": 116,
+    "NYT": 116,
+    "TMUS": 115,
+    "NWSA": 112,
+    "CINF": 112,
+    "PFE": 112,
+    "AFL": 111,
+    "CB": 111,
+    "AA": 111,
+    "CLF": 111,
+    "DIS": 109,
+    "LYV": 109,
+    "AMT": 108,
+    "COF": 107,
+    "USB": 107,
+    "ALL": 107,
+    "PRU": 107,
+    "FITB": 106,
+    "CHTR": 105,
+    "UNH": 105,
+    "PNC": 104,
+    "FCX": 103,
+    "WFC": 101,
+    "CMC": 101,
+    "MDT": 101,
+    "VTR": 101,
+    "INTC": 100,
+    "RS": 100,
+    "BAC": 99,
+    "T": 99,
+    "MET": 99,
+    "TMO": 99,
+    "PSA": 99,
+    "MTB": 98,
+    "SPG": 98,
+    "STLD": 97,
+    "PLD": 97,
+    "ABBV": 96,
+    "MRK": 96,
+    "AAPL": 95,
+    "SIRI": 95,
+    "CABO": 94,
+    "DLR": 94,
+    "CSCO": 93,
+    "MSFT": 92,
+    "CMCSA": 92,
+    "NEE": 92,
+    "SLB": 92,
+    "ORCL": 91,
+    "NXST": 91,
+    "ED": 91,
+    "ABT": 90,
+    "JNJ": 90,
+    "TFC": 89,
+    "AIG": 89,
+    "PGR": 89,
+    "TRV": 89,
+    "SCCO": 89,
+    "CCI": 89,
+    "XEL": 87,
+    "NVDA": 86,
+    "GSAT": 86,
+    "HIG": 86,
+    "MP": 86,
+    "COP": 86,
+    "OMC": 85,
+    "SO": 84,
+    "IRDM": 83,
+    "SATS": 83,
+    "VZ": 83,
+    "LLY": 83,
+    "NEM": 81,
+    "QCOM": 78,
+    "PCG": 77,
+    "EXC": 74,
+    "FOXA": 71,
+    "C": 70,
+    "O": 61,
+    "OXY": 46,
+    "PSX": 18
+  },
+  "per_form": {
+    "10-K": 4699,
+    "10-Q": 5301
+  },
+  "tags": {
+    "units_location": {
+      "page header": 7096,
+      "table or column header": 397,
+      "in the line": 877,
+      "none": 359,
+      "in the row label": 273
+    },
+    "figures_on_line": {
+      "3": 2420,
+      "2": 2915,
+      "4": 2912,
+      "5": 199,
+      "1": 256,
+      "6+": 300
+    },
+    "value_position": {
+      "first": 3996,
+      "later": 4982,
+      "n/a": 24
+    },
+    "period_length": {
+      "12 months": 2652,
+      "instant": 2985,
+      "9 months": 1864,
+      "3 months": 1459,
+      "6 months": 42
+    },
+    "word_scale": {
+      "False": 8228,
+      "True": 774
+    }
+  },
+  "subset": 1000,
+  "short": [],
+  "slices_below_target": [
+    "Banks S5: 39/120 from 6 companies",
+    "Banks S7: 130/140 from 10 companies",
+    "Technology S5: 64/120 from 6 companies",
+    "Technology S6: 112/120 from 10 companies",
+    "Technology S7: 95/140 from 10 companies",
+    "Media S5: 119/120 from 7 companies",
+    "Media S6: 90/120 from 10 companies",
+    "Media S7: 110/140 from 10 companies",
+    "Telecom S5: 79/120 from 8 companies",
+    "Telecom S6: 75/120 from 10 companies",
+    "Telecom S7: 86/140 from 9 companies",
+    "Insurance S5: 120/120 from 6 companies",
+    "Insurance S6: 94/120 from 10 companies",
+    "Insurance S7: 110/140 from 10 companies",
+    "Metals and mining S5: 73/120 from 6 companies",
+    "Metals and mining S6: 78/120 from 10 companies",
+    "Metals and mining S7: 71/140 from 10 companies",
+    "Energy (power and utilities) S5: 18/120 from 3 companies",
+    "Energy (power and utilities) S6: 38/120 from 6 companies",
+    "Energy (power and utilities) S7: 80/140 from 9 companies",
+    "Oil and gas S3: 127/120 from 6 companies",
+    "Oil and gas S5: 78/120 from 6 companies",
+    "Oil and gas S6: 87/120 from 10 companies",
+    "Oil and gas S7: 82/140 from 10 companies",
+    "Oil and gas S8: 98/100 from 10 companies",
+    "Healthcare S5: 54/120 from 8 companies",
+    "Healthcare S6: 80/120 from 10 companies",
+    "Healthcare S7: 86/140 from 10 companies",
+    "Real estate S5: 120/120 from 3 companies",
+    "Real estate S6: 65/120 from 10 companies",
+    "Real estate S7: 104/140 from 10 companies"
+  ],
+  "draft_fingerprint": "a07ead22da34fffa"
+}

@@ -1,0 +1,12 @@
+{
+  "frozen": "2026-11-21T08:26:24+00:00",
+  "fingerprint": "9a007d8046167c38d67d8570435ccd95f4dd7effc43bb3fc06ce4a64fe75346c",
+  "files": {
+    "questions.jsonl": "a07ead22da34fffaaee06da94d30c63a2565f832a4db5b26a939d6698ad1e37b",
+    "pages.jsonl": "ccb18bd96f210aa6cbb9d8233c4b868acc0bcef8722b114e47c12808e7deda76",
+    "subsets.json": "1fe1a87670743f746887762ef3c18279dc906ea8f1f4a21c39097fa242473de7",
+    "manifest.json": "d2c85136f21c0e9a9a934467088980e76be0f915425de185d33aa2173000cdf8"
+  },
+  "protocol": "sets/sectors/PROTOCOL.md v1.0 with deviation 1 (\u00a714)",
+  "human_audit": "non-blocking (\u00a713); recorded in review/sectors/, reported with the dataset"
+}

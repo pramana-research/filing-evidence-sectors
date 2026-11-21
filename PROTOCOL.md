@@ -271,7 +271,7 @@ Every change after this protocol is finalised, with its date and reason, and whe
 
 | Date | Change | Results existed? |
 |---|---|---|
-| | | |
+| 2026-11-21 | **Deviation 1: sampling (§5).** The first build (draft fingerprint `31c5ed4bdf388a3b`, not frozen) produced 8,029 questions, not 10,000: S1–S4 met their targets in every sector, but S5 (segments), S6 (prose), S7 (units and per-share) and S8 fell short, because (i) v1's rule of one question per item **per company** binds at about 100 questions per company (e.g. Banks S7: 527 candidates, 83 chosen), and (ii) some sectors have few such facts (e.g. utilities: 31 segment candidates in total). Reserve companies (1–3 per sector) could not close gaps of this size. Changes: **(A)** one question per item **per filing** (a company's item may be asked from its 10-K and its 10-Q), keeping at most 3 questions per concept per filing; **(B)** S8 kinds are split evenly where possible and then topped up from any kind; each sector is then filled to exactly 1,000 questions from S4, S1, S2 and S3 in turn (20 at a time). Slice counts per sector are therefore no longer fixed: the actual counts, and every slice below its §5 target, are reported in `stats.json` and the paper. The hypotheses (§2) are tested on the difficulty tags (§6), which span all slices. | **No.** No model had been run on any sectors question |
 
 ## 15 · Compute plan
 

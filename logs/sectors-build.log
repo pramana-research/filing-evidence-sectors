@@ -1,0 +1,335 @@
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+read JPM   10-K
+read JPM   10-Q
+read BAC   10-K
+read BAC   10-Q
+read WFC   10-K
+read WFC   10-Q
+read C     10-K
+read C     10-Q
+read USB   10-K
+read USB   10-Q
+read PNC   10-K
+read PNC   10-Q
+read TFC   10-K
+read TFC   10-Q
+read COF   10-K
+read COF   10-Q
+read MTB   10-K
+read MTB   10-Q
+read FITB  10-K
+read FITB  10-Q
+read AAPL  10-K
+read AAPL  10-Q
+read MSFT  10-K
+read MSFT  10-Q
+read NVDA  10-K
+read NVDA  10-Q
+read ORCL  10-K
+read ORCL  10-Q
+read ADBE  10-K
+read ADBE  10-Q
+read CSCO  10-K
+read CSCO  10-Q
+read IBM   10-K
+read IBM   10-Q
+read INTC  10-K
+read INTC  10-Q
+read CRM   10-K
+read CRM   10-Q
+read QCOM  10-K
+read QCOM  10-Q
+read DIS   10-K
+read DIS   10-Q
+read CMCSA 10-K
+read CMCSA 10-Q
+read NFLX  10-K
+read NFLX  10-Q
+read NYT   10-K
+read NYT   10-Q
+read NXST  10-K
+read NXST  10-Q
+read FOXA  10-K
+read FOXA  10-Q
+read NWSA  10-K
+read NWSA  10-Q
+read SIRI  10-K
+read SIRI  10-Q
+read LYV   10-K
+read LYV   10-Q
+read OMC   10-K
+read OMC   10-Q
+read T     10-K
+read T     10-Q
+read VZ    10-K
+read VZ    10-Q
+read TMUS  10-K
+read TMUS  10-Q
+read CHTR  10-K
+read CHTR  10-Q
+read LUMN  10-K
+read LUMN  10-Q
+read TDS   10-K
+read TDS   10-Q
+read IRDM  10-K
+read IRDM  10-Q
+read CABO  10-K
+read CABO  10-Q
+read SATS  10-K
+read SATS  10-Q
+read GSAT  10-K
+read GSAT  10-Q
+read PGR   10-K
+read PGR   10-Q
+read TRV   10-K
+read TRV   10-Q
+read ALL   10-K
+read ALL   10-Q
+read MET   10-K
+read MET   10-Q
+read PRU   10-K
+read PRU   10-Q
+read AIG   10-K
+read AIG   10-Q
+read CB    10-K
+read CB    10-Q
+read AFL   10-K
+read AFL   10-Q
+read HIG   10-K
+read HIG   10-Q
+read CINF  10-K
+read CINF  10-Q
+read FCX   10-K
+read FCX   10-Q
+read NEM   10-K
+read NEM   10-Q
+read NUE   10-K
+read NUE   10-Q
+read STLD  10-K
+read STLD  10-Q
+read CLF   10-K
+read CLF   10-Q
+read AA    10-K
+read AA    10-Q
+read SCCO  10-K
+read SCCO  10-Q
+read RS    10-K
+read RS    10-Q
+read CMC   10-K
+read CMC   10-Q
+read MP    10-K
+read MP    10-Q
+read NEE   10-K
+read NEE   10-Q
+read DUK   10-K
+read DUK   10-Q
+read SO    10-K
+read SO    10-Q
+read D     10-K
+read D     10-Q
+read AEP   10-K
+read AEP   10-Q
+read EXC   10-K
+read EXC   10-Q
+read SRE   10-K
+read SRE   10-Q
+read XEL   10-K
+read XEL   10-Q
+read PCG   10-K
+read PCG   10-Q
+read ED    10-K
+read ED    10-Q
+read APA   10-K
+read APA   10-Q
+read CVX   10-K
+read CVX   10-Q
+read COP   10-K
+read COP   10-Q
+read EOG   10-K
+read EOG   10-Q
+read OXY   10-K
+read OXY   10-Q
+read DVN   10-K
+read DVN   10-Q
+read PSX   10-K
+read PSX   10-Q
+read MPC   10-K
+read MPC   10-Q
+read VLO   10-K
+read VLO   10-Q
+read SLB   10-K
+read SLB   10-Q
+read JNJ   10-K
+read JNJ   10-Q
+read PFE   10-K
+read PFE   10-Q
+read LLY   10-K
+read LLY   10-Q
+read MRK   10-K
+read MRK   10-Q
+read ABBV  10-K
+read ABBV  10-Q
+read UNH   10-K
+read UNH   10-Q
+read TMO   10-K
+read TMO   10-Q
+read ABT   10-K
+read ABT   10-Q
+read MDT   10-K
+read MDT   10-Q
+read CVS   10-K
+read CVS   10-Q
+read PLD   10-K
+read PLD   10-Q
+read O     10-K
+read O     10-Q
+read SPG   10-K
+read SPG   10-Q
+read AMT   10-K
+read AMT   10-Q
+read EQIX  10-K
+read EQIX  10-Q
+read PSA   10-K
+read PSA   10-Q
+read WELL  10-K
+read WELL  10-Q
+read DLR   10-K
+read DLR   10-Q
+read CCI   10-K
+read CCI   10-Q
+read VTR   10-K
+read VTR   10-Q
+{
+  "seed": 20261121,
+  "questions": 10000,
+  "pages": 10452,
+  "per_sector": {
+    "Banks": 1000,
+    "Technology": 1000,
+    "Media": 1000,
+    "Telecom": 1000,
+    "Insurance": 1000,
+    "Metals and mining": 1000,
+    "Energy (power and utilities)": 1000,
+    "Oil and gas": 1000,
+    "Healthcare": 1000,
+    "Real estate": 1000
+  },
+  "excluded_as_v1": {
+    "S1": 115,
+    "S2": 128,
+    "S3": 115,
+    "S4": 122,
+    "S5": 82,
+    "S6": 94,
+    "S7": 111,
+    "S8": 9
+  },
+  "per_form": {
+    "10-K": 4699,
+    "10-Q": 5301
+  },
+  "tags": {
+    "units_location": {
+      "page header": 7096,
+      "table or column header": 397,
+      "in the line": 877,
+      "none": 359,
+      "in the row label": 273
+    },
+    "figures_on_line": {
+      "3": 2420,
+      "2": 2915,
+      "4": 2912,
+      "5": 199,
+      "1": 256,
+      "6+": 300
+    },
+    "value_position": {
+      "first": 3996,
+      "later": 4982,
+      "n/a": 24
+    },
+    "period_length": {
+      "12 months": 2652,
+      "instant": 2985,
+      "9 months": 1864,
+      "3 months": 1459,
+      "6 months": 42
+    },
+    "word_scale": {
+      "False": 8228,
+      "True": 774
+    }
+  },
+  "subset": 1000,
+  "short": [],
+  "slices_below_target": [
+    "Banks S5: 39/120 from 6 companies",
+    "Banks S7: 130/140 from 10 companies",
+    "Technology S5: 64/120 from 6 companies",
+    "Technology S6: 112/120 from 10 companies",
+    "Technology S7: 95/140 from 10 companies",
+    "Media S5: 119/120 from 7 companies",
+    "Media S6: 90/120 from 10 companies",
+    "Media S7: 110/140 from 10 companies",
+    "Telecom S5: 79/120 from 8 companies",
+    "Telecom S6: 75/120 from 10 companies",
+    "Telecom S7: 86/140 from 9 companies",
+    "Insurance S5: 120/120 from 6 companies",
+    "Insurance S6: 94/120 from 10 companies",
+    "Insurance S7: 110/140 from 10 companies",
+    "Metals and mining S5: 73/120 from 6 companies",
+    "Metals and mining S6: 78/120 from 10 companies",
+    "Metals and mining S7: 71/140 from 10 companies",
+    "Energy (power and utilities) S5: 18/120 from 3 companies",
+    "Energy (power and utilities) S6: 38/120 from 6 companies",
+    "Energy (power and utilities) S7: 80/140 from 9 companies",
+    "Oil and gas S3: 127/120 from 6 companies",
+    "Oil and gas S5: 78/120 from 6 companies",
+    "Oil and gas S6: 87/120 from 10 companies",
+    "Oil and gas S7: 82/140 from 10 companies",
+    "Oil and gas S8: 98/100 from 10 companies",
+    "Healthcare S5: 54/120 from 8 companies",
+    "Healthcare S6: 80/120 from 10 companies",
+    "Healthcare S7: 86/140 from 10 companies",
+    "Real estate S5: 120/120 from 3 companies",
+    "Real estate S6: 65/120 from 10 companies",
+    "Real estate S7: 104/140 from 10 companies"
+  ],
+  "draft_fingerprint": "a07ead22da34fffa"
+}
+
+Slices below their §5 target (filled from S1-S4, §14 deviation 1):
+  Banks S5: 39/120 from 6 companies
+  Banks S7: 130/140 from 10 companies
+  Technology S5: 64/120 from 6 companies
+  Technology S6: 112/120 from 10 companies
+  Technology S7: 95/140 from 10 companies
+  Media S5: 119/120 from 7 companies
+  Media S6: 90/120 from 10 companies
+  Media S7: 110/140 from 10 companies
+  Telecom S5: 79/120 from 8 companies
+  Telecom S6: 75/120 from 10 companies
+  Telecom S7: 86/140 from 9 companies
+  Insurance S5: 120/120 from 6 companies
+  Insurance S6: 94/120 from 10 companies
+  Insurance S7: 110/140 from 10 companies
+  Metals and mining S5: 73/120 from 6 companies
+  Metals and mining S6: 78/120 from 10 companies
+  Metals and mining S7: 71/140 from 10 companies
+  Energy (power and utilities) S5: 18/120 from 3 companies
+  Energy (power and utilities) S6: 38/120 from 6 companies
+  Energy (power and utilities) S7: 80/140 from 9 companies
+  Oil and gas S3: 127/120 from 6 companies
+  Oil and gas S5: 78/120 from 6 companies
+  Oil and gas S6: 87/120 from 10 companies
+  Oil and gas S7: 82/140 from 10 companies
+  Oil and gas S8: 98/100 from 10 companies
+  Healthcare S5: 54/120 from 8 companies
+  Healthcare S6: 80/120 from 10 companies
+  Healthcare S7: 86/140 from 10 companies
+  Real estate S5: 120/120 from 3 companies
+  Real estate S6: 65/120 from 10 companies
+  Real estate S7: 104/140 from 10 companies
+exit 0

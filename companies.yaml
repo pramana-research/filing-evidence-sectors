@@ -26,3 +26,131 @@ reserves:
   Oil and gas: [FANG, HAL]
   Healthcare: [BMY, AMGN, CI]
   Real estate: [ARE]
+# Display names used in question wording, in v1's style (a leading "The" is omitted so the possessive reads
+# naturally). Names for companies also in v1 are copied from v1's companies.yaml.
+names:
+  JPM: JPMorgan Chase & Co.
+  BAC: Bank of America Corporation
+  WFC: Wells Fargo & Company
+  C: Citigroup Inc.
+  USB: U.S. Bancorp
+  PNC: PNC Financial Services Group, Inc.
+  TFC: Truist Financial Corporation
+  COF: Capital One Financial Corporation
+  MTB: M&T Bank Corporation
+  FITB: Fifth Third Bancorp
+  KEY: KeyCorp
+  RF: Regions Financial Corporation
+  HBAN: Huntington Bancshares Incorporated
+  AAPL: Apple Inc.
+  MSFT: Microsoft Corporation
+  NVDA: NVIDIA Corporation
+  ORCL: Oracle Corporation
+  ADBE: Adobe Inc.
+  CSCO: Cisco Systems, Inc.
+  IBM: International Business Machines Corporation
+  INTC: Intel Corporation
+  CRM: Salesforce, Inc.
+  QCOM: QUALCOMM Incorporated
+  AMD: Advanced Micro Devices, Inc.
+  TXN: Texas Instruments Incorporated
+  INTU: Intuit Inc.
+  DIS: Walt Disney Company
+  CMCSA: Comcast Corporation
+  NFLX: Netflix, Inc.
+  NYT: New York Times Company
+  NXST: Nexstar Media Group, Inc.
+  FOXA: Fox Corporation
+  NWSA: News Corporation
+  SIRI: Sirius XM Holdings Inc.
+  LYV: Live Nation Entertainment, Inc.
+  OMC: Omnicom Group Inc.
+  TGNA: TEGNA Inc.
+  T: AT&T Inc.
+  VZ: Verizon Communications Inc.
+  TMUS: T-Mobile US, Inc.
+  CHTR: Charter Communications, Inc.
+  LUMN: Lumen Technologies, Inc.
+  TDS: Telephone and Data Systems, Inc.
+  IRDM: Iridium Communications Inc.
+  CABO: Cable One, Inc.
+  SATS: EchoStar Corporation
+  GSAT: Globalstar, Inc.
+  SHEN: Shenandoah Telecommunications Company
+  ATNI: ATN International, Inc.
+  VSAT: Viasat, Inc.
+  PGR: Progressive Corporation
+  TRV: Travelers Companies, Inc.
+  ALL: Allstate Corporation
+  MET: MetLife, Inc.
+  PRU: Prudential Financial, Inc.
+  AIG: American International Group, Inc.
+  CB: Chubb Limited
+  AFL: Aflac Incorporated
+  HIG: Hartford Insurance Group, Inc.
+  CINF: Cincinnati Financial Corporation
+  PFG: Principal Financial Group, Inc.
+  L: Loews Corporation
+  ACGL: Arch Capital Group Ltd.
+  FCX: Freeport-McMoRan Inc.
+  NEM: Newmont Corporation
+  NUE: Nucor Corporation
+  STLD: Steel Dynamics, Inc.
+  CLF: Cleveland-Cliffs Inc.
+  AA: Alcoa Corporation
+  SCCO: Southern Copper Corporation
+  RS: Reliance, Inc.
+  CMC: Commercial Metals Company
+  MP: MP Materials Corp.
+  ATI: ATI Inc.
+  CRS: Carpenter Technology Corporation
+  KALU: Kaiser Aluminum Corporation
+  NEE: NextEra Energy, Inc.
+  DUK: Duke Energy Corporation
+  SO: Southern Company
+  D: Dominion Energy, Inc.
+  AEP: American Electric Power Company, Inc.
+  EXC: Exelon Corporation
+  SRE: Sempra
+  XEL: Xcel Energy Inc.
+  PCG: PG&E Corporation
+  ED: Consolidated Edison, Inc.
+  PEG: Public Service Enterprise Group Incorporated
+  EIX: Edison International
+  WEC: WEC Energy Group, Inc.
+  APA: APA Corporation
+  CVX: Chevron Corporation
+  COP: ConocoPhillips
+  EOG: EOG Resources, Inc.
+  OXY: Occidental Petroleum Corporation
+  DVN: Devon Energy Corporation
+  PSX: Phillips 66
+  MPC: Marathon Petroleum Corporation
+  VLO: Valero Energy Corporation
+  SLB: SLB N.V.
+  FANG: Diamondback Energy, Inc.
+  HAL: Halliburton Company
+  JNJ: Johnson & Johnson
+  PFE: Pfizer Inc.
+  LLY: Eli Lilly and Company
+  MRK: Merck & Co., Inc.
+  ABBV: AbbVie Inc.
+  UNH: UnitedHealth Group Incorporated
+  TMO: Thermo Fisher Scientific Inc.
+  ABT: Abbott Laboratories
+  MDT: Medtronic plc
+  CVS: CVS Health Corporation
+  BMY: Bristol-Myers Squibb Company
+  AMGN: Amgen Inc.
+  CI: Cigna Group
+  PLD: Prologis, Inc.
+  O: Realty Income Corporation
+  SPG: Simon Property Group, Inc.
+  AMT: American Tower Corporation
+  EQIX: Equinix, Inc.
+  PSA: Public Storage
+  WELL: Welltower Inc.
+  DLR: Digital Realty Trust, Inc.
+  CCI: Crown Castle Inc.
+  VTR: Ventas, Inc.
+  ARE: Alexandria Real Estate Equities, Inc.
