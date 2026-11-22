@@ -95,3 +95,34 @@ Logistic regression on all §6 tags + model fixed effect, C1, answerable, SE clu
 | H4 | accuracy higher when the answer is the line's first figure (OR later vs first) | 0.69 | 0.64–0.74 | 8.1e-24 | supported (before Holm) |
 | H5 | 10-Q: year-to-date (6 or 9 months) accuracy lower than 3 months (OR YTD vs 3 months) | 0.72 | 0.62–0.82 | 2.3e-06 | supported (before Holm) |
 | H6 | word-scale items fail mainly as unverifiable-right, not confident-wrong | 6.62 | 4.95–8.86 | 3.5e-37 | supported (before Holm) |
+
+## H7 · thinking lowers confident-wrong; check + retry does not
+
+Paired exact McNemar per model, Holm within each model's family. C2 on all 10,000 questions; C3 on the 1,000-question subset. Counts are confident-wrong answers (accuracy: correct of answerable).
+
+| Model | CW C1 → C2 | p (Holm) | CW C1 → C3 | p (Holm) | Acc C1 → C2 | p (Holm) | Acc C1 → C3 | p (Holm) |
+|---|---|---|---|---|---|---|---|---|
+| gemma-3-12b | 1043 → 1181 | 5.7e-42 | — | — | 5755 → 6006 | 1.1e-75 | — | — |
+| glm-4.6v-flash | 977 → 1001 | 3.5e-07 | 102 → 64 | 2e-05 | 6923 → 7048 | 1.9e-37 | 673 → 743 | 3.5e-07 |
+| gpt-oss-20b | 1028 → 1058 | 3.7e-09 | 105 → 51 | 3.4e-09 | 7078 → 7252 | 3.3e-52 | 697 → 736 | 0.0039 |
+| granite-4.2-8b | 772 → 844 | 1.3e-21 | 90 → 34 | 6.2e-09 | 6832 → 7062 | 4.6e-69 | 649 → 721 | 1.3e-05 |
+| llama-3.1-8b | 891 → 1051 | 1.4e-48 | — | — | 5799 → 6185 | 2.5e-116 | — | — |
+| ministral-3-8b | 652 → 703 | 8.9e-16 | — | — | 6476 → 6705 | 4.6e-69 | — | — |
+| nemotron-nano-9b-v2 | 1042 → 1047 | 0.065 | 92 → 68 | 0.065 | 4128 → 4140 | 0.0015 | 412 → 519 | 1.7e-08 |
+| olmo-3-7b | 849 → 857 | 0.016 | — | — | 1726 → 1730 | 0.12 | — | — |
+| phi-4 | 1488 → 1612 | 9.4e-38 | — | — | 5695 → 5894 | 5e-60 | — | — |
+| qwen3.5-9b | 304 → 309 | 0.062 | 34 → 15 | 0.0068 | 7780 → 7828 | 2.8e-14 | 743 → 689 | 0.0011 |
+
+C3 lowers confident-wrong: **4 of 5 reasoning models** (pooled: 299 answers stop being confident-wrong, 108 start; p = 7.8e-22). C2 does not lower it: **10 of 10 models**; C2 raises it significantly: **8 of 10 models**.
+
+## Holm correction across the hypotheses (H8 pending: needs R1)
+
+| # | raw p | Holm p (over H1–H7) |
+|---|---|---|
+| H1 | 0.079 | 0.079 |
+| H2 | 0.00033 | 0.00066 |
+| H3 | 1.7e-08 | 6.7e-08 |
+| H4 | 8.1e-24 | 4.8e-23 |
+| H5 | 2.3e-06 | 6.9e-06 |
+| H6 | 3.5e-37 | 2.5e-36 |
+| H7 | 7.8e-22 | 3.9e-21 |

@@ -205,6 +205,71 @@ def h2_h6(qs: dict[str, dict], ms: list[str]) -> dict:
     return res
 
 
+def mcnemar(a: list[int], b: list[int]) -> dict:
+    """Exact McNemar on paired 0/1 outcomes: b01 = 0 under A and 1 under B, b10 = the reverse."""
+    from scipy.stats import binomtest
+
+    b01 = sum(1 for x, y in zip(a, b) if not x and y)
+    b10 = sum(1 for x, y in zip(a, b) if x and not y)
+    p = binomtest(b01, b01 + b10, 0.5).pvalue if b01 + b10 else 1.0
+    return {"n": len(a), "a": sum(a), "b": sum(b), "b01": b01, "b10": b10, "p": float(p)}
+
+
+def holm(ps: list[float]) -> list[float]:
+    order = sorted(range(len(ps)), key=lambda i: ps[i])
+    adj, run = [0.0] * len(ps), 0.0
+    for rank, i in enumerate(order):
+        run = max(run, min(1.0, (len(ps) - rank) * ps[i]))
+        adj[i] = run
+    return adj
+
+
+def h7(qs: dict[str, dict], ms: list[str]) -> dict:
+    """§2 H7, §11: paired exact McNemar per model, C1 vs C2 (all questions) and C1 vs C3 (the C3 subset), on
+    confident-wrong (H7) and on accuracy (§11 setup comparisons). Holm within each model's family (its two or
+    four comparisons). H7 is judged per model: C3 lowers confident-wrong (significant, lower), C2 does not
+    (no significant decrease). The hypothesis-level p used in the Holm correction across H1-H8 is a pooled exact
+    McNemar over the reasoning models (discordant pairs summed), a choice made in code (Deviation 3)."""
+    res, pooled = {"models": {}}, {"b01": 0, "b10": 0}
+    for m in ms:
+        c1 = load_answers(m, "C1")
+        fam = {}
+        for s in ("C2", "C3"):
+            other = load_answers(m, s)
+            if not other:
+                continue
+            ids = sorted(set(c1) & set(other))
+            ans = [i for i in ids if qs[i]["gold"]["status"] == "found"]
+            fam[f"{s}_confident_wrong"] = mcnemar([int(c1[i]["outcome"] == "confident_wrong") for i in ids],
+                                                  [int(other[i]["outcome"] == "confident_wrong") for i in ids])  # fmt: skip
+            fam[f"{s}_accuracy"] = mcnemar([int(c1[i]["outcome"] == "correct") for i in ans],
+                                           [int(other[i]["outcome"] == "correct") for i in ans])  # fmt: skip
+        for k, adj in zip(fam, holm([v["p"] for v in fam.values()])):
+            fam[k]["p_holm"] = adj
+        v = {}
+        if "C3_confident_wrong" in fam:
+            t = fam["C3_confident_wrong"]
+            v["C3_lowers_cw"] = t["b"] < t["a"] and t["p_holm"] < 0.05
+            pooled["b01"] += t["b01"]
+            pooled["b10"] += t["b10"]
+        t = fam["C2_confident_wrong"]
+        v["C2_does_not_lower_cw"] = not (t["b"] < t["a"] and t["p_holm"] < 0.05)
+        v["C2_raises_cw"] = t["b"] > t["a"] and t["p_holm"] < 0.05
+        res["models"][m] = {"tests": fam, "verdict": v}
+    from scipy.stats import binomtest
+
+    n = pooled["b01"] + pooled["b10"]
+    pooled["p"] = float(binomtest(pooled["b01"], n, 0.5).pvalue)
+    res["pooled_C3_confident_wrong"] = pooled
+    r = [m for m, d in res["models"].items() if "C3_lowers_cw" in d["verdict"]]
+    res["summary"] = {
+        "C3_lowers_cw": f"{sum(res['models'][m]['verdict']['C3_lowers_cw'] for m in r)} of {len(r)} reasoning models",
+        "C2_does_not_lower_cw": f"{sum(d['verdict']['C2_does_not_lower_cw'] for d in res['models'].values())} of {len(ms)} models",
+        "C2_raises_cw": f"{sum(d['verdict']['C2_raises_cw'] for d in res['models'].values())} of {len(ms)} models",
+    }  # fmt: skip
+    return res
+
+
 def pct(r: dict) -> str:
     return "—" if r["rate"] is None else f"{100 * r['rate']:.1f}"
 
@@ -258,6 +323,34 @@ def main() -> None:
     for k in ["H2", "H3", "H4", "H5", "H6"]:
         v = hh[k]
         lines.append(f"| {k} | {v['claim']} | {v['or']:.2f} | {v['ci95'][0]:.2f}–{v['ci95'][1]:.2f} | {v['p']:.2g} | {v['verdict']} |")
+    h = h7(qs, main_ms)
+    (OUT / "h7.json").write_text(json.dumps(h, indent=1))
+    lines += ["", "## H7 · thinking lowers confident-wrong; check + retry does not", "",
+              "Paired exact McNemar per model, Holm within each model's family. C2 on all 10,000 questions; "
+              "C3 on the 1,000-question subset. Counts are confident-wrong answers (accuracy: correct of answerable).", "",
+              "| Model | CW C1 → C2 | p (Holm) | CW C1 → C3 | p (Holm) | Acc C1 → C2 | p (Holm) | Acc C1 → C3 | p (Holm) |",
+              "|---|---|---|---|---|---|---|---|---|"]  # fmt: skip
+
+    def cell(t: dict | None) -> str:
+        return "— | —" if t is None else f"{t['a']} → {t['b']} | {t['p_holm']:.2g}"
+
+    for m, d in h["models"].items():
+        t = d["tests"]
+        lines.append(f"| {m} | {cell(t.get('C2_confident_wrong'))} | {cell(t.get('C3_confident_wrong'))} | "
+                     f"{cell(t.get('C2_accuracy'))} | {cell(t.get('C3_accuracy'))} |")  # fmt: skip
+    s = h["summary"]
+    pc = h["pooled_C3_confident_wrong"]
+    lines += ["", f"C3 lowers confident-wrong: **{s['C3_lowers_cw']}** (pooled: {pc['b10']} answers stop being "
+              f"confident-wrong, {pc['b01']} start; p = {pc['p']:.2g}). C2 does not lower it: **{s['C2_does_not_lower_cw']}**; "
+              f"C2 raises it significantly: **{s['C2_raises_cw']}**."]  # fmt: skip
+
+    ps = {"H1": json.loads((OUT / "h1.json").read_text())["p"], **{k: hh[k]["p"] for k in ["H2", "H3", "H4", "H5", "H6"]},
+          "H7": pc["p"]}  # fmt: skip
+    adj = dict(zip(ps, holm(list(ps.values()))))
+    lines += ["", "## Holm correction across the hypotheses (H8 pending: needs R1)", "",
+              "| # | raw p | Holm p (over H1–H7) |", "|---|---|---|"] + \
+             [f"| {k} | {ps[k]:.2g} | {adj[k]:.2g} |" for k in ps]  # fmt: skip
+    (OUT / "holm.json").write_text(json.dumps({"raw": ps, "holm_over_h1_h7": adj, "note": "recomputed with H8 once R1 runs"}, indent=1))
     (OUT / "sectors.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
 
