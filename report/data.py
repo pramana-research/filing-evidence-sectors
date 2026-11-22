@@ -123,6 +123,7 @@ def main() -> None:
         "n_questions": len(qs), "n_answerable": sum(q["gold"]["status"] == "found" for q in qs.values()),
         "n_companies": len({q["ticker"] for q in qs.values()}), "n_filings": len({q["accession"] for q in qs.values()}),
         "subset": len(subset),
+        "answers_core": sum(len(A.load_answers(m, s)) for m in ms_all for s in ("C1", "C2", "C3", "R1", "R2", "R3")),
         "answers_total": sum(len(A.load_answers(m, s)) for m in ms_all + list(QUANT)
                              for s in ("C1", "C2", "C3", "R1", "R2", "R3")),
         "sectors_table": secj, "h1": h1, "h2_h6": hh, "h7": h7, "robustness": rb, "holm": holm,

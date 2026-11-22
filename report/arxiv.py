@@ -89,6 +89,9 @@ def render() -> None:
         AUTHOR_EMAIL=os.environ.get("PAPER_AUTHOR_EMAIL", ""),
     )
     (PAPER / "main.tex").write_text(tex)
+    for f in (PAPER / "figures").glob("*.pdf"):  # keep only the figures the paper uses
+        if f"{{{f.name}}}" not in tex:
+            f.unlink()
     print(f"wrote {PAPER / 'main.tex'} and {len(charts.ALL)} figures")
 
 

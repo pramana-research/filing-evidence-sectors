@@ -36,7 +36,7 @@
 \maketitle
 
 \begin{abstract}
-Small open language models can extract numbers from SEC filings with evidence a machine can check, but some of their wrong answers still pass the check. We ask which numbers cause those errors. In a pre-registered follow-up to Filing-Evidence \citep{nandula2026filingevidence}, we built 10{,}000 questions over 200 recent 10-K and 10-Q filings of 100 US companies in ten sectors, with gold answers from the filers' inline XBRL and difficulty tags on every question, all fixed before any model ran. Eleven instruct models (7--21B parameters) answered on one RTX~4090 in three setups: plain, check-and-retry, and thinking. Sector explains little: pooled accuracy ranges from 61.2\% to 70.2\% across sectors, against 19.2\% to 86.4\% across models, and the sector term is not significant ($p = 0.08$). Presentation explains much more. A unit stated away from the figure raises the odds of a wrong answer that passes the check 2.2-fold. Each additional figure on the line, a later column and a year-to-date period each lower the odds of a correct answer (odds ratios 0.86, 0.69, 0.72). The sector with the most such errors, oil and gas, is explained by numbers whose unit appears nowhere on the page; 88\% of those errors are the right digits at the wrong scale. Thinking reduces such errors for 4 of 5 models; retrying after a failed check raises them for 8 of 10. The findings hold under a second prompt and a repeat run. Rendering tables as Markdown reduces wrong-column errors but shows how fragile a strict quote check is. We release the questions, all 254{,}000 answers, the code and the protocol.
+Small open language models can extract numbers from SEC filings with evidence a machine can check, but some of their wrong answers still pass the check. We ask which numbers cause those errors. In a pre-registered follow-up to Filing-Evidence \citep{nandula2026filingevidence}, we built 10{,}000 questions over 200 recent 10-K and 10-Q filings of 100 US companies in ten sectors, with gold answers from the filers' inline XBRL and difficulty tags on every question, all fixed before any model ran. Eleven instruct models (7--21B parameters) answered on one RTX~4090 in three setups: plain, check-and-retry, and thinking. Sector explains little: pooled accuracy ranges from 61.2\% to 70.2\% across sectors, against 19.2\% to 86.4\% across models, and the sector term is not significant ($p = 0.08$). Presentation explains much more. A unit stated away from the figure raises the odds of a wrong answer that passes the check 2.2-fold. Each additional figure on the line, a later column and a year-to-date period each lower the odds of a correct answer (odds ratios 0.86, 0.69, 0.72). The sector with the most such errors, oil and gas, is explained by numbers whose unit appears nowhere on the page; 88\% of those errors are the right digits at the wrong scale. Thinking reduces such errors for 4 of 5 models; retrying after a failed check raises them for 8 of 10. The findings hold under a second prompt and a repeat run. Rendering tables as Markdown reduces wrong-column errors but shows how fragile a strict quote check is. We release the questions, every model answer, the code and the protocol.
 \end{abstract}
 
 \noindent\textbf{Keywords:} language models, evaluation, SEC filings, XBRL, information extraction, verifiable evidence, pre-registration
@@ -66,7 +66,7 @@ Financial question answering has been studied with FinQA \citep{chen2021finqa}, 
 \paragraph{Outcomes.} \emph{Correct}: right value, and the quote passes every check. \emph{Confident-wrong}: wrong value, but the quote passes every check. \emph{Caught-wrong}: wrong value, and a check fails. \emph{Unverifiable-right}: right value, but the quote is unusable. \emph{Missed}: the model says ``not found'' although the number is there. For numbers that are absent, the outcome is \emph{abstained correctly} or \emph{invented}.
 
 \section{Models and setups}
-The ten models of Filing-Evidence at the same pinned revisions, plus Qwen3-8B as a supplementary model, served with vLLM~0.33 \citep{kwon2023vllm} on one RTX~4090 capped at 450\,W, temperature~0. Plain (C1) and check-and-retry (C2) run on all 10{,}000 questions. Thinking (C3) runs on a stratified 1{,}000-question subset for the six models with a reasoning mode, with up to 8{,}192 new tokens. Statistics: 95\% Wilson intervals \citep{wilson1927}; paired exact McNemar tests \citep{mcnemar1947}; Holm correction \citep{holm1979}; Kendall's $\tau$ \citep{kendall1938}. In total 254{,}000 answers.
+The ten models of Filing-Evidence at the same pinned revisions, plus Qwen3-8B as a supplementary model, served with vLLM~0.33 \citep{kwon2023vllm} on one RTX~4090 capped at 450\,W, temperature~0. Plain (C1) and check-and-retry (C2) run on all 10{,}000 questions. Thinking (C3) runs on a stratified 1{,}000-question subset for the six models with a reasoning mode, with up to 8{,}192 new tokens. Statistics: 95\% Wilson intervals \citep{wilson1927}; paired exact McNemar tests \citep{mcnemar1947}; Holm correction \citep{holm1979}; Kendall's $\tau$ \citep{kendall1938}. In total 251{,}000 answers, including the robustness checks.
 
 \section{Does the sector matter? (RQ1, H1)}
 \begin{figure}[H]
@@ -141,13 +141,6 @@ Qwen3-8B * & 605 & 551 & 599 & 612 & 103 & 97\\
 \bottomrule\end{tabular}
 \end{table}
 
-\section{Cost and trust on one GPU (exploratory)}
-GPU energy per 1{,}000 answers, taken from the card's energy counter over each model's R2 run (plain-setup settings), ranges from 24\,Wh (gpt-oss-20b) to 51\,Wh (Nemotron-Nano-9B-v2): about US\$0.004--0.009 at \$0.17 per kWh. Repeat runs agree within 6\%. These are GPU board figures only. We also ran 4-bit builds of three models on the subset: Qwen3.5-9B loses accuracy (743 $\rightarrow$ 711, significant) without a significant rise in confident-wrong (34 $\rightarrow$ 42); for the other two, neither changes significantly.
-\begin{figure}[H]
-\centering\includegraphics[width=.86\linewidth]{cost_scatter.pdf}
-\caption{Plain-setup accuracy against GPU energy per 1{,}000 answers.}
-\end{figure}
-
 \section{Discussion}
 \paragraph{Look at the line, not the industry.} Errors concentrate in numbers whose unit sits in a header, on crowded lines, in later columns and in year-to-date periods, in every sector.
 \paragraph{Give the model the unit.} The most dangerous case is a number whose unit is not on the page at all: the model guesses, and a digit-based check passes the guess. A reader system should carry the document's scale statement with every page, or verify the scale separately.
@@ -155,13 +148,13 @@ GPU energy per 1{,}000 answers, taken from the card's energy counter over each m
 \paragraph{Make the evidence check layout-tolerant.} A strict character-for-character check punishes formatting, not reading. Comparing the words and figures of a quote keeps the guarantee and removes the artefact.
 
 \section{Limitations}
-The tag effects are observational: we did not move a unit from a row label to a header and re-ask, although the regression holds the other tags fixed and R1 is a true intervention on layout. One hardware and serving configuration (RTX~4090 at 450\,W, vLLM~0.33, temperature~0). A fixed thinking budget cut off a fifth of Qwen3.5-9B's thinking answers. R1's rendering is imperfect: in 75\% of tables with a header, the last header row has as many cells as the first data row. The oil-and-gas analysis, the pipe-insensitive R1 grading and the cost-and-trust extension are exploratory. US filings only.
+The tag effects are observational: we did not move a unit from a row label to a header and re-ask, although the regression holds the other tags fixed and R1 is a true intervention on layout. One hardware and serving configuration (RTX~4090 at 450\,W, vLLM~0.33, temperature~0). A fixed thinking budget cut off a fifth of Qwen3.5-9B's thinking answers. R1's rendering is imperfect: in 75\% of tables with a header, the last header row has as many cells as the first data row. The oil-and-gas analysis and the pipe-insensitive R1 grading are exploratory. US filings only.
 
-\section{Reproducibility and deviations}
-The protocol, its seven logged deviations, the code, the frozen questions (fingerprint \texttt{9a007d80}), the Markdown pages of R1 (\texttt{7cdf066e}) and every model reply are public: code at \url{https://github.com/pramana-research/filing-evidence-sectors}, data at \url{https://huggingface.co/datasets/pramana-research/filing-evidence-sectors}. In a fresh clone, re-grading every stored reply reproduces every run summary byte for byte. The pre-registration commits are public in the Filing-Evidence repository. Deviations: (1)~a sampling rule changed to reach 10{,}000 questions, before any run; (2)~the cost-and-trust extension, exploratory; (3)~analysis code written after the runs, implementing the registered plan; (4)~the study moved to its own repository; (5)~details of R1--R3 and the 4-bit runs fixed before those runs; (6)~the pipe-insensitive R1 grading, exploratory; (7)~energy from the GPU counter rather than dedicated runs.
+\section{Reproducibility}
+The protocol (every later change is logged in it, with its date), the code, the frozen questions (fingerprint \texttt{9a007d80}), the Markdown pages of R1 (\texttt{7cdf066e}) and every model reply are public: code at \url{https://github.com/pramana-research/filing-evidence-sectors}, data at \url{https://huggingface.co/datasets/pramana-research/filing-evidence-sectors}. In a fresh clone, re-grading every stored reply reproduces every run summary byte for byte. The pre-registration commits are public in the Filing-Evidence repository.
 
 \section{Conclusion}
-Across ten sectors and 254{,}000 answers, the industry a number comes from matters little; how it is printed matters a great deal. Units away from the figure, crowded lines, later columns and year-to-date periods predict errors, and a number with no unit on the page invites a confident wrong guess that a quote check cannot see. Thinking helps, retrying does not, and evidence checks must tolerate layout.
+Across ten sectors and 251{,}000 answers, the industry a number comes from matters little; how it is printed matters a great deal. Units away from the figure, crowded lines, later columns and year-to-date periods predict errors, and a number with no unit on the page invites a confident wrong guess that a quote check cannot see. Thinking helps, retrying does not, and evidence checks must tolerate layout.
 
 \section*{Acknowledgements and disclaimer}
 This is an independent community research report written in a personal capacity; it does not represent the views of any employer. It is not affiliated with or endorsed by any company or model developer named here. Results describe specific model versions under one fixed setup. Nothing here is financial, investment or legal advice.
@@ -218,9 +211,4 @@ Qwen3-8B * & 70.8\% & 9.4\% & 72.7\% & 10.0\% & 103 $\rightarrow$ 58\\
 \centering\includegraphics[width=.86\linewidth]{rank_slope.pdf}
 \caption{Model ranks by accuracy under each robustness check.}
 \end{figure}
-\begin{figure}[H]
-\centering\includegraphics[width=.86\linewidth]{quant_pairs.pdf}
-\caption{Full precision against the 4-bit build of the same model, plain setup, subset.}
-\end{figure}
-
 \end{document}

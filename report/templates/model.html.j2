@@ -34,7 +34,6 @@
     <div class="stat"><div class="v">{{ T.C1.all.accuracy.rate | pct }}</div><div class="l">correct with a checkable quote, plain setup ({{ T.C1.all.accuracy.k | num }} of {{ T.C1.all.accuracy.n | num }})</div></div>
     <div class="stat"><div class="v bad">{{ T.C1.all.confident_wrong.k | num }}</div><div class="l">quietly wrong answers (confident-wrong) in 10,000, plain setup</div></div>
     <div class="stat"><div class="v">{{ T.C1.all.abstention_accuracy.rate | pct }}</div><div class="l">correct "not found" when the number was absent</div></div>
-    {% if m in H.wh %}<div class="stat"><div class="v">{{ "%.0f" | format(H.wh[m]) }} Wh</div><div class="l">GPU energy per 1,000 answers (₹{{ "%.2f" | format(H.wh[m] / 1000 * d.tariff.inr) }} at ₹{{ "%.0f" | format(d.tariff.inr) }}/kWh)</div></div>{% endif %}
   </div>
 </section>
 
@@ -70,9 +69,6 @@
 {% if key == "R1" and m in rb.R1_pipe_free_exploratory.models %}{% set x = rb.R1_pipe_free_exploratory.models[m] %}
 <tr><td>Plain → Markdown tables, pipes ignored (exploratory)</td><td class="n">{{ x.accuracy.a }} → {{ x.accuracy.b }}</td><td class="n">{{ x.accuracy.p_holm | p }}</td><td class="n">{{ x.confident_wrong.a }} → {{ x.confident_wrong.b }}</td><td class="n">{{ x.confident_wrong.p_holm | p }}</td></tr>
 {% endif %}
-{% endfor %}
-{% for q4, v in rb.quantisation_17_3.items() if v.full_precision == m %}
-<tr><td>Full precision → 4-bit build (exploratory)</td><td class="n">{{ v.accuracy.a }} → {{ v.accuracy.b }}</td><td class="n">{{ v.accuracy.p_holm | p }}</td><td class="n">{{ v.confident_wrong.a }} → {{ v.confident_wrong.b }}</td><td class="n">{{ v.confident_wrong.p_holm | p }}</td></tr>
 {% endfor %}
 {% if m in rb.R3.models %}<tr><td colspan="5" class="muted">Repeat run: {{ rb.R3.models[m].outcome_changed.rate | pct }} of questions changed outcome.</td></tr>{% endif %}
 </tbody></table></div>

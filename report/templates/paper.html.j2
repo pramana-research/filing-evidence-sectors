@@ -63,11 +63,9 @@
     <li><a href="#rq2">5 · What makes a number hard?</a></li>
     <li><a href="#rq3">6 · Do v1's findings hold?</a></li>
     <li><a href="#robust">7 · How robust is this?</a></li>
-    <li><a href="#cost">8 · Cost and trust on one GPU</a></li>
-    <li><a href="#discussion">9 · Discussion</a></li>
-    <li><a href="#limits">10 · Limitations</a></li>
-    <li><a href="#repro">11 · Reproducibility</a></li>
-    <li><a href="#deviations">Deviations from the protocol</a></li>
+    <li><a href="#discussion">8 · Discussion</a></li>
+    <li><a href="#limits">9 · Limitations</a></li>
+    <li><a href="#repro">10 · Reproducibility</a></li>
     <li><a href="#models">Results per model</a></li>
     <li><a href="#refs">References</a></li>
     <li><a href="#disclaimer">Disclaimer</a></li>
@@ -95,8 +93,7 @@ oil and gas, is explained by numbers whose unit appears nowhere on the page; {{ 
 of those errors are the right digits at the wrong scale. Thinking reduces such errors for {{ H.c3_lower | length }} of
 {{ H.c3_models | length }} models; retrying after a failed check raises them for {{ H.c2_raises | length }} of 10.
 The findings hold under a second prompt and a repeat run; Markdown tables cut wrong-column errors but expose how
-fragile a strict quote check is. We release the questions, all {{ d.answers_total | num }} answers, the code and the
-protocol.</p>
+fragile a strict quote check is. We release the questions, every model answer, the code and the protocol.</p>
 </div>
 
 <h2 id="intro">1 · Introduction</h2>
@@ -142,7 +139,7 @@ but the quote passes every check: the dangerous case); <i>caught-wrong</i> (wron
 <p>The ten models of v1 at the same pinned revisions, plus Qwen3-8B as a supplementary model, all served with vLLM
 0.33 on one RTX 4090 capped at 450 W, temperature 0. Three setups: <b>plain</b> (C1) and <b>check + retry</b> (C2) on
 all 10,000 questions, and <b>thinking</b> (C3) on a stratified 1,000-question subset for the six models with a
-reasoning mode, with up to 8,192 new tokens. In total {{ d.answers_total | num }} answers, including the robustness
+reasoning mode, with up to 8,192 new tokens. In total {{ d.answers_core | num }} answers, including the robustness
 checks of section 7.</p>
 
 <h2 id="rq1">4 · Does the sector matter? (RQ1, H1)</h2>
@@ -250,29 +247,7 @@ evidence check must be robust to it.</p>
 <p>The tag effects of H2–H4 keep their direction under R1 and R2. Together with the stable repeat run, the headline
 findings are <b>robust</b> in the sense the protocol defines.</p>
 
-<h2 id="cost">8 · Cost and trust on one GPU (exploratory)</h2>
-<p>An exploratory extension, added after the plain-setup results were seen. GPU energy per 1,000 answers comes from
-the card's own energy counter over each model's R2 run: 1,000 questions in plain-setup settings. It ranges from
-{{ "%.0f" | format(H.wh[H.wh_min]) }} Wh ({{ H.wh_min | name }}) to {{ "%.0f" | format(H.wh[H.wh_max]) }} Wh
-({{ H.wh_max | name }}). At ₹{{ "%.0f" | format(d.tariff.inr) }} per kWh that is ₹{{ "%.2f" | format(H.wh[H.wh_min] / 1000 * d.tariff.inr) }}–₹{{ "%.2f" | format(H.wh[H.wh_max] / 1000 * d.tariff.inr) }}
-per 1,000 answers, or US${{ "%.3f" | format(H.wh[H.wh_min] / 1000 * d.tariff.usd) }}–{{ "%.3f" | format(H.wh[H.wh_max] / 1000 * d.tariff.usd) }}
-at ${{ "%.2f" | format(d.tariff.usd) }}. Repeat runs of the same configuration agree within {{ "%.0f" | format(100 * d.energy_cross_max_diff) }}%. These are GPU board
-figures only, not the whole machine at the wall.</p>
-<figure>
-  <div class="canvas">{{ F.cost_scatter }}</div>
-  <figcaption><b>Figure 10.</b> Plain-setup accuracy against GPU energy per 1,000 answers.</figcaption>
-</figure>
-<p><b>Does a 4-bit model make more quiet errors?</b> We ran 4-bit builds of three models (best, middle, weakest) on
-the subset. Qwen3.5-9B loses accuracy ({{ H.q["qwen3.5-9b-4bit"].accuracy.a }} → {{ H.q["qwen3.5-9b-4bit"].accuracy.b }}
-of 900, significant) but its confident-wrong answers do not rise significantly
-({{ H.q["qwen3.5-9b-4bit"].confident_wrong.a }} → {{ H.q["qwen3.5-9b-4bit"].confident_wrong.b }}). For the other two,
-neither changes significantly. In this small test, compression costs some accuracy, not trust.</p>
-<figure>
-  <div class="canvas">{{ F.quant_pairs }}</div>
-  <figcaption><b>Figure 11.</b> Full precision against the 4-bit build of the same model, plain setup, 1,000-question subset.</figcaption>
-</figure>
-
-<h2 id="discussion">9 · Discussion</h2>
+<h2 id="discussion">8 · Discussion</h2>
 <p><b>Look at the line, not the industry.</b> Anyone deploying a model to read filings should worry less about the
 sector and more about how each number is printed. Numbers whose unit sits in a header, crowded lines, prior-period
 columns and year-to-date figures are where errors concentrate, in every sector.</p>
@@ -285,42 +260,27 @@ allows one intervention, it should be thinking, with a token limit large enough 
 punishes models for formatting, not reading. Comparing the words and figures of a quote, not its punctuation, keeps
 the guarantee and removes the artefact.</p>
 
-<h2 id="limits">10 · Limitations</h2>
+<h2 id="limits">9 · Limitations</h2>
 <ul>
   <li><b>Associations, not interventions.</b> The tags describe real filings; we did not move a unit from a row label to a header and re-ask. The regression holds the other tags fixed and R1 is a true intervention on layout, but the tag effects are observational.</li>
-  <li><b>One hardware and serving configuration.</b> One RTX 4090 at 450 W, vLLM 0.33, temperature 0. Speeds and energy depend on all three.</li>
+  <li><b>One hardware and serving configuration.</b> One RTX 4090 at 450 W, vLLM 0.33, temperature 0.</li>
   <li><b>A fixed thinking budget.</b> 8,192 new tokens cut off a fifth of Qwen3.5-9B's thinking answers.</li>
   <li><b>R1's rendering is imperfect.</b> SEC tables are irregular; in {{ d.r1_header_aligned | pct0 }} of tables with a header, the header row has as many cells as the first data row. The rest are misaligned to some degree.</li>
-  <li><b>Exploratory parts are labelled.</b> The oil-and-gas analysis, the pipe-insensitive R1 grading and the cost-and-trust extension were not pre-registered as tests.</li>
+  <li><b>Exploratory parts are labelled.</b> The oil-and-gas analysis and the pipe-insensitive R1 grading were not pre-registered as tests.</li>
   <li><b>US filings only,</b> in English, from companies large enough to file inline XBRL.</li>
 </ul>
 
-<h2 id="repro">11 · Reproducibility</h2>
-<p>Everything is public: the protocol and its deviations, the code, the frozen questions (fingerprint
+<h2 id="repro">10 · Reproducibility</h2>
+<p>Everything is public: the protocol (every change after it was finalised is logged in its §14, with the date and whether any result existed at the time), the code, the frozen questions (fingerprint
 <code>9a007d80</code>), the Markdown pages of R1 (fingerprint <code>7cdf066e</code>) and every model reply with its
 reasoning. In a fresh clone, <code>python hf_data.py pull</code> downloads the data and verifies both fingerprints;
 re-grading every stored reply reproduces every <code>summary.json</code> byte for byte, and
 <code>analyze.py</code> reproduces every statistic in this report. The pre-registration commits are public in
 <a href="https://github.com/pramana-research/filing-evidence/commit/00260c43e78ad0f53fcc23ddec6645b97c2559b7">pramana-research/filing-evidence</a>.</p>
 
-<h2 id="deviations">Deviations from the protocol</h2>
-<p>Every change after the protocol was finalised is logged in its §14, with the date and whether any result existed at
-the time.</p>
-<div class="tablewrap"><table>
-<thead><tr><th>#</th><th>Change</th><th>Results existed?</th></tr></thead>
-<tbody>
-<tr><td>1</td><td>Sampling rule changed to reach 10,000 questions (one question per item per filing, not per company)</td><td>No</td></tr>
-<tr><td>2</td><td>Cost-and-trust extension added (section 8), exploratory</td><td>Yes (plain setup)</td></tr>
-<tr><td>3</td><td>Analysis code written after the runs, implementing the registered plan; coding choices recorded</td><td>Yes</td></tr>
-<tr><td>4</td><td>The study moved to its own repository; history and dates kept; re-grading in a fresh clone matched exactly</td><td>Yes</td></tr>
-<tr><td>5</td><td>Details of R1–R3 and the 4-bit runs fixed, before any of those runs (plus an addendum: the OLMo 4-bit build)</td><td>Main runs only</td></tr>
-<tr><td>6</td><td>R1 also graded with the pipes ignored, exploratory</td><td>Yes</td></tr>
-<tr><td>7</td><td>No dedicated energy runs; energy from the GPU counter over each R2 run</td><td>Yes</td></tr>
-</tbody></table></div>
-
 <h2 id="models">Results per model</h2>
-<p>Each model has its own page with its accuracy and confident-wrong rate by sector, its results in every setup and
-check, and its energy use.</p>
+<p>Each model has its own page with its accuracy and confident-wrong rate by sector and its results in every setup and
+check.</p>
 <div class="cards">
 {% for m in H.by_acc + d.supplementary %}
 <a class="card" href="{{ PATH }}/{{ m | slug }}"><div class="n">{{ m | name }}</div><div class="c">{% if m in d.supplementary %}supplementary{% else %}main model{% endif %}</div>
@@ -338,7 +298,7 @@ check, and its energy use.</p>
   <li>S. Holm (1979). A simple sequentially rejective multiple test procedure. <i>Scandinavian Journal of Statistics</i> 6(2), 65–70.</li>
   <li>M. G. Kendall (1938). A new measure of rank correlation. <i>Biometrika</i> 30(1–2), 81–93.</li>
   <li>W. Kwon et al. (2023). Efficient memory management for large language model serving with PagedAttention. <i>SOSP '23</i>. (vLLM)</li>
-  <li>Model cards of the eleven models and three 4-bit builds evaluated, on Hugging Face, at the pinned revisions recorded with the results.</li>
+  <li>Model cards of the eleven models evaluated, on Hugging Face, at the pinned revisions recorded with the results.</li>
 </ol>
 
 <h2 id="disclaimer">Disclaimer</h2>
