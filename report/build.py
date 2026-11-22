@@ -133,9 +133,10 @@ def main() -> None:
               "V1_ARXIV": V1_ARXIV, "TITLE": TITLE, "SUBTITLE": SUBTITLE, "VERSION": VERSION, "DATE": DATE,
               "NAMES": charts.NAMES}  # fmt: skip
     out = Path(args.out) / PATH.lstrip("/")
-    if out.exists():
-        shutil.rmtree(out)
-    out.mkdir(parents=True)
+    out.mkdir(parents=True, exist_ok=True)
+    for old in out.iterdir():  # rebuild the pages; keep the PDFs (report/pdf.sh)
+        if old.name != "pdf":
+            shutil.rmtree(old) if old.is_dir() else old.unlink()
     (out / "index.html").write_text(env.get_template("paper.html.j2").render(path=PATH, **common))
     for m in d["models"]:
         page = out / m.replace(".", "-")
