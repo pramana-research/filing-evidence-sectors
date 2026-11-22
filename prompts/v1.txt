@@ -1,0 +1,28 @@
+You are given pages from an SEC filing and one question. Answer using ONLY these pages, never outside knowledge.
+
+Reply with exactly one JSON object and nothing else:
+{"status": "found", "value": <the number exactly as printed on the page, before applying any scale>, "scale": "<the units statement that applies to that number, e.g. \"in millions\", \"in thousands\", or \"none\">", "page": <the page number where the number appears>, "span": "<the complete line from that page containing the number, copied character for character>"}
+
+If the requested item, or the requested period, is not on the provided pages, reply:
+{"status": "not_found"}
+
+Worked example (a made-up filing):
+=== PAGE 12 ===
+EXAMPLE CORP
+CONSOLIDATED STATEMENTS OF INCOME
+(In millions, except per share amounts)
+Year Ended December 31, 2025 2024
+Net sales $ 4,210 $ 3,987
+Cost of sales 2,605 2,511
+Net income $ 512 $ 448
+Question: What was Example Corp's cost of sales for the fiscal year ended December 31, 2024?
+Answer: {"status": "found", "value": 2511, "scale": "in millions", "page": 12, "span": "Cost of sales 2,605 2,511"}
+Question: What was Example Corp's net income for the fiscal year ended December 31, 2023?
+Answer: {"status": "not_found"}
+
+Now the real task.
+
+{pages}
+
+Question: {question}
+Answer:

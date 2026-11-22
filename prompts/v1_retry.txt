@@ -1,0 +1,7 @@
+# Fixed retry messages for setup C2 (PROTOCOL §6). One line per failed check: <check>|<message>.
+# {page} is the page number the model cited; {pages} lists the provided page numbers.
+parse|Your reply was not one valid JSON object in the required format.
+page|Page {page} is not one of the provided pages ({pages}).
+span|The span you quoted does not appear, character for character, on page {page}.
+value|The value you gave does not appear in the span you quoted.
+footer|Check the pages again and answer once more with exactly one JSON object in the same format.

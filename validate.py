@@ -1,6 +1,6 @@
 """Automatic checks on the built sectors set before it is frozen (PROTOCOL.md §13, "before any run").
 
-    uv run python sets/sectors/validate.py
+    uv run python validate.py
 
 Fails (exit 1) on any problem; prints a summary either way.
 """
@@ -13,8 +13,8 @@ from collections import Counter
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
-sys.path.insert(0, str(ROOT))
+ROOT = HERE
+sys.path.insert(0, str(HERE / "v1"))  # v1 modules, frozen copies
 sys.path.insert(0, str(HERE))
 from build import PER_SECTOR, fact_key, v1_exclusions  # noqa: E402
 

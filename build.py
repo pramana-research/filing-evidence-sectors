@@ -1,7 +1,7 @@
 """Build the Filing-Evidence Sectors questions (PROTOCOL.md §4-§8): 10 sectors x 1,000 questions.
 
 Every rule that decides whether a fact can become a question, how it is worded and which pages are shown is
-v1's, imported unchanged from ../../builder.py (answerability, wording, slices, shown pages, gold, S8 kinds).
+v1's, imported unchanged from v1/builder.py (answerability, wording, slices, shown pages, gold, S8 kinds).
 What is new here is only what the sectors protocol adds:
   - sampling per sector to the §5 targets, about 100 questions per company (at most 130), each slice drawn
     from at least 7 of the sector's 10 companies, at most 3 questions per XBRL concept per filing;
@@ -9,14 +9,14 @@ What is new here is only what the sectors protocol adds:
   - difficulty tags on every question (§6);
   - the stratified 1,000-question subset for C3 and the robustness checks (§8, §12), drawn with its own seed.
 
-Reads sets/sectors/dataset/manifest.json (from fetch.py) and the filings in DATA_DIR; writes, in
-sets/sectors/dataset/:
+Reads dataset/manifest.json (from fetch.py) and the filings in DATA_DIR; writes, in
+dataset/:
     questions.jsonl   one question per line (v1's fields, plus sector and tags)
     pages.jsonl       the text of every page used
     subsets.json      the ids of the stratified 1,000-question subset
     stats.json        counts per sector, slice, company and form, pool sizes, and any shortfall
 
-    uv run --extra build python sets/sectors/build.py
+    uv run --extra build python build.py
 """
 
 from __future__ import annotations
@@ -32,8 +32,8 @@ from pathlib import Path
 import yaml
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
-sys.path.insert(0, str(ROOT))
+ROOT = HERE
+sys.path.insert(0, str(HERE / "v1"))  # v1 modules, frozen copies
 import builder as v1  # noqa: E402
 from builder import SLICES, Doc  # noqa: E402
 
@@ -46,6 +46,8 @@ MAX_PER_COMPANY = 130
 MIN_COMPANIES_PER_SLICE = 7
 MAX_PER_CONCEPT_PER_FILING = 3
 OUT = HERE / "dataset"
+# v1's questions, to exclude every v1 datapoint (§4.4); `python hf_data.py pull` fetches them from v1's dataset
+V1_QUESTIONS = HERE / "v1" / "dataset" / "questions.jsonl"
 
 
 # -- documents --------------------------------------------------------------------------------------------
@@ -113,7 +115,7 @@ def fact_key(accession: str, gold: dict) -> str:
 
 def v1_exclusions() -> tuple[set[str], set[str]]:
     keys, texts = set(), set()
-    for line in (ROOT / "dataset" / "questions.jsonl").open():
+    for line in V1_QUESTIONS.open():
         q = json.loads(line)
         texts.add(q["question"])
         if q["gold"]["status"] == "found":

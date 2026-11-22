@@ -1,13 +1,13 @@
 """Check every company of the sectors set against PROTOCOL.md §4.2, before anything is built.
 
-    uv run python sets/sectors/eligibility.py
+    uv run python eligibility.py
 
 A company is eligible when SEC EDGAR lists a 10-K and a 10-Q filed on or before the cutoff, both flagged as
 inline XBRL, and recent enough to be current (10-K period within 15 months of the cutoff, 10-Q within 6).
 Reads only the SEC submissions API (one request per company, identifying User-Agent, at most 5 per second);
 downloads no filings.
 
-Writes sets/sectors/eligibility.json: per company, the filings found and the reason if ineligible; per sector,
+Writes eligibility.json: per company, the filings found and the reason if ineligible; per sector,
 the final list after replacing ineligible companies with reserves in order.
 """
 
@@ -22,8 +22,8 @@ import yaml
 from dotenv import load_dotenv
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
-sys.path.insert(0, str(ROOT))
+ROOT = HERE
+sys.path.insert(0, str(HERE / "v1"))  # v1 modules, frozen copies
 from edgar import EdgarClient  # noqa: E402
 
 MAX_AGE_DAYS = {"10-K": 456, "10-Q": 183}

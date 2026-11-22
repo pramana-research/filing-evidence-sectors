@@ -1,6 +1,6 @@
 """Filing-Evidence Sectors: per-sector analysis (PROTOCOL.md §10, §11; H1).
 
-    uv run --no-project --with statsmodels --with pandas python sets/sectors/analyze.py
+    uv run --no-project --with statsmodels --with pandas python analyze.py
 
 Reads the frozen questions and every results/sectors/<model>/<setup>/answers.jsonl, and writes
 results/sectors/analysis/:
@@ -19,9 +19,9 @@ import math
 from collections import Counter, defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-QUESTIONS = ROOT / "sets" / "sectors" / "dataset" / "questions.jsonl"
-RESULTS = ROOT / "results" / "sectors"
+ROOT = Path(__file__).resolve().parent
+QUESTIONS = ROOT / "dataset" / "questions.jsonl"
+RESULTS = ROOT / "results"
 OUT = RESULTS / "analysis"
 SETUPS = ["C1", "C2", "C3"]
 SUPPLEMENTARY = {"qwen3-8b"}  # §3: reported, but not pooled and not in H1
@@ -66,7 +66,7 @@ def metrics(rows: list[tuple[dict, dict]]) -> dict:
 
 
 def models() -> list[str]:
-    return sorted(p.name for p in RESULTS.iterdir() if p.is_dir() and (p / "C1" / "answers.jsonl").exists())
+    return sorted(p.name for p in RESULTS.iterdir() if p.is_dir() and p.name not in ("analysis", "serve") and (p / "C1" / "answers.jsonl").exists())
 
 
 def h1(qs: dict[str, dict], ms: list[str]) -> dict:

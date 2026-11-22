@@ -1,9 +1,9 @@
 """Freeze the Filing-Evidence Sectors dataset (PROTOCOL.md §13) after the automatic checks pass.
 
-    uv run python sets/sectors/freeze.py            # validate, then write dataset/FROZEN.json
-    uv run python sets/sectors/freeze.py --check    # recompute the fingerprint; fail if the data changed
+    uv run python freeze.py            # validate, then write dataset/FROZEN.json
+    uv run python freeze.py --check    # recompute the fingerprint; fail if the data changed
 
-The fingerprint is computed exactly as v1's (../../freeze.py): sha256 over the questions sorted by id,
+The fingerprint is computed exactly as v1's (v1's freeze.py): sha256 over the questions sorted by id,
 each contributing its id, its gold (status, value, unit, scale, period, dims, evidence) and the texts of the
 pages it shows. Every result cites it. The human audit is non-blocking (§13): errors it finds lead to a new
 version with a new fingerprint, logged in §14.
@@ -52,7 +52,7 @@ def main() -> int:
         "frozen": datetime.now(UTC).isoformat(timespec="seconds"),
         "fingerprint": fingerprint(),
         "files": {f: hashlib.sha256((DATA / f).read_bytes()).hexdigest() for f in FILES},
-        "protocol": "sets/sectors/PROTOCOL.md v1.0 with deviation 1 (§14)",
+        "protocol": "PROTOCOL.md v1.0 with deviation 1 (§14)",
         "human_audit": "non-blocking (§13); recorded in review/sectors/, reported with the dataset",
     }
     (DATA / "FROZEN.json").write_text(json.dumps(out, indent=2) + "\n")

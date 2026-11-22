@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Filing-Evidence Sectors: run the model jobs (PROTOCOL.md §8, §12, §15), with clean start / stop / resume.
 #
-#   bash sets/sectors/run.sh pipeline   # §13 pipeline check: Qwen3.5-9B, C1, 200 random questions (not a result)
-#   bash sets/sectors/run.sh start      # start or resume the job queue in the background (returns at once)
-#   bash sets/sectors/run.sh stop       # finish in-flight questions, stop the model server, free the GPU
-#   bash sets/sectors/run.sh status     # progress per job, current job, GPU temperature
+#   bash run.sh pipeline   # §13 pipeline check: Qwen3.5-9B, C1, 200 random questions (not a result)
+#   bash run.sh start      # start or resume the job queue in the background (returns at once)
+#   bash run.sh stop       # finish in-flight questions, stop the model server, free the GPU
+#   bash run.sh status     # progress per job, current job, GPU temperature
 #
 # Jobs run in priority order: C1 for every model, then C2, then C3 (models with a reasoning mode) on the
 # 1,000-question subset. Every answer is written to disk as soon as it arrives, and a resumed job skips
@@ -12,13 +12,15 @@
 # the GPU (temperature, power, hardware slowdown, driver faults) and only stops the work: it never powers off.
 set -uo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
-ROOT="$(cd "$HERE/../.." && pwd)"
+ROOT="$HERE"
 LOGS="$ROOT/logs"
 LOCK="$ROOT/results/.gpu.lock"
 STOP="$ROOT/results/.stop"
 PIDF="$ROOT/results/.sectors-run.pid"
-VLLM_VENV="${VLLM_VENV:-$ROOT/../forge/.venv}"
+# vLLM: this repo's .venv if it has vllm, else VLLM_VENV (environment or .env, e.g. VLLM_VENV=/path/to/venv)
+[ -f "$ROOT/.env" ] && VLLM_VENV="${VLLM_VENV:-$(grep -E '^VLLM_VENV=' "$ROOT/.env" | tail -1 | cut -d= -f2-)}"
 [ -x "$ROOT/.venv/bin/vllm" ] && VLLM_VENV="$ROOT/.venv"
+VLLM_VENV="${VLLM_VENV:?set VLLM_VENV (the virtualenv with vllm) in the environment or .env}"
 MODELS=(qwen3.5-9b gpt-oss-20b granite-4.2-8b glm-4.6v-flash ministral-3-8b gemma-3-12b llama-3.1-8b phi-4
         nemotron-nano-9b-v2 olmo-3-7b qwen3-8b)
 mkdir -p "$LOGS" "$ROOT/results"
@@ -36,7 +38,7 @@ EOF
 }
 
 serve_start() {  # $1 profile; waits until the server answers
-  PATH="$VLLM_VENV/bin:$PATH" SERVE_RECORD_DIR="$ROOT/results/sectors/serve" \
+  PATH="$VLLM_VENV/bin:$PATH" SERVE_RECORD_DIR="$ROOT/results/serve" \
     "$VLLM_VENV/bin/python" serve.py "$1" > "$LOGS/sectors-serve-$1.log" 2>&1 &
   SERVE_PID=$!
   for _ in $(seq 1 360); do
@@ -62,7 +64,7 @@ job() {  # $1 profile $2 setup [extra runner args]; returns runner's exit code (
 }
 
 done_job() {  # the job finished earlier (summary.json is written only when every question is answered)
-  [ -f "$ROOT/results/sectors/$1/$2/summary.json" ]
+  [ -f "$ROOT/results/$1/$2/summary.json" ]
 }
 
 queue() {
@@ -128,7 +130,7 @@ case "${1:-status}" in
     grep -E "job .* start|queue" "$LOGS/sectors-run.log" 2>/dev/null | tail -1 | sed 's/^/last: /'
     .venv/bin/python - <<'EOF'
 import json, pathlib, yaml
-root = pathlib.Path("results/sectors")
+root = pathlib.Path("results")
 models = list(yaml.safe_load(open("models.yaml"))["models"])
 order = ["qwen3.5-9b","gpt-oss-20b","granite-4.2-8b","glm-4.6v-flash","ministral-3-8b","gemma-3-12b",
          "llama-3.1-8b","phi-4","nemotron-nano-9b-v2","olmo-3-7b","qwen3-8b"]

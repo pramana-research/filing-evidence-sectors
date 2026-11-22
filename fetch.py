@@ -1,13 +1,13 @@
 """Download the sectors set's filings from SEC EDGAR (PROTOCOL.md §4.2) and write its source manifest.
 
-Same rules and code as the v1 downloader (../../fetch.py): for each company in companies.yaml, the most
+Same rules and code as the v1 downloader (v1/fetch.py): for each company in companies.yaml, the most
 recent 10-K and 10-Q filed on or before the cutoff; every inline-XBRL document listed in FilingSummary.xml,
 the label linkbase (or the schema), and FilingSummary.xml itself, under
 <DATA_DIR>/finance/filings/<TICKER>/<accession>/. Files already present (e.g. filings shared with v1) are
-kept, not downloaded again. Every file's URL and sha256 goes to sets/sectors/dataset/manifest.json. A company
+kept, not downloaded again. Every file's URL and sha256 goes to dataset/manifest.json. A company
 whose filings fail is reported, not replaced: replacements follow PROTOCOL.md §4.2 and are logged in §14.
 
-    uv run python sets/sectors/fetch.py
+    uv run python fetch.py
 """
 
 from __future__ import annotations
@@ -21,8 +21,8 @@ import yaml
 from dotenv import load_dotenv
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
-sys.path.insert(0, str(ROOT))
+ROOT = HERE
+sys.path.insert(0, str(HERE / "v1"))  # v1 modules, frozen copies
 from edgar import EdgarClient  # noqa: E402
 from fetch import SOURCE, fetch_file, ixbrl_documents, label_file, latest  # noqa: E402
 from paths import data_dir  # noqa: E402

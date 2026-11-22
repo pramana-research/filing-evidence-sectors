@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use Filing-Evidence Sectors, please cite it as below."
+title: "Filing-Evidence Sectors"
+version: "1.0"
+license: Apache-2.0
+repository-code: "https://github.com/pramana-research/filing-evidence-sectors"
+authors:
+  - family-names: Nandula
+    given-names: Krishna
+    affiliation: Pramana Research
+references:
+  - type: article
+    title: "Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check?"
+    authors:
+      - family-names: Nandula
+        given-names: Krishna
+        affiliation: Pramana Research
+    year: 2026
+    doi: 10.48550/arXiv.2611.24990
+    notes: "Filing-Evidence v1, which this study extends."

@@ -1,0 +1,113 @@
+# Model profiles for the Filing-Evidence benchmark (PROTOCOL.md §2, §6).
+#
+# Each profile says how the model is served (vLLM) and how each setup is requested:
+#   request.C1 / request.C3: extra fields merged into the chat-completions request (e.g. chat_template_kwargs),
+#   system.C1 / system.C3:   an optional system message, only for models whose mode switch is a system-prompt
+#                            control word (e.g. Nemotron's /think, /no_think). The task prompt itself is identical
+#                            for every model (prompts/v1.txt, sent as the user message).
+#   C3: null means the model has no reasoning mode; C3 is reported as n/a.
+# C2 uses C1's settings. `verified: true` once a load check has served the model on the 4090 and answered a
+# question in each setup; until then the settings are taken from the model card and may change (logged in §12).
+
+defaults:
+  max_model_len: 16384        # prompts reach ~6.2k tokens; C3 adds up to 8,192 new tokens (§12, 2026-11-16)
+  gpu_memory_utilization: 0.90
+  max_tokens: {C1: 512, C2: 512, C3: 8192}
+  temperature: 0
+
+models:
+  qwen3-8b:                   # the smoke-test model (probe of 2026-11-15) and the protocol's Qwen fallback
+    repo: Qwen/Qwen3-8B
+    company: Alibaba
+    precision: bf16
+    request: {C1: {chat_template_kwargs: {enable_thinking: false}},
+              C3: {chat_template_kwargs: {enable_thinking: true}}}
+    verified: true
+
+  qwen3.5-9b:
+    repo: Qwen/Qwen3.5-9B
+    company: Alibaba
+    precision: bf16
+    # vision-language model; text-only task: skip the vision encoder (OOM). Hybrid Mamba: the default 256
+    # concurrent sequences exceed the Mamba cache that fits beside a 16k context
+    vllm_args: [--language-model-only, --max-num-seqs, 64]
+    request: {C1: {chat_template_kwargs: {enable_thinking: false}},
+              C3: {chat_template_kwargs: {enable_thinking: true}}}
+    verified: false
+
+  granite-4.2-8b:
+    repo: ibm-granite/granite-4.2-8b
+    company: IBM
+    precision: bf16
+    # thinks by default (chat template: enable_thinking defaults to True); README recommends temperature 1.0,
+    # but the protocol fixes temperature 0 for every model
+    request: {C1: {chat_template_kwargs: {enable_thinking: false}},
+              C3: {chat_template_kwargs: {enable_thinking: true}}}
+    verified: false
+
+  ministral-3-8b:
+    repo: mistralai/Ministral-3-8B-Instruct-2512
+    company: Mistral
+    precision: bf16
+    vllm_args: [--tokenizer-mode, mistral, --config-format, mistral, --load-format, mistral]
+    request: {C1: {}, C3: null}
+    verified: false
+
+  olmo-3-7b:
+    repo: allenai/Olmo-3-7B-Instruct
+    company: AllenAI
+    precision: bf16
+    # The model's own template with `tools is none` also accepting an undefined `tools`: vLLM 0.33's startup
+    # probe renders it with tools undefined and crashes. Renders identically for our requests (tools=None).
+    vllm_args: [--chat-template, templates/olmo-3-7b.jinja]
+    request: {C1: {}, C3: null}
+    verified: false
+
+  nemotron-nano-9b-v2:
+    repo: nvidia/NVIDIA-Nemotron-Nano-9B-v2
+    company: NVIDIA
+    precision: bf16
+    vllm_args: [--trust-remote-code, --mamba-ssm-cache-dtype, float32, --max-num-seqs, 64]  # hybrid Mamba (OOM at 256)
+    system: {C1: /no_think, C3: /think}
+    request: {C1: {}, C3: {}}
+    verified: false
+
+  gpt-oss-20b:
+    repo: openai/gpt-oss-20b
+    company: OpenAI
+    precision: mxfp4
+    # no non-reasoning mode: C1 uses the lowest effort; to confirm with the user before the run (§6)
+    request: {C1: {reasoning_effort: low}, C3: {reasoning_effort: high}}
+    verified: false
+
+  phi-4:
+    repo: microsoft/phi-4
+    company: Microsoft
+    precision: fp8               # 14B: bf16 weights are ~29 GB
+    vllm_args: [--quantization, fp8]
+    request: {C1: {}, C3: null}
+    verified: false
+
+  gemma-3-12b:
+    repo: google/gemma-3-12b-it
+    company: Google
+    precision: fp8               # bf16 weights alone are ~24 GB
+    vllm_args: [--quantization, fp8]
+    request: {C1: {}, C3: null}
+    verified: false
+
+  glm-4.6v-flash:
+    repo: zai-org/GLM-4.6V-Flash
+    company: Zhipu (Z.ai)
+    precision: bf16
+    vllm_args: [--language-model-only]   # vision-language model; text-only task
+    request: {C1: {chat_template_kwargs: {enable_thinking: false}},
+              C3: {chat_template_kwargs: {enable_thinking: true}}}
+    verified: false
+
+  llama-3.1-8b:
+    repo: meta-llama/Llama-3.1-8B-Instruct
+    company: Meta
+    precision: bf16
+    request: {C1: {}, C3: null}
+    verified: false

@@ -1,0 +1,38 @@
+[project]
+name = "filing-evidence-sectors"
+version = "1.0.0"
+description = "Filing-Evidence Sectors: small open models extracting numbers with checkable evidence from SEC filings, across ten sectors"
+license = "Apache-2.0"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "httpx>=0.27",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "huggingface_hub>=0.28",
+]
+
+[project.optional-dependencies]
+run = ["mlflow>=3.0"]                    # runner.py logs finished runs to MLflow when MLFLOW_TRACKING_URI is set
+build = ["transformers>=5.0"]            # build.py counts prompt tokens
+analysis = ["pandas>=2.2", "statsmodels>=0.14", "scipy>=1.13"]  # analyze.py
+serve = ["vllm==0.33.0"]                 # the version every reported run used
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+# v1/ holds unchanged copies of Filing-Evidence v1 modules: no style changes.
+"v1/**" = ["E", "F", "I", "B", "UP"]
