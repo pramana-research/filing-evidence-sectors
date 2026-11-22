@@ -1,0 +1,44 @@
+sectors/glm-4.6v-flash/C3: 1000 to run, 0 already done
+  25/1000
+  50/1000
+  75/1000
+  100/1000
+  125/1000
+  150/1000
+  175/1000
+  200/1000
+  225/1000
+  250/1000
+  275/1000
+  300/1000
+  325/1000
+  350/1000
+  375/1000
+  400/1000
+  425/1000
+  450/1000
+  475/1000
+  500/1000
+  525/1000
+  550/1000
+  575/1000
+  600/1000
+  625/1000
+  650/1000
+  675/1000
+  700/1000
+  725/1000
+  750/1000
+  775/1000
+  800/1000
+  825/1000
+  850/1000
+  875/1000
+  900/1000
+  925/1000
+  950/1000
+  975/1000
+  1000/1000
+accuracy 743/900  confident-wrong 64/1000  abstention 92/100  outcomes {'correct': 743, 'confident_wrong': 64, 'caught_wrong': 7, 'unverifiable_right': 51, 'missed': 14, 'abstained_correctly': 92, 'invented': 8, 'invalid': 21}
+🏃 View run sectors/glm-4.6v-flash/C3 at: http://127.0.0.1:5000/#/experiments/3/runs/43ed97c5c8e4453f9e945ee403322bd0
+🧪 View experiment at: http://127.0.0.1:5000/#/experiments/3

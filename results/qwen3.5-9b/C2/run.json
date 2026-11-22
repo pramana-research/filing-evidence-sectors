@@ -1,0 +1,52 @@
+{
+  "set": "sectors",
+  "profile": "qwen3.5-9b",
+  "setup": "C2",
+  "repo": "Qwen/Qwen3.5-9B",
+  "company": "Alibaba",
+  "precision": "bf16",
+  "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+  "serve_command": [
+    "vllm",
+    "serve",
+    "Qwen/Qwen3.5-9B",
+    "--served-model-name",
+    "qwen3.5-9b",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000",
+    "--max-model-len",
+    "16384",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--api-key",
+    "<key>",
+    "--seed",
+    "0",
+    "--revision",
+    "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+    "--language-model-only",
+    "--max-num-seqs",
+    "64"
+  ],
+  "vllm_version": "0.33.0",
+  "request_extra": {
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "system": null,
+  "max_tokens": 512,
+  "temperature": 0,
+  "prompt_sha256": "47e6fde9bcb74cfa13cd7decb02cc06cd9aadb47dea4edc878e232f72fbf4b4b",
+  "retry_sha256": "abd8b267a1d2458a0d1d3fd4adc6c898678cd7fb13208a93d66327f7ae8e85c9",
+  "dataset_fingerprint": "9a007d8046167c38d67d8570435ccd95f4dd7effc43bb3fc06ce4a64fe75346c",
+  "questions": 10000,
+  "limit": null,
+  "git_commit": "4f2ce0c8953b92ef54d460835d196c7c43c9ecb8-dirty",
+  "started": "2026-11-21T18:18:15+00:00",
+  "finished": "2026-11-21T18:20:35+00:00",
+  "c2_reused_c1": true,
+  "mlflow_run_id": "5babae1093114de3a2aedc8d590f350b"
+}

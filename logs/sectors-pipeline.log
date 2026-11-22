@@ -1,0 +1,4 @@
+accuracy 156/177  confident-wrong 5/200  abstention 22/23  outcomes {'correct': 156, 'confident_wrong': 5, 'caught_wrong': 0, 'unverifiable_right': 6, 'missed': 10, 'abstained_correctly': 22, 'invented': 1, 'invalid': 0}
+🏃 View run sectors/qwen3.5-9b/C1 at: http://127.0.0.1:5000/#/experiments/3/runs/0bce9ffca7fc42af91e3fb6e2352faa5
+🧪 View experiment at: http://127.0.0.1:5000/#/experiments/3
+exit 0

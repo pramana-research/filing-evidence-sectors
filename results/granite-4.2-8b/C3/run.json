@@ -1,0 +1,49 @@
+{
+  "set": "sectors",
+  "profile": "granite-4.2-8b",
+  "setup": "C3",
+  "repo": "ibm-granite/granite-4.2-8b",
+  "company": "IBM",
+  "precision": "bf16",
+  "revision": "a7042144125ce5ae64f89610e8289647fc000b9a",
+  "serve_command": [
+    "vllm",
+    "serve",
+    "ibm-granite/granite-4.2-8b",
+    "--served-model-name",
+    "granite-4.2-8b",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000",
+    "--max-model-len",
+    "16384",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--api-key",
+    "<key>",
+    "--seed",
+    "0",
+    "--revision",
+    "a7042144125ce5ae64f89610e8289647fc000b9a"
+  ],
+  "vllm_version": "0.33.0",
+  "request_extra": {
+    "chat_template_kwargs": {
+      "enable_thinking": true
+    }
+  },
+  "system": null,
+  "max_tokens": 8192,
+  "temperature": 0,
+  "prompt_sha256": "47e6fde9bcb74cfa13cd7decb02cc06cd9aadb47dea4edc878e232f72fbf4b4b",
+  "retry_sha256": "abd8b267a1d2458a0d1d3fd4adc6c898678cd7fb13208a93d66327f7ae8e85c9",
+  "dataset_fingerprint": "9a007d8046167c38d67d8570435ccd95f4dd7effc43bb3fc06ce4a64fe75346c",
+  "questions": 1000,
+  "limit": null,
+  "git_commit": "4f2ce0c8953b92ef54d460835d196c7c43c9ecb8-dirty",
+  "started": "2026-11-22T05:54:48+00:00",
+  "finished": "2026-11-22T09:18:05+00:00",
+  "c2_reused_c1": false,
+  "mlflow_run_id": "809051626db44a87a793903cfc192fc8"
+}

@@ -1,0 +1,31 @@
+{
+  "profile": "olmo-3-7b",
+  "repo": "allenai/Olmo-3-7B-Instruct",
+  "revision": "6e5971d9eba42665f5bd5a0fcf047f299ce1dccc",
+  "precision": "bf16",
+  "vllm": "0.33.0",
+  "command": [
+    "vllm",
+    "serve",
+    "allenai/Olmo-3-7B-Instruct",
+    "--served-model-name",
+    "olmo-3-7b",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000",
+    "--max-model-len",
+    "16384",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--api-key",
+    "<key>",
+    "--seed",
+    "0",
+    "--revision",
+    "6e5971d9eba42665f5bd5a0fcf047f299ce1dccc",
+    "--chat-template",
+    "templates/olmo-3-7b.jinja"
+  ],
+  "started": "2026-11-22T03:04:40+00:00"
+}

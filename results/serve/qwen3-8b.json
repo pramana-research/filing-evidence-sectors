@@ -1,0 +1,29 @@
+{
+  "profile": "qwen3-8b",
+  "repo": "Qwen/Qwen3-8B",
+  "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "precision": "bf16",
+  "vllm": "0.33.0",
+  "command": [
+    "vllm",
+    "serve",
+    "Qwen/Qwen3-8B",
+    "--served-model-name",
+    "qwen3-8b",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000",
+    "--max-model-len",
+    "16384",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--api-key",
+    "<key>",
+    "--seed",
+    "0",
+    "--revision",
+    "b968826d9c46dd6066d109eabc6255188de91218"
+  ],
+  "started": "2026-11-22T09:56:40+00:00"
+}

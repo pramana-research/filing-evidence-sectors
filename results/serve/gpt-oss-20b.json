@@ -1,0 +1,27 @@
+{
+  "profile": "gpt-oss-20b",
+  "repo": "openai/gpt-oss-20b",
+  "revision": null,
+  "precision": "mxfp4",
+  "vllm": "0.33.0",
+  "command": [
+    "vllm",
+    "serve",
+    "openai/gpt-oss-20b",
+    "--served-model-name",
+    "gpt-oss-20b",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000",
+    "--max-model-len",
+    "16384",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--api-key",
+    "<key>",
+    "--seed",
+    "0"
+  ],
+  "started": "2026-11-22T05:20:05+00:00"
+}

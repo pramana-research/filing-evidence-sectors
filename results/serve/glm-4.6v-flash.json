@@ -1,0 +1,30 @@
+{
+  "profile": "glm-4.6v-flash",
+  "repo": "zai-org/GLM-4.6V-Flash",
+  "revision": "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+  "precision": "bf16",
+  "vllm": "0.33.0",
+  "command": [
+    "vllm",
+    "serve",
+    "zai-org/GLM-4.6V-Flash",
+    "--served-model-name",
+    "glm-4.6v-flash",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000",
+    "--max-model-len",
+    "16384",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--api-key",
+    "<key>",
+    "--seed",
+    "0",
+    "--revision",
+    "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+    "--language-model-only"
+  ],
+  "started": "2026-11-22T09:18:22+00:00"
+}

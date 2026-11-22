@@ -1,0 +1,120 @@
+2026-11-21T14:04:59+05:30 queue start (pid 45795)
+2026-11-21T14:04:59+05:30 queue start (pid 45795)
+2026-11-21T14:05:49+05:30 job qwen3.5-9b C1  start
+2026-11-21T14:05:49+05:30 job qwen3.5-9b C1  start
+2026-11-21T15:02:11+05:30 job qwen3.5-9b C1 exit 0 accuracy 7780/9002  confident-wrong 304/10000  abstention 988/998  outcomes {'correct': 7780, 'confident_wrong': 304, 'c
+2026-11-21T15:02:11+05:30 job qwen3.5-9b C1 exit 0 accuracy 7780/9002  confident-wrong 304/10000  abstention 988/998  outcomes {'correct': 7780, 'confident_wrong': 304, 'c
+2026-11-21T15:03:14+05:30 job gpt-oss-20b C1  start
+2026-11-21T15:03:14+05:30 job gpt-oss-20b C1  start
+2026-11-21T15:34:44+05:30 job gpt-oss-20b C1 exit 0 accuracy 7078/9002  confident-wrong 1028/10000  abstention 939/998  outcomes {'correct': 7078, 'confident_wrong': 1028, 
+2026-11-21T15:34:44+05:30 job gpt-oss-20b C1 exit 0 accuracy 7078/9002  confident-wrong 1028/10000  abstention 939/998  outcomes {'correct': 7078, 'confident_wrong': 1028, 
+2026-11-21T15:35:47+05:30 job granite-4.2-8b C1  start
+2026-11-21T15:35:47+05:30 job granite-4.2-8b C1  start
+2026-11-21T16:28:45+05:30 job granite-4.2-8b C1 exit 0 accuracy 6832/9002  confident-wrong 772/10000  abstention 980/998  outcomes {'correct': 6832, 'confident_wrong': 772, 'c
+2026-11-21T16:28:45+05:30 job granite-4.2-8b C1 exit 0 accuracy 6832/9002  confident-wrong 772/10000  abstention 980/998  outcomes {'correct': 6832, 'confident_wrong': 772, 'c
+2026-11-21T16:29:58+05:30 job glm-4.6v-flash C1  start
+2026-11-21T16:29:58+05:30 job glm-4.6v-flash C1  start
+2026-11-21T17:20:02+05:30 job glm-4.6v-flash C1 exit 0 accuracy 6923/9002  confident-wrong 977/10000  abstention 956/998  outcomes {'correct': 6923, 'confident_wrong': 977, 'c
+2026-11-21T17:20:02+05:30 job glm-4.6v-flash C1 exit 0 accuracy 6923/9002  confident-wrong 977/10000  abstention 956/998  outcomes {'correct': 6923, 'confident_wrong': 977, 'c
+2026-11-21T17:21:20+05:30 job ministral-3-8b C1  start
+2026-11-21T17:21:20+05:30 job ministral-3-8b C1  start
+2026-11-21T17:59:58+05:30 job ministral-3-8b C1 exit 0 accuracy 6476/9002  confident-wrong 652/10000  abstention 989/998  outcomes {'correct': 6476, 'confident_wrong': 652, 'c
+2026-11-21T17:59:58+05:30 job ministral-3-8b C1 exit 0 accuracy 6476/9002  confident-wrong 652/10000  abstention 989/998  outcomes {'correct': 6476, 'confident_wrong': 652, 'c
+2026-11-21T18:02:01+05:30 job gemma-3-12b C1  start
+2026-11-21T18:02:01+05:30 job gemma-3-12b C1  start
+2026-11-21T19:06:37+05:30 job gemma-3-12b C1 exit 0 accuracy 5755/9002  confident-wrong 1043/10000  abstention 819/998  outcomes {'correct': 5755, 'confident_wrong': 1043, 
+2026-11-21T19:06:37+05:30 job gemma-3-12b C1 exit 0 accuracy 5755/9002  confident-wrong 1043/10000  abstention 819/998  outcomes {'correct': 5755, 'confident_wrong': 1043, 
+2026-11-21T19:07:55+05:30 job llama-3.1-8b C1  start
+2026-11-21T19:07:55+05:30 job llama-3.1-8b C1  start
+2026-11-21T19:49:35+05:30 job llama-3.1-8b C1 exit 0 accuracy 5799/9002  confident-wrong 891/10000  abstention 894/998  outcomes {'correct': 5799, 'confident_wrong': 891, 'c
+2026-11-21T19:49:35+05:30 job llama-3.1-8b C1 exit 0 accuracy 5799/9002  confident-wrong 891/10000  abstention 894/998  outcomes {'correct': 5799, 'confident_wrong': 891, 'c
+2026-11-21T19:50:53+05:30 job phi-4 C1  start
+2026-11-21T19:50:53+05:30 job phi-4 C1  start
+2026-11-21T20:51:02+05:30 job phi-4 C1 exit 0 accuracy 5695/9002  confident-wrong 1488/10000  abstention 962/998  outcomes {'correct': 5695, 'confident_wrong': 1488, 
+2026-11-21T20:51:02+05:30 job phi-4 C1 exit 0 accuracy 5695/9002  confident-wrong 1488/10000  abstention 962/998  outcomes {'correct': 5695, 'confident_wrong': 1488, 
+2026-11-21T20:52:10+05:30 job nemotron-nano-9b-v2 C1  start
+2026-11-21T20:52:10+05:30 job nemotron-nano-9b-v2 C1  start
+2026-11-21T21:56:25+05:30 job nemotron-nano-9b-v2 C1 exit 0 accuracy 4128/9002  confident-wrong 1042/10000  abstention 992/998  outcomes {'correct': 4128, 'confident_wrong': 1042, 
+2026-11-21T21:56:25+05:30 job nemotron-nano-9b-v2 C1 exit 0 accuracy 4128/9002  confident-wrong 1042/10000  abstention 992/998  outcomes {'correct': 4128, 'confident_wrong': 1042, 
+2026-11-21T21:57:38+05:30 job olmo-3-7b C1  start
+2026-11-21T21:57:38+05:30 job olmo-3-7b C1  start
+2026-11-21T22:53:21+05:30 job olmo-3-7b C1 exit 0 accuracy 1726/9002  confident-wrong 849/10000  abstention 978/998  outcomes {'correct': 1726, 'confident_wrong': 849, 'c
+2026-11-21T22:53:21+05:30 job olmo-3-7b C1 exit 0 accuracy 1726/9002  confident-wrong 849/10000  abstention 978/998  outcomes {'correct': 1726, 'confident_wrong': 849, 'c
+2026-11-21T22:54:29+05:30 job qwen3-8b C1  start
+2026-11-21T22:54:29+05:30 job qwen3-8b C1  start
+2026-11-21T23:47:10+05:30 job qwen3-8b C1 exit 0 accuracy 6372/9002  confident-wrong 942/10000  abstention 875/998  outcomes {'correct': 6372, 'confident_wrong': 942, 'c
+2026-11-21T23:47:10+05:30 job qwen3-8b C1 exit 0 accuracy 6372/9002  confident-wrong 942/10000  abstention 875/998  outcomes {'correct': 6372, 'confident_wrong': 942, 'c
+2026-11-21T23:48:13+05:30 job qwen3.5-9b C2  start
+2026-11-21T23:48:13+05:30 job qwen3.5-9b C2  start
+2026-11-21T23:50:36+05:30 job qwen3.5-9b C2 exit 0 accuracy 7828/9002  confident-wrong 309/10000  abstention 988/998  outcomes {'correct': 7828, 'confident_wrong': 309, 'c
+2026-11-21T23:50:36+05:30 job qwen3.5-9b C2 exit 0 accuracy 7828/9002  confident-wrong 309/10000  abstention 988/998  outcomes {'correct': 7828, 'confident_wrong': 309, 'c
+2026-11-21T23:51:49+05:30 job gpt-oss-20b C2  start
+2026-11-21T23:51:49+05:30 job gpt-oss-20b C2  start
+2026-11-21T23:54:22+05:30 job gpt-oss-20b C2 exit 0 accuracy 7252/9002  confident-wrong 1058/10000  abstention 940/998  outcomes {'correct': 7252, 'confident_wrong': 1058, 
+2026-11-21T23:54:22+05:30 job gpt-oss-20b C2 exit 0 accuracy 7252/9002  confident-wrong 1058/10000  abstention 940/998  outcomes {'correct': 7252, 'confident_wrong': 1058, 
+2026-11-21T23:55:40+05:30 job granite-4.2-8b C2  start
+2026-11-21T23:55:40+05:30 job granite-4.2-8b C2  start
+2026-11-22T00:03:30+05:30 job granite-4.2-8b C2 exit 0 accuracy 7062/9002  confident-wrong 844/10000  abstention 981/998  outcomes {'correct': 7062, 'confident_wrong': 844, 'c
+2026-11-22T00:03:30+05:30 job granite-4.2-8b C2 exit 0 accuracy 7062/9002  confident-wrong 844/10000  abstention 981/998  outcomes {'correct': 7062, 'confident_wrong': 844, 'c
+2026-11-22T00:04:43+05:30 job glm-4.6v-flash C2  start
+2026-11-22T00:04:43+05:30 job glm-4.6v-flash C2  start
+2026-11-22T00:10:18+05:30 job glm-4.6v-flash C2 exit 0 accuracy 7048/9002  confident-wrong 1001/10000  abstention 956/998  outcomes {'correct': 7048, 'confident_wrong': 1001, 
+2026-11-22T00:10:18+05:30 job glm-4.6v-flash C2 exit 0 accuracy 7048/9002  confident-wrong 1001/10000  abstention 956/998  outcomes {'correct': 7048, 'confident_wrong': 1001, 
+2026-11-22T00:11:36+05:30 job ministral-3-8b C2  start
+2026-11-22T00:11:36+05:30 job ministral-3-8b C2  start
+2026-11-22T00:17:41+05:30 job ministral-3-8b C2 exit 0 accuracy 6705/9002  confident-wrong 703/10000  abstention 991/998  outcomes {'correct': 6705, 'confident_wrong': 703, 'c
+2026-11-22T00:17:41+05:30 job ministral-3-8b C2 exit 0 accuracy 6705/9002  confident-wrong 703/10000  abstention 991/998  outcomes {'correct': 6705, 'confident_wrong': 703, 'c
+2026-11-22T00:19:44+05:30 job gemma-3-12b C2  start
+2026-11-22T00:19:44+05:30 job gemma-3-12b C2  start
+2026-11-22T00:34:51+05:30 job gemma-3-12b C2 exit 0 accuracy 6006/9002  confident-wrong 1181/10000  abstention 834/998  outcomes {'correct': 6006, 'confident_wrong': 1181, 
+2026-11-22T00:34:51+05:30 job gemma-3-12b C2 exit 0 accuracy 6006/9002  confident-wrong 1181/10000  abstention 834/998  outcomes {'correct': 6006, 'confident_wrong': 1181, 
+2026-11-22T00:35:17+05:30 queue stopped on request; safe to shut down
+2026-11-22T00:35:17+05:30 queue stopped on request; safe to shut down
+2026-11-22T07:53:50+05:30 queue start (pid 7893)
+2026-11-22T07:53:50+05:30 queue start (pid 7893)
+2026-11-22T07:54:45+05:30 job llama-3.1-8b C2  start
+2026-11-22T07:54:45+05:30 job llama-3.1-8b C2  start
+2026-11-22T08:05:30+05:30 job llama-3.1-8b C2 exit 0 accuracy 6185/9002  confident-wrong 1051/10000  abstention 895/998  outcomes {'correct': 6185, 'confident_wrong': 1051, 
+2026-11-22T08:05:30+05:30 job llama-3.1-8b C2 exit 0 accuracy 6185/9002  confident-wrong 1051/10000  abstention 895/998  outcomes {'correct': 6185, 'confident_wrong': 1051, 
+2026-11-22T08:06:43+05:30 job phi-4 C2  start
+2026-11-22T08:06:43+05:30 job phi-4 C2  start
+2026-11-22T08:19:26+05:30 job phi-4 C2 exit 0 accuracy 5894/9002  confident-wrong 1612/10000  abstention 962/998  outcomes {'correct': 5894, 'confident_wrong': 1612, 
+2026-11-22T08:19:26+05:30 job phi-4 C2 exit 0 accuracy 5894/9002  confident-wrong 1612/10000  abstention 962/998  outcomes {'correct': 5894, 'confident_wrong': 1612, 
+2026-11-22T08:20:34+05:30 job nemotron-nano-9b-v2 C2  start
+2026-11-22T08:20:34+05:30 job nemotron-nano-9b-v2 C2  start
+2026-11-22T08:34:24+05:30 job nemotron-nano-9b-v2 C2 exit 0 accuracy 4140/9002  confident-wrong 1047/10000  abstention 994/998  outcomes {'correct': 4140, 'confident_wrong': 1047, 
+2026-11-22T08:34:24+05:30 job nemotron-nano-9b-v2 C2 exit 0 accuracy 4140/9002  confident-wrong 1047/10000  abstention 994/998  outcomes {'correct': 4140, 'confident_wrong': 1047, 
+2026-11-22T08:35:37+05:30 job olmo-3-7b C2  start
+2026-11-22T08:35:37+05:30 job olmo-3-7b C2  start
+2026-11-22T08:54:37+05:30 job olmo-3-7b C2 exit 0 accuracy 1730/9002  confident-wrong 857/10000  abstention 993/998  outcomes {'correct': 1730, 'confident_wrong': 857, 'c
+2026-11-22T08:54:37+05:30 job olmo-3-7b C2 exit 0 accuracy 1730/9002  confident-wrong 857/10000  abstention 993/998  outcomes {'correct': 1730, 'confident_wrong': 857, 'c
+2026-11-22T08:55:45+05:30 job qwen3-8b C2  start
+2026-11-22T08:55:45+05:30 job qwen3-8b C2  start
+2026-11-22T09:05:49+05:30 job qwen3-8b C2 exit 0 accuracy 6541/9002  confident-wrong 1000/10000  abstention 875/998  outcomes {'correct': 6541, 'confident_wrong': 1000, 
+2026-11-22T09:05:49+05:30 job qwen3-8b C2 exit 0 accuracy 6541/9002  confident-wrong 1000/10000  abstention 875/998  outcomes {'correct': 6541, 'confident_wrong': 1000, 
+2026-11-22T09:07:02+05:30 job qwen3.5-9b C3 --subset start
+2026-11-22T09:07:02+05:30 job qwen3.5-9b C3 --subset start
+2026-11-22T10:49:50+05:30 job qwen3.5-9b C3 exit 0 accuracy 689/900  confident-wrong 15/1000  abstention 96/100  outcomes {'correct': 689, 'confident_wrong': 15, 'caught_w
+2026-11-22T10:49:50+05:30 job qwen3.5-9b C3 exit 0 accuracy 689/900  confident-wrong 15/1000  abstention 96/100  outcomes {'correct': 689, 'confident_wrong': 15, 'caught_w
+2026-11-22T10:51:03+05:30 job gpt-oss-20b C3 --subset start
+2026-11-22T10:51:03+05:30 job gpt-oss-20b C3 --subset start
+2026-11-22T11:23:39+05:30 job gpt-oss-20b C3 exit 0 accuracy 736/900  confident-wrong 51/1000  abstention 90/100  outcomes {'correct': 736, 'confident_wrong': 51, 'caught_w
+2026-11-22T11:23:39+05:30 job gpt-oss-20b C3 exit 0 accuracy 736/900  confident-wrong 51/1000  abstention 90/100  outcomes {'correct': 736, 'confident_wrong': 51, 'caught_w
+2026-11-22T11:24:47+05:30 job granite-4.2-8b C3 --subset start
+2026-11-22T11:24:47+05:30 job granite-4.2-8b C3 --subset start
+2026-11-22T14:48:06+05:30 job granite-4.2-8b C3 exit 0 accuracy 721/900  confident-wrong 34/1000  abstention 98/100  outcomes {'correct': 721, 'confident_wrong': 34, 'caught_w
+2026-11-22T14:48:06+05:30 job granite-4.2-8b C3 exit 0 accuracy 721/900  confident-wrong 34/1000  abstention 98/100  outcomes {'correct': 721, 'confident_wrong': 34, 'caught_w
+2026-11-22T14:49:20+05:30 job glm-4.6v-flash C3 --subset start
+2026-11-22T14:49:20+05:30 job glm-4.6v-flash C3 --subset start
+2026-11-22T15:02:46+05:30 job glm-4.6v-flash C3 exit 0 accuracy 743/900  confident-wrong 64/1000  abstention 92/100  outcomes {'correct': 743, 'confident_wrong': 64, 'caught_w
+2026-11-22T15:02:46+05:30 job glm-4.6v-flash C3 exit 0 accuracy 743/900  confident-wrong 64/1000  abstention 92/100  outcomes {'correct': 743, 'confident_wrong': 64, 'caught_w
+2026-11-22T15:04:05+05:30 job nemotron-nano-9b-v2 C3 --subset start
+2026-11-22T15:04:05+05:30 job nemotron-nano-9b-v2 C3 --subset start
+2026-11-22T15:26:24+05:30 job nemotron-nano-9b-v2 C3 exit 0 accuracy 519/900  confident-wrong 68/1000  abstention 87/100  outcomes {'correct': 519, 'confident_wrong': 68, 'caught_w
+2026-11-22T15:26:24+05:30 job nemotron-nano-9b-v2 C3 exit 0 accuracy 519/900  confident-wrong 68/1000  abstention 87/100  outcomes {'correct': 519, 'confident_wrong': 68, 'caught_w
+2026-11-22T15:27:32+05:30 job qwen3-8b C3 --subset start
+2026-11-22T15:27:32+05:30 job qwen3-8b C3 --subset start
+2026-11-22T16:27:11+05:30 job qwen3-8b C3 exit 0 accuracy 653/900  confident-wrong 58/1000  abstention 82/100  outcomes {'correct': 653, 'confident_wrong': 58, 'caught_w
+2026-11-22T16:27:11+05:30 job qwen3-8b C3 exit 0 accuracy 653/900  confident-wrong 58/1000  abstention 82/100  outcomes {'correct': 653, 'confident_wrong': 58, 'caught_w
+2026-11-22T16:27:37+05:30 queue finished
+2026-11-22T16:27:37+05:30 queue finished

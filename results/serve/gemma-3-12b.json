@@ -1,0 +1,31 @@
+{
+  "profile": "gemma-3-12b",
+  "repo": "google/gemma-3-12b-it",
+  "revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+  "precision": "fp8",
+  "vllm": "0.33.0",
+  "command": [
+    "vllm",
+    "serve",
+    "google/gemma-3-12b-it",
+    "--served-model-name",
+    "gemma-3-12b",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000",
+    "--max-model-len",
+    "16384",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--api-key",
+    "<key>",
+    "--seed",
+    "0",
+    "--revision",
+    "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+    "--quantization",
+    "fp8"
+  ],
+  "started": "2026-11-21T18:47:57+00:00"
+}
