@@ -1,0 +1,344 @@
+{
+ "n": 89780,
+ "clusters": 100,
+ "models": [
+  "gemma-3-12b",
+  "glm-4.6v-flash",
+  "gpt-oss-20b",
+  "granite-4.2-8b",
+  "llama-3.1-8b",
+  "ministral-3-8b",
+  "nemotron-nano-9b-v2",
+  "olmo-3-7b",
+  "phi-4",
+  "qwen3.5-9b"
+ ],
+ "setup": "C1",
+ "H2": {
+  "claim": "units stated away from the figure -> higher confident-wrong than units in the row label",
+  "term": "C(units, Treatment('in_the_row_label'))[T.away]",
+  "or": 2.1914400963795697,
+  "ci95": [
+   1.42816660522722,
+   3.362639679742433
+  ],
+  "p": 0.0003289450689113003,
+  "verdict": "supported (before Holm)",
+  "rates": {
+   "away": 0.09253870795515216,
+   "in_the_line": 0.06114352392065344,
+   "in_the_row_label": 0.04411764705882353,
+   "none": 0.4084033613445378
+  },
+  "n_by_level": {
+   "away": 74920,
+   "in_the_line": 8570,
+   "none": 3570,
+   "in_the_row_label": 2720
+  }
+ },
+ "H3": {
+  "claim": "accuracy decreases as figures on the line increase (OR per extra figure)",
+  "term": "figs",
+  "or": 0.8607145641707387,
+  "ci95": [
+   0.8170215151250463,
+   0.9067442500118733
+  ],
+  "p": 1.6723575158678307e-08,
+  "verdict": "supported (before Holm)",
+  "rates": {
+   "1": 0.5371308016877637,
+   "2": 0.7059045657397872,
+   "3": 0.6440677966101694,
+   "4": 0.634271978021978,
+   "5": 0.48333333333333334,
+   "6": 0.4160535117056856
+  }
+ },
+ "H4": {
+  "claim": "accuracy higher when the answer is the line's first figure (OR later vs first)",
+  "term": "later",
+  "or": 0.6855273714195234,
+  "ci95": [
+   0.6369221223309208,
+   0.7378418184714802
+  ],
+  "p": 8.079685108271199e-24,
+  "verdict": "supported (before Holm)",
+  "rates": {
+   "first": 0.6997997997997998,
+   "later": 0.6046366920915295
+  }
+ },
+ "H5": {
+  "claim": "10-Q: year-to-date (6 or 9 months) accuracy lower than 3 months (OR YTD vs 3 months)",
+  "term": "ytd",
+  "or": 0.7153400574908583,
+  "ci95": [
+   0.6225510322085817,
+   0.8219589581847788
+  ],
+  "p": 2.290840722359447e-06,
+  "verdict": "supported (before Holm)",
+  "n": 33540,
+  "rates": {
+   "3_months": 0.6861973775017254,
+   "ytd": 0.6101312335958006
+  }
+ },
+ "H6": {
+  "claim": "word-scale items fail mainly as unverifiable-right, not confident-wrong",
+  "term": "word_scale",
+  "or": 6.624213293182436,
+  "ci95": [
+   4.952301220782905,
+   8.860568006127444
+  ],
+  "p": 3.5495488468946083e-37,
+  "verdict": "supported (before Holm)",
+  "n": 18719,
+  "outcome_mix": {
+   "other": {
+    "items": 82200,
+    "not_correct": 27343,
+    "confident_wrong": 8681,
+    "unverifiable_right": 7844,
+    "caught_wrong": 6045,
+    "missed": 4453,
+    "invalid": 320
+   },
+   "word_scale": {
+    "items": 7580,
+    "not_correct": 4350,
+    "unverifiable_right": 1840,
+    "missed": 959,
+    "caught_wrong": 877,
+    "confident_wrong": 354,
+    "invalid": 320
+   }
+  }
+ },
+ "all_terms": {
+  "accuracy": {
+   "C(units, Treatment('in_the_row_label'))[T.away]": {
+    "term": "C(units, Treatment('in_the_row_label'))[T.away]",
+    "or": 1.066297904703919,
+    "ci95": [
+     0.9047574584639316,
+     1.2566806838004025
+    ],
+    "p": 0.4437627465962697
+   },
+   "C(units, Treatment('in_the_row_label'))[T.in_the_line]": {
+    "term": "C(units, Treatment('in_the_row_label'))[T.in_the_line]",
+    "or": 0.45199883645411787,
+    "ci95": [
+     0.3182666283559124,
+     0.6419238775087903
+    ],
+    "p": 9.133734457480287e-06
+   },
+   "C(units, Treatment('in_the_row_label'))[T.none]": {
+    "term": "C(units, Treatment('in_the_row_label'))[T.none]",
+    "or": 0.1738581008739778,
+    "ci95": [
+     0.09254114678435423,
+     0.3266291837720841
+    ],
+    "p": 5.394870184197069e-08
+   },
+   "C(period, Treatment('3_months'))[T.12_months]": {
+    "term": "C(period, Treatment('3_months'))[T.12_months]",
+    "or": 0.7625959074400701,
+    "ci95": [
+     0.6509761247673106,
+     0.8933546038300838
+    ],
+    "p": 0.0007890110674462119
+   },
+   "C(period, Treatment('3_months'))[T.6_months]": {
+    "term": "C(period, Treatment('3_months'))[T.6_months]",
+    "or": 0.6106309624242221,
+    "ci95": [
+     0.2833760629404866,
+     1.3158139343245807
+    ],
+    "p": 0.20792691603131186
+   },
+   "C(period, Treatment('3_months'))[T.9_months]": {
+    "term": "C(period, Treatment('3_months'))[T.9_months]",
+    "or": 0.773246931402288,
+    "ci95": [
+     0.6954863409787727,
+     0.8597017391910272
+    ],
+    "p": 1.9798711263460803e-06
+   },
+   "C(period, Treatment('3_months'))[T.instant]": {
+    "term": "C(period, Treatment('3_months'))[T.instant]",
+    "or": 0.7686229547469429,
+    "ci95": [
+     0.6573478548296736,
+     0.8987345774742038
+    ],
+    "p": 0.0009735662134336566
+   },
+   "C(form)[T.10-Q]": {
+    "term": "C(form)[T.10-Q]",
+    "or": 0.9326052716505074,
+    "ci95": [
+     0.8166742073056195,
+     1.0649933412000536
+    ],
+    "p": 0.3029074652339674
+   },
+   "figs": {
+    "term": "figs",
+    "or": 0.8607145641707387,
+    "ci95": [
+     0.8170215151250463,
+     0.9067442500118733
+    ],
+    "p": 1.6723575158678307e-08
+   },
+   "later": {
+    "term": "later",
+    "or": 0.6855273714195234,
+    "ci95": [
+     0.6369221223309208,
+     0.7378418184714802
+    ],
+    "p": 8.079685108271199e-24
+   },
+   "word_scale": {
+    "term": "word_scale",
+    "or": 0.6058227315076242,
+    "ci95": [
+     0.42098976957638995,
+     0.8718054654407982
+    ],
+    "p": 0.006961024875025306
+   },
+   "dim": {
+    "term": "dim",
+    "or": 0.5568994247985525,
+    "ci95": [
+     0.463008226192811,
+     0.6698303654151664
+    ],
+    "p": 5.173561842525478e-10
+   }
+  },
+  "confident_wrong": {
+   "C(units, Treatment('in_the_row_label'))[T.away]": {
+    "term": "C(units, Treatment('in_the_row_label'))[T.away]",
+    "or": 2.1914400963795697,
+    "ci95": [
+     1.42816660522722,
+     3.362639679742433
+    ],
+    "p": 0.0003289450689113003
+   },
+   "C(units, Treatment('in_the_row_label'))[T.in_the_line]": {
+    "term": "C(units, Treatment('in_the_row_label'))[T.in_the_line]",
+    "or": 4.761461892764456,
+    "ci95": [
+     2.484630833516105,
+     9.124703376623827
+    ],
+    "p": 2.570320918778914e-06
+   },
+   "C(units, Treatment('in_the_row_label'))[T.none]": {
+    "term": "C(units, Treatment('in_the_row_label'))[T.none]",
+    "or": 14.877358890362368,
+    "ci95": [
+     7.720881043520261,
+     28.667169757575785
+    ],
+    "p": 7.173445413919148e-16
+   },
+   "C(period, Treatment('3_months'))[T.12_months]": {
+    "term": "C(period, Treatment('3_months'))[T.12_months]",
+    "or": 1.1324897720397793,
+    "ci95": [
+     0.9130472210427053,
+     1.4046733336640038
+    ],
+    "p": 0.25755897390984417
+   },
+   "C(period, Treatment('3_months'))[T.6_months]": {
+    "term": "C(period, Treatment('3_months'))[T.6_months]",
+    "or": 0.8024090689793024,
+    "ci95": [
+     0.3314996574358072,
+     1.9422653976796649
+    ],
+    "p": 0.6254920689182755
+   },
+   "C(period, Treatment('3_months'))[T.9_months]": {
+    "term": "C(period, Treatment('3_months'))[T.9_months]",
+    "or": 1.1671890705798058,
+    "ci95": [
+     0.9867635158390944,
+     1.380604678439589
+    ],
+    "p": 0.0711625169589698
+   },
+   "C(period, Treatment('3_months'))[T.instant]": {
+    "term": "C(period, Treatment('3_months'))[T.instant]",
+    "or": 1.171777827286183,
+    "ci95": [
+     0.9539601479253642,
+     1.439329807964843
+    ],
+    "p": 0.13084770901971696
+   },
+   "C(form)[T.10-Q]": {
+    "term": "C(form)[T.10-Q]",
+    "or": 0.933741429742403,
+    "ci95": [
+     0.7906224785680536,
+     1.102767858556832
+    ],
+    "p": 0.4193240591430014
+   },
+   "figs": {
+    "term": "figs",
+    "or": 1.2775467474867102,
+    "ci95": [
+     1.1907053072198677,
+     1.3707217748316416
+    ],
+    "p": 9.124447033768501e-12
+   },
+   "later": {
+    "term": "later",
+    "or": 1.0601118754973333,
+    "ci95": [
+     0.9374124872749056,
+     1.1988715787619937
+    ],
+    "p": 0.35230401402639155
+   },
+   "word_scale": {
+    "term": "word_scale",
+    "or": 0.207082965754205,
+    "ci95": [
+     0.11708193505344686,
+     0.366267901926812
+    ],
+    "p": 6.228769655331415e-08
+   },
+   "dim": {
+    "term": "dim",
+    "or": 0.9863322624370485,
+    "ci95": [
+     0.7977013422351215,
+     1.2195683778070416
+    ],
+    "p": 0.8988802447008449
+   }
+  }
+ }
+}
