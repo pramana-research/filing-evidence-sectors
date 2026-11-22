@@ -23,3 +23,4 @@ results/.gpu.lock
 results/.stop
 results/.no-shutdown
 results/.sectors-run.pid
+report/build/
