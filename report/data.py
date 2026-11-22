@@ -114,6 +114,10 @@ def main() -> None:
     }  # fmt: skip
 
     subset = json.loads((ROOT / "dataset" / "subsets.json").read_text())["c3_and_robustness"]
+    truncated = {m: sum(bool(a.get("truncated")) for a in A.load_answers(m, "C3").values())
+                 for m in ms_all if A.load_answers(m, "C3")}
+    r1f = json.loads((ROOT / "dataset" / "r1" / "FROZEN.json").read_text())["tables"]
+    cross_diff = max(abs(v["R3_kwh"] - v["R2_kwh"]) / v["R3_kwh"] for v in cross.values() if v["R2_kwh"])
     d = {
         "models": ms_all, "main_models": main_ms, "supplementary": sorted(A.SUPPLEMENTARY), "sectors": sectors,
         "n_questions": len(qs), "n_answerable": sum(q["gold"]["status"] == "found" for q in qs.values()),
@@ -122,6 +126,8 @@ def main() -> None:
         "answers_total": sum(len(A.load_answers(m, s)) for m in ms_all + list(QUANT)
                              for s in ("C1", "C2", "C3", "R1", "R2", "R3")),
         "sectors_table": secj, "h1": h1, "h2_h6": hh, "h7": h7, "robustness": rb, "holm": holm,
+        "c3_truncated": truncated, "r1_header_aligned": r1f["header_aligned"] / r1f["tables_with_header"],
+        "energy_cross_max_diff": cross_diff,
         "unitless": unitless, "unitless_cw_digits": dict(digits), "energy": energy, "energy_cross_check": cross,
         "speed": {m: {s: speed(m, s) for s in ("C1", "C3") if A.load_answers(m, s)} for m in ms_all},
         "tariff": {"inr": TARIFF_INR, "usd": TARIFF_USD}, "timeline": timeline,

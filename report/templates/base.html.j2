@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{% endblock %}</title>
+<meta name="description" content="{% block description %}{% endblock %}">
+<meta property="og:title" content="{{ self.title() }}">
+<meta property="og:description" content="{{ self.description() }}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Pramana Research">
+<meta property="og:url" content="{{ SITE }}{{ path }}">
+<meta property="og:image" content="{{ SITE }}/research/assets/og-filing-evidence.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ self.title() }}">
+<meta name="twitter:description" content="{{ self.description() }}">
+<meta name="twitter:image" content="{{ SITE }}/research/assets/og-filing-evidence.png">
+<link rel="canonical" href="{{ SITE }}{{ path }}">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Krishna Nandula, Pramana Research">
+<meta name="theme-color" content="#FAFAF7">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/research/assets/research.css">
+{% block head %}{% endblock %}
+</head>
+<body>
+<header class="site-header">
+  <div class="in">
+    <a class="brand" href="/">
+      <svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 3 L45 24 L24 45 L3 24 Z" fill="#2E3F9E"/><path d="M24 3 L45 24 L24 24 Z" fill="#F2B544"/><path d="M3 24 H45 M24 3 V45" stroke="#FFFFFF" stroke-width="1.8"/></svg>
+      <span>Pramana Research</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/research" aria-current="page">Research</a>
+    </nav>
+  </div>
+</header>
+<main>
+{% block main %}{% endblock %}
+</main>
+<footer class="site-footer">
+  <div class="in">
+    <span>© 2026 Pramana Research · Text, data and figures: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Code: <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a> · <a href="/legal">Legal</a></span>
+    <span>Model outputs are not investment advice. Check every figure against its source.</span>
+    <span style="flex-basis:100%;font-size:13px;color:#7A8290">Pramana Research is an independent research group, not affiliated with any other company of a similar name.</span>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,361 @@
+{% extends "base.html.j2" %}
+{% set T = d.sectors_table %}
+{% set hh = d.h2_h6 %}
+{% set rb = d.robustness %}
+{% block title %}{{ TITLE }} · Filing-Evidence Sectors{% endblock %}
+{% block description %}A pre-registered follow-up to Filing-Evidence: 10,000 questions across ten sectors and eleven open models on one consumer GPU. How a number is printed, not which industry it comes from, drives the errors.{% endblock %}
+{% block head %}
+<meta name="citation_title" content="{{ TITLE }}">
+<meta name="citation_author" content="Nandula, Krishna">
+<meta name="citation_author_institution" content="Pramana Research">
+<meta name="citation_publication_date" content="2026/11/23">
+<meta name="citation_technical_report_institution" content="Pramana Research">
+<meta name="citation_language" content="en">
+<meta name="citation_pdf_url" content="{{ SITE }}{{ PATH }}/pdf/filing-evidence-sectors.pdf">
+<meta name="citation_abstract_html_url" content="{{ SITE }}{{ PATH }}">
+<meta name="citation_keywords" content="large language models; SEC filings; XBRL; information extraction; evidence; verification; robustness; pre-registration">
+{% endblock %}
+{% block main %}
+<div class="wrap">
+<div class="titleblock">
+  <p class="eyebrow">Community research report · Not peer-reviewed · v{{ VERSION }}</p>
+  <h1>{{ TITLE }}</h1>
+  <p class="subtitle">{{ SUBTITLE }}</p>
+  <div class="byline"><span><strong>Krishna Nandula</strong> · Pramana Research</span><span>{{ DATE }}</span><span>Version {{ VERSION }}</span></div>
+  <p class="status"><b>Status:</b> an independent community research report, published by Pramana Research on {{ DATE }}. It has <b>not been peer-reviewed</b> and has not been submitted to or accepted by any conference or journal. It extends <a href="{{ V1 }}">Filing-Evidence</a> (<a href="{{ V1_ARXIV }}">arXiv:2611.24990</a>) with the same method. Corrections and feedback are welcome on <a href="{{ GITHUB }}/issues">GitHub</a>.</p>
+  <div class="actions">
+    <a class="btn primary" href="{{ PATH }}/pdf/filing-evidence-sectors.pdf" download>Download PDF</a>
+    <a class="btn" href="{{ GITHUB }}">Code and protocol</a>
+    <a class="btn" href="{{ HF }}">Dataset and every answer</a>
+    <a class="btn" href="#models">Results per model</a>
+  </div>
+</div>
+
+<section class="brief" aria-labelledby="inbrief">
+  <h2 id="inbrief">In brief</h2>
+  <p class="lead">We asked eleven open AI models, each small enough to run on one gaming graphics card, to find
+  10,000 numbers in the SEC filings of 100 US companies across ten industries. Every answer had to quote the exact line
+  it was read from, so a computer could check it. We wanted to know which numbers are hard, and why.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">{{ "%.0f" | format(100 * (H.pooled[H.sec_best].acc - H.pooled[H.sec_worst].acc)) }} pts</div><div class="l">accuracy gap between the easiest and hardest sector, against {{ "%.0f" | format(100 * (H.acc_top - H.acc_bottom)) }} points between the best and worst model</div></div>
+    <div class="stat"><div class="v bad">×{{ "%.1f" | format(hh.H2.or) }}</div><div class="l">odds of a quietly wrong answer when the unit ("in millions") is printed away from the number</div></div>
+    <div class="stat"><div class="v">{{ "%.0f" | format(100 * H.og_digits) }}%</div><div class="l">of quietly wrong answers on numbers with no unit on the page had the right digits at the wrong scale</div></div>
+    <div class="stat"><div class="v">{{ H.c3_lower | length }} of {{ H.c3_models | length }}</div><div class="l">models made significantly fewer quietly wrong answers when allowed to think; retrying added them for {{ H.c2_raises | length }} of 10</div></div>
+  </div>
+  <ol class="findings">
+    <li><b>The industry hardly matters; the model matters most.</b> Pooled over models, accuracy runs from {{ H.pooled[H.sec_worst].acc | pct }} ({{ H.sec_worst | short | lower }}) to {{ H.pooled[H.sec_best].acc | pct }} ({{ H.sec_best | short | lower }}), and the sector effect is not significant once companies are taken into account. Models run from {{ H.acc_bottom | pct }} to {{ H.acc_top | pct }}.</li>
+    <li><b>How a number is printed drives the errors.</b> Units stated away from the figure, more figures on the line, the answer sitting in a later column, and year-to-date periods each make a number significantly harder, with the other factors held fixed, and each keeps its direction under a second prompt and a second table layout.</li>
+    <li><b>The one sector that looked dangerous wasn't, once we looked closely.</b> Oil and gas had the most quietly wrong answers ({{ H.og.cw_all | pct }}), but almost entirely because {{ H.og.share_unitless | pct0 }} of its numbers have no unit anywhere on the page. Without those, it is ordinary ({{ H.og.cw_without_unitless | pct }}).</li>
+    <li><b>v1's main finding holds on ten times the data.</b> Thinking cuts quietly wrong answers ({{ H.pooled_c3.b10 }} fixed, {{ H.pooled_c3.b01 }} introduced); telling a model its quote failed and letting it retry raises accuracy but adds quietly wrong answers.</li>
+    <li><b>A quote check must survive formatting.</b> When tables were shown as Markdown, models made fewer column errors, but many dropped the table pipes when quoting, so a strict check rejected right answers. Any evidence checker needs to tolerate layout.</li>
+  </ol>
+</section>
+
+<div class="paper">
+<nav class="toc" aria-label="Contents">
+  <p>Contents</p>
+  <ol>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#intro">1 · Introduction</a></li>
+    <li><a href="#design">2 · Design</a></li>
+    <li><a href="#setup">3 · Models and setups</a></li>
+    <li><a href="#rq1">4 · Does the sector matter?</a></li>
+    <li><a href="#rq2">5 · What makes a number hard?</a></li>
+    <li><a href="#rq3">6 · Do v1's findings hold?</a></li>
+    <li><a href="#robust">7 · How robust is this?</a></li>
+    <li><a href="#cost">8 · Cost and trust on one GPU</a></li>
+    <li><a href="#discussion">9 · Discussion</a></li>
+    <li><a href="#limits">10 · Limitations</a></li>
+    <li><a href="#repro">11 · Reproducibility</a></li>
+    <li><a href="#deviations">Deviations from the protocol</a></li>
+    <li><a href="#models">Results per model</a></li>
+    <li><a href="#refs">References</a></li>
+    <li><a href="#disclaimer">Disclaimer</a></li>
+    <li><a href="#cite">How to cite</a></li>
+  </ol>
+</nav>
+
+<article class="body">
+
+<h2 id="abstract">Abstract</h2>
+<div class="abstract">
+<p>Small open language models can extract numbers from SEC filings with evidence a machine can check, but they still
+make errors that pass the check. We ask which numbers cause those errors. In a pre-registered follow-up to
+Filing-Evidence, we built {{ d.n_questions | num }} questions over {{ d.n_filings }} recent 10-K and 10-Q filings of
+{{ d.n_companies }} US companies in ten sectors, with gold answers from the filers' inline XBRL and difficulty tags on
+every question, fixed before any model ran. Eleven instruct models (7–21B parameters) answered on one RTX 4090 in
+three setups: plain, check-and-retry, and thinking. Sector explains little: pooled accuracy ranges from
+{{ H.pooled[H.sec_worst].acc | pct }} to {{ H.pooled[H.sec_best].acc | pct }} across sectors, against
+{{ H.acc_bottom | pct }} to {{ H.acc_top | pct }} across models, and the sector term is not significant
+(p = {{ d.h1.p | p }}). Presentation explains much more: a unit stated away from the figure raises the odds of a
+wrong-but-passing answer {{ "%.1f" | format(hh.H2.or) }}-fold; each additional figure on the line, a later column and a
+year-to-date period each lower the odds of a correct answer (odds ratios {{ "%.2f" | format(hh.H3.or) }},
+{{ "%.2f" | format(hh.H4.or) }}, {{ "%.2f" | format(hh.H5.or) }}). The worst sector for wrong-but-passing answers,
+oil and gas, is explained by numbers whose unit appears nowhere on the page; {{ "%.0f" | format(100 * H.og_digits) }}%
+of those errors are the right digits at the wrong scale. Thinking reduces such errors for {{ H.c3_lower | length }} of
+{{ H.c3_models | length }} models; retrying after a failed check raises them for {{ H.c2_raises | length }} of 10.
+The findings hold under a second prompt and a repeat run; Markdown tables cut wrong-column errors but expose how
+fragile a strict quote check is. We release the questions, all {{ d.answers_total | num }} answers, the code and the
+protocol.</p>
+</div>
+
+<h2 id="intro">1 · Introduction</h2>
+<p><a href="{{ V1 }}">Filing-Evidence</a> asked whether small open models can read SEC filings with evidence a machine
+can check. They largely can: the best model answered 82.7% of its questions correctly
+with a verifiable quote. But a share of answers passed every automatic check and were still wrong: the right line,
+the wrong number. Those quiet errors are what make a model unsafe to trust.</p>
+<p>v1 suggested where they come from: units printed in a header rather than next to the number, and neighbouring
+columns. With 1,000 questions it couldn't test that. This study can. We wrote the hypotheses down first, built
+{{ d.n_questions | num }} new questions across ten sectors with difficulty tags computed by code, froze everything,
+and only then ran the models. Three research questions, registered in advance:</p>
+<ul>
+  <li><b>RQ1.</b> How does accuracy with checkable evidence vary across ten industry sectors?</li>
+  <li><b>RQ2.</b> Which properties of a number make it hard: where its units are stated, how many figures share its line, which column it sits in, its period, and whether it is written in words?</li>
+  <li><b>RQ3.</b> Do v1's findings on check-and-retry and thinking hold on a larger and more varied set?</li>
+</ul>
+<p>The answer to RQ1 is mostly no, and the answer to RQ2 explains why: what makes a number hard is how it is printed,
+and that varies within every sector more than between them.</p>
+
+<h2 id="design">2 · Design</h2>
+<figure>
+  <div class="canvas">{{ F.timeline }}</div>
+  <figcaption><b>Figure 1.</b> The study in time. The protocol and the frozen questions were committed publicly before any model ran; the robustness checks were fully specified before any of them ran.</figcaption>
+</figure>
+<p><b>Companies and filings.</b> Ten sectors with ten companies each: banks, insurance, real estate, utilities, oil
+and gas, metals and mining, healthcare, technology, media and telecom. These were chosen because their statements are
+laid out differently. For each company we took its most recent 10-K and 10-Q, {{ d.n_filings }} filings in all. No
+company or datapoint from v1 is reused.</p>
+<p><b>Questions and answer key.</b> As in v1, gold answers come from the filers' own inline XBRL tags, and every
+question shows the model three pages: the answer page, a neighbouring page and a distractor. There are 1,000 questions
+per sector; {{ d.n_answerable | num }} have an answer on the pages shown, and the rest test whether the model says
+"not found". The page rendering, wording rules, prompt and checker are v1's, unchanged.</p>
+<p><b>Difficulty tags.</b> Every question carries tags computed by code before any run: where the unit is stated
+(in the row label, in the line, in a table or column header, in a page header, or nowhere on the page), how many
+figures are on the evidence line, whether the answer is the first figure or a later one, the period length, and
+whether the amount is written with a word scale ("$12.6 billion").</p>
+<p><b>Outcomes.</b> As v1: <i>correct</i> (right value, the quote checks out); <i>confident-wrong</i> (wrong value,
+but the quote passes every check: the dangerous case); <i>caught-wrong</i> (wrong, and the check fails);
+<i>unverifiable-right</i> (right value, unusable quote); <i>missed</i>; and for absent numbers
+<i>abstained correctly</i> or <i>invented</i>.</p>
+
+<h2 id="setup">3 · Models and setups</h2>
+<p>The ten models of v1 at the same pinned revisions, plus Qwen3-8B as a supplementary model, all served with vLLM
+0.33 on one RTX 4090 capped at 450 W, temperature 0. Three setups: <b>plain</b> (C1) and <b>check + retry</b> (C2) on
+all 10,000 questions, and <b>thinking</b> (C3) on a stratified 1,000-question subset for the six models with a
+reasoning mode, with up to 8,192 new tokens. In total {{ d.answers_total | num }} answers, including the robustness
+checks of section 7.</p>
+
+<h2 id="rq1">4 · Does the sector matter? (RQ1, H1)</h2>
+<figure>
+  <div class="canvas">{{ F.sector_heatmap }}</div>
+  <figcaption><b>Figure 2.</b> Accuracy by model and sector, plain setup. Rows differ far more than columns.</figcaption>
+</figure>
+<p>Not much. Pooled over the ten main models, accuracy ranges from {{ H.pooled[H.sec_worst].acc | pct }}
+({{ H.sec_worst | short | lower }}) to {{ H.pooled[H.sec_best].acc | pct }} ({{ H.sec_best | short | lower }}): a spread of
+{{ "%.0f" | format(100 * (H.pooled[H.sec_best].acc - H.pooled[H.sec_worst].acc)) }} points, against
+{{ "%.0f" | format(100 * (H.acc_top - H.acc_bottom)) }} points between the best and worst model. The order of the models is
+much the same in every sector.</p>
+<figure>
+  <div class="canvas">{{ F.sector_or }}</div>
+  <figcaption><b>Figure 3.</b> Odds of a correct answer in each sector compared with the easiest, from a logistic regression with a model fixed effect and standard errors clustered by company.</figcaption>
+</figure>
+<p>The pre-registered test (H1) is a logistic regression of correctness on sector with a model fixed effect and
+standard errors clustered by company: χ²({{ d.h1.df }}) = {{ "%.1f" | format(d.h1.chi2) }},
+p = {{ d.h1.p | p }}. <b>H1 is not supported.</b> Companies within a sector differ as much as sectors do. Insurance is
+the one sector whose interval excludes the easiest sector on its own (odds ratio
+{{ "%.2f" | format(d.h1.odds_ratios_vs_reference["Insurance"].or) }}), but H1 is judged on the omnibus test.</p>
+<p><b>The exception that wasn't.</b> Confident-wrong answers vary more by sector than accuracy does, and oil and gas
+stands out at {{ H.og.cw_all | pct }} of answerable questions, about twice the rate of telecom or technology. The
+reason is specific and checkable: {{ H.og.share_unitless | pct0 }} of its questions have no unit stated anywhere on
+the pages shown (the scale appears only on another page of the filing), against 0–8% elsewhere. Those questions are
+answered confident-wrong {{ H.og.cw_unitless | pct0 }} of the time. Without them, oil and gas falls to
+{{ H.og.cw_without_unitless | pct }}, in line with every other sector. This analysis was not pre-registered and is
+reported as exploratory.</p>
+<figure>
+  <div class="canvas">{{ F.unitless }}</div>
+  <figcaption><b>Figure 4.</b> Confident-wrong rate by sector, with all items (red) and without items whose unit is stated nowhere on the pages (blue).</figcaption>
+</figure>
+
+<h2 id="rq2">5 · What makes a number hard? (RQ2, H2–H6)</h2>
+<p>All five pre-registered hypotheses about the tags are supported. Each is a term in one logistic regression on all
+tags with a model fixed effect, standard errors clustered by company ({{ hh.n | num }} answers, plain setup, ten main
+models), so each effect is estimated holding the others fixed.</p>
+<figure>
+  <div class="canvas">{{ F.tag_forest }}</div>
+  <figcaption><b>Figure 5.</b> Odds ratios with 95% intervals for H2–H6. All are significant after Holm correction across H1–H8.</figcaption>
+</figure>
+<ul>
+  <li><b>H2 · Units away from the figure.</b> When the unit is in a table or page header ("in thousands") rather than in the row label, the odds of a confident-wrong answer are {{ "%.1f" | format(hh.H2.or) }} times higher ({{ hh.H2.rates.away | pct }} vs {{ hh.H2.rates.in_the_row_label | pct }}). When the unit is nowhere on the page, the rate reaches {{ hh.H2.rates.none | pct0 }}.</li>
+  <li><b>H3 · Crowded lines.</b> Each extra figure on the evidence line lowers the odds of a correct answer by a factor of {{ "%.2f" | format(hh.H3.or) }}: accuracy falls from {{ hh.H3.rates["2"] | pct0 }} on two-figure lines to {{ hh.H3.rates["6"] | pct0 }} on lines with six or more.</li>
+  <li><b>H4 · Later columns.</b> When the answer is not the first figure on its line, the odds fall by a factor of {{ "%.2f" | format(hh.H4.or) }} ({{ hh.H4.rates.first | pct0 }} vs {{ hh.H4.rates.later | pct0 }}).</li>
+  <li><b>H5 · Year-to-date figures.</b> In 10-Qs, six- and nine-month figures are harder than three-month figures from the same filings (odds ratio {{ "%.2f" | format(hh.H5.or) }}; {{ hh.H5.rates.ytd | pct0 }} vs {{ hh.H5.rates["3_months"] | pct0 }}).</li>
+  <li><b>H6 · Word scales.</b> Amounts written as "$12.6 billion" fail differently: mostly as unverifiable-right (the model restates the value in other units, so its quote no longer matches), not as confident-wrong ({{ hh.H6.outcome_mix.word_scale.unverifiable_right | num }} vs {{ hh.H6.outcome_mix.word_scale.confident_wrong | num }}; odds ratio {{ "%.1f" | format(hh.H6.or) }}).</li>
+</ul>
+<figure>
+  <div class="canvas">{{ F.tag_rates }}</div>
+  <figcaption><b>Figure 6.</b> Raw accuracy by where the number sits. The tests use the regression above; these rates show the size of the effects.</figcaption>
+</figure>
+<p><b>The mechanism: scale guessing.</b> Of the confident-wrong answers on numbers whose unit is stated nowhere on the
+page, {{ "%.0f" | format(100 * H.og_digits) }}% have exactly the right digits with the wrong scale: "52,611 in
+thousands" where the filing means millions. The quote passes because the digits match. A checker that compares
+digits cannot catch this; only knowing the unit can.</p>
+
+<h2 id="rq3">6 · Do v1's findings hold? (RQ3, H7)</h2>
+<figure>
+  <div class="canvas">{{ F.h7_arrows }}</div>
+  <figcaption><b>Figure 7.</b> Confident-wrong answers per 1,000 in the plain setup and after check + retry (all questions) or thinking (the 1,000-question subset).</figcaption>
+</figure>
+<p>Yes. <b>Thinking lowers confident-wrong answers</b> significantly for {{ H.c3_lower | length }} of the
+{{ H.c3_models | length }} main models with a reasoning mode (paired exact McNemar, Holm-corrected within model);
+pooled, {{ H.pooled_c3.b10 }} answers stop being confident-wrong and {{ H.pooled_c3.b01 }} start. <b>Check + retry
+does not</b>: it never lowers them, and raises them significantly for {{ H.c2_raises | length }} of 10 models, while
+raising accuracy for {{ H.c2_acc_up | length }}. Told that its quote failed, a model often finds another line
+containing its wrong number. <b>H7 is supported.</b></p>
+<p>One exception needs stating plainly. Qwen3.5-9B's accuracy fell with thinking
+({{ d.h7.models["qwen3.5-9b"].tests.C3_accuracy.a }} → {{ d.h7.models["qwen3.5-9b"].tests.C3_accuracy.b }} of 900)
+because {{ d.c3_truncated["qwen3.5-9b"] }} of its 1,000 answers ran into the pre-registered 8,192-token limit and were cut off. Its confident-wrong
+answers still fell ({{ d.h7.models["qwen3.5-9b"].tests.C3_confident_wrong.a }} →
+{{ d.h7.models["qwen3.5-9b"].tests.C3_confident_wrong.b }}). A larger budget might change its accuracy result; we
+report the limit as fixed.</p>
+
+<h2 id="robust">7 · How robust is this?</h2>
+<p>Three checks, fixed in the protocol and specified in full before any of them ran, test whether the findings depend
+on how we asked rather than what we asked. All run in the plain setup on the 1,000-question subset.</p>
+<p><b>R3 · A repeat run.</b> Running the identical configuration again changes the outcome of
+{{ H.r3_min | pct }}–{{ H.r3_max | pct }} of questions for the three models tested, with no significant difference in
+accuracy or confident-wrong. Single runs are stable.</p>
+<p><b>R2 · A different prompt.</b> A second prompt with different wording and a different worked example (a 10-Q
+with quarter and year-to-date columns) leaves the ranking of models almost unchanged (Kendall's
+τ = {{ "%.2f" | format(H.tau_r2) }}). Most models move by a few points. The two weakest models are the exception:
+Nemotron-Nano-9B-v2 and OLMo-3-7B lose accuracy and gain confident-wrong answers under the new wording.</p>
+<p><b>R1 · Markdown tables (H8).</b> The same pages, with tables shown as Markdown: one row per line, column headers
+first. Wrong-period-or-column errors fall from {{ H.h8.c1 }} to {{ H.h8.r1 }} (pooled exact McNemar,
+p = {{ H.h8.p | p }}). <b>H8 is supported.</b> Confident-wrong answers fall for every model. But strict accuracy
+collapses for most models, because many quote the row without its pipes ("Total deposits 239,486" instead of
+"| Total deposits | 239,486 |") and the pre-registered check, applied to the page text exactly as shown, rejects
+the quote. Under that check the model ranking scrambles (τ = {{ "%.2f" | format(H.tau_r1) }}).</p>
+<figure>
+  <div class="canvas">{{ F.r1_bars }}</div>
+  <figcaption><b>Figure 8.</b> Accuracy in the plain setup, with Markdown tables under the strict quote check, and with Markdown tables when the pipes are ignored (exploratory).</figcaption>
+</figure>
+<p>To separate quoting from reading we graded R1 a second time with the pipes ignored, a decision made after seeing
+the strict results and therefore exploratory. Most of the collapse disappears, and the ranking returns
+(τ = {{ "%.2f" | format(H.tau_pf) }}). The best models read Markdown tables as well as flat text; the others lose up to
+{{ "%.0f" | format(H.r1_pf_max_loss) }} points ({{ H.r1_pf_max_loss_model | name }}). Both gradings tell the same practical story: layout changes which errors a model makes, and an
+evidence check must be robust to it.</p>
+<figure>
+  <div class="canvas">{{ F.rank_slope }}</div>
+  <figcaption><b>Figure 9.</b> Model ranks by accuracy under each check.</figcaption>
+</figure>
+<p>The tag effects of H2–H4 keep their direction under R1 and R2. Together with the stable repeat run, the headline
+findings are <b>robust</b> in the sense the protocol defines.</p>
+
+<h2 id="cost">8 · Cost and trust on one GPU (exploratory)</h2>
+<p>An exploratory extension, added after the plain-setup results were seen. GPU energy per 1,000 answers comes from
+the card's own energy counter over each model's R2 run: 1,000 questions in plain-setup settings. It ranges from
+{{ "%.0f" | format(H.wh[H.wh_min]) }} Wh ({{ H.wh_min | name }}) to {{ "%.0f" | format(H.wh[H.wh_max]) }} Wh
+({{ H.wh_max | name }}). At ₹{{ "%.0f" | format(d.tariff.inr) }} per kWh that is ₹{{ "%.2f" | format(H.wh[H.wh_min] / 1000 * d.tariff.inr) }}–₹{{ "%.2f" | format(H.wh[H.wh_max] / 1000 * d.tariff.inr) }}
+per 1,000 answers, or US${{ "%.3f" | format(H.wh[H.wh_min] / 1000 * d.tariff.usd) }}–{{ "%.3f" | format(H.wh[H.wh_max] / 1000 * d.tariff.usd) }}
+at ${{ "%.2f" | format(d.tariff.usd) }}. Repeat runs of the same configuration agree within {{ "%.0f" | format(100 * d.energy_cross_max_diff) }}%. These are GPU board
+figures only, not the whole machine at the wall.</p>
+<figure>
+  <div class="canvas">{{ F.cost_scatter }}</div>
+  <figcaption><b>Figure 10.</b> Plain-setup accuracy against GPU energy per 1,000 answers.</figcaption>
+</figure>
+<p><b>Does a 4-bit model make more quiet errors?</b> We ran 4-bit builds of three models (best, middle, weakest) on
+the subset. Qwen3.5-9B loses accuracy ({{ H.q["qwen3.5-9b-4bit"].accuracy.a }} → {{ H.q["qwen3.5-9b-4bit"].accuracy.b }}
+of 900, significant) but its confident-wrong answers do not rise significantly
+({{ H.q["qwen3.5-9b-4bit"].confident_wrong.a }} → {{ H.q["qwen3.5-9b-4bit"].confident_wrong.b }}). For the other two,
+neither changes significantly. In this small test, compression costs some accuracy, not trust.</p>
+<figure>
+  <div class="canvas">{{ F.quant_pairs }}</div>
+  <figcaption><b>Figure 11.</b> Full precision against the 4-bit build of the same model, plain setup, 1,000-question subset.</figcaption>
+</figure>
+
+<h2 id="discussion">9 · Discussion</h2>
+<p><b>Look at the line, not the industry.</b> Anyone deploying a model to read filings should worry less about the
+sector and more about how each number is printed. Numbers whose unit sits in a header, crowded lines, prior-period
+columns and year-to-date figures are where errors concentrate, in every sector.</p>
+<p><b>Give the model the unit.</b> The most dangerous single case is a number whose unit isn't on the page at all. The
+model guesses, and a digit-based check passes the guess. A reader system should carry the document's scale statement
+alongside every page it shows, or have the checker verify the scale separately.</p>
+<p><b>Think, don't retry.</b> Thinking reduces quiet errors; retrying after a failed check increases them. If budget
+allows one intervention, it should be thinking, with a token limit large enough not to cut answers off.</p>
+<p><b>Make the evidence check layout-tolerant.</b> A strict character-for-character check is easy to explain but
+punishes models for formatting, not reading. Comparing the words and figures of a quote, not its punctuation, keeps
+the guarantee and removes the artefact.</p>
+
+<h2 id="limits">10 · Limitations</h2>
+<ul>
+  <li><b>Associations, not interventions.</b> The tags describe real filings; we did not move a unit from a row label to a header and re-ask. The regression holds the other tags fixed and R1 is a true intervention on layout, but the tag effects are observational.</li>
+  <li><b>One hardware and serving configuration.</b> One RTX 4090 at 450 W, vLLM 0.33, temperature 0. Speeds and energy depend on all three.</li>
+  <li><b>A fixed thinking budget.</b> 8,192 new tokens cut off a fifth of Qwen3.5-9B's thinking answers.</li>
+  <li><b>R1's rendering is imperfect.</b> SEC tables are irregular; in {{ d.r1_header_aligned | pct0 }} of tables with a header, the header row has as many cells as the first data row. The rest are misaligned to some degree.</li>
+  <li><b>Exploratory parts are labelled.</b> The oil-and-gas analysis, the pipe-insensitive R1 grading and the cost-and-trust extension were not pre-registered as tests.</li>
+  <li><b>US filings only,</b> in English, from companies large enough to file inline XBRL.</li>
+</ul>
+
+<h2 id="repro">11 · Reproducibility</h2>
+<p>Everything is public: the protocol and its deviations, the code, the frozen questions (fingerprint
+<code>9a007d80</code>), the Markdown pages of R1 (fingerprint <code>7cdf066e</code>) and every model reply with its
+reasoning. In a fresh clone, <code>python hf_data.py pull</code> downloads the data and verifies both fingerprints;
+re-grading every stored reply reproduces every <code>summary.json</code> byte for byte, and
+<code>analyze.py</code> reproduces every statistic in this report. The pre-registration commits are public in
+<a href="https://github.com/pramana-research/filing-evidence/commit/00260c43e78ad0f53fcc23ddec6645b97c2559b7">pramana-research/filing-evidence</a>.</p>
+
+<h2 id="deviations">Deviations from the protocol</h2>
+<p>Every change after the protocol was finalised is logged in its §14, with the date and whether any result existed at
+the time.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>#</th><th>Change</th><th>Results existed?</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Sampling rule changed to reach 10,000 questions (one question per item per filing, not per company)</td><td>No</td></tr>
+<tr><td>2</td><td>Cost-and-trust extension added (section 8), exploratory</td><td>Yes (plain setup)</td></tr>
+<tr><td>3</td><td>Analysis code written after the runs, implementing the registered plan; coding choices recorded</td><td>Yes</td></tr>
+<tr><td>4</td><td>The study moved to its own repository; history and dates kept; re-grading in a fresh clone matched exactly</td><td>Yes</td></tr>
+<tr><td>5</td><td>Details of R1–R3 and the 4-bit runs fixed, before any of those runs (plus an addendum: the OLMo 4-bit build)</td><td>Main runs only</td></tr>
+<tr><td>6</td><td>R1 also graded with the pipes ignored, exploratory</td><td>Yes</td></tr>
+<tr><td>7</td><td>No dedicated energy runs; energy from the GPU counter over each R2 run</td><td>Yes</td></tr>
+</tbody></table></div>
+
+<h2 id="models">Results per model</h2>
+<p>Each model has its own page with its accuracy and confident-wrong rate by sector, its results in every setup and
+check, and its energy use.</p>
+<div class="cards">
+{% for m in H.by_acc + d.supplementary %}
+<a class="card" href="{{ PATH }}/{{ m | slug }}"><div class="n">{{ m | name }}</div><div class="c">{% if m in d.supplementary %}supplementary{% else %}main model{% endif %}</div>
+<div class="r"><span>Plain {{ H.acc[m] | pct }}</span><span>CW {{ H.cw[m] | pct }}</span></div></a>
+{% endfor %}
+</div>
+
+<h2 id="refs">References</h2>
+<ol class="refs">
+  <li>K. Nandula (2026). Show Your Work: Can Small Open Models Read SEC Filings with Evidence a Machine Can Check? Pramana Research. <a href="{{ V1_ARXIV }}">arXiv:2611.24990</a>.</li>
+  <li>U.S. Securities and Exchange Commission. EDGAR full-text and submissions APIs. <a href="https://www.sec.gov/edgar">sec.gov/edgar</a>.</li>
+  <li>XBRL International. Inline XBRL Specification 1.1. <a href="https://www.xbrl.org/specification/inlinexbrl-part1/rec-2013-11-18/inlinexbrl-part1-rec-2013-11-18.html">xbrl.org</a>.</li>
+  <li>E. B. Wilson (1927). Probable inference, the law of succession, and statistical inference. <i>Journal of the American Statistical Association</i> 22(158), 209–212.</li>
+  <li>Q. McNemar (1947). Note on the sampling error of the difference between correlated proportions or percentages. <i>Psychometrika</i> 12(2), 153–157.</li>
+  <li>S. Holm (1979). A simple sequentially rejective multiple test procedure. <i>Scandinavian Journal of Statistics</i> 6(2), 65–70.</li>
+  <li>M. G. Kendall (1938). A new measure of rank correlation. <i>Biometrika</i> 30(1–2), 81–93.</li>
+  <li>W. Kwon et al. (2023). Efficient memory management for large language model serving with PagedAttention. <i>SOSP '23</i>. (vLLM)</li>
+  <li>Model cards of the eleven models and three 4-bit builds evaluated, on Hugging Face, at the pinned revisions recorded with the results.</li>
+</ol>
+
+<h2 id="disclaimer">Disclaimer</h2>
+<p>This is an independent community research report, written in a personal capacity; it does not represent the views of any employer or other organisation. It is not affiliated with, sponsored or endorsed by any company or model developer named here; all names and trademarks belong to their owners. Results describe specific model versions under one fixed setup and are not a general judgement of any model. The data, results and code are provided as is, without warranty, and may contain errors; check any figure against the original filing. Nothing here is financial, investment or legal advice.</p>
+
+<h2 id="cite">How to cite</h2>
+<div class="cite">@misc{pramana2026filingevidencesectors,
+  title        = {Units, Columns and Periods: Presentation, Not Sector, Drives Errors When Small Open Models Read SEC Filings},
+  author       = {Nandula, Krishna},
+  organization = {Pramana Research},
+  year         = {2026},
+  month        = {nov},
+  url          = {{ "{" }}{{ SITE }}{{ PATH }}{{ "}" }},
+  note         = {Community research report, not peer-reviewed. Filing-Evidence Sectors, version {{ VERSION }}}
+}</div>
+<p class="muted" style="margin-top:16px">This is a community research report; it has not been peer-reviewed. Text, data and figures are licensed under CC BY 4.0 and the code under the Apache License 2.0. Model outputs remain subject to each model's licence. Nothing here is investment advice.</p>
+</article>
+</div>
+</div>
+{% endblock %}

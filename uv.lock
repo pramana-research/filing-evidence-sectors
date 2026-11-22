@@ -979,6 +979,9 @@ analysis = [
 build = [
     { name = "transformers" },
 ]
+report = [
+    { name = "jinja2" },
+]
 run = [
     { name = "mlflow" },
 ]
@@ -996,6 +999,7 @@ dev = [
 requires-dist = [
     { name = "httpx", specifier = ">=0.27" },
     { name = "huggingface-hub", specifier = ">=0.28" },
+    { name = "jinja2", marker = "extra == 'report'", specifier = ">=3.1" },
     { name = "mlflow", marker = "extra == 'run'", specifier = ">=3.0" },
     { name = "pandas", marker = "extra == 'analysis'", specifier = ">=2.2" },
     { name = "python-dotenv", specifier = ">=1.0" },
@@ -1005,7 +1009,7 @@ requires-dist = [
     { name = "transformers", marker = "extra == 'build'", specifier = ">=5.0" },
     { name = "vllm", marker = "extra == 'serve'", specifier = "==0.33.0" },
 ]
-provides-extras = ["run", "build", "analysis", "serve"]
+provides-extras = ["run", "build", "analysis", "report", "serve"]
 
 [package.metadata.requires-dev]
 dev = [

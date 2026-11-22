@@ -15,6 +15,7 @@ dependencies = [
 run = ["mlflow>=3.0"]                    # runner.py logs finished runs to MLflow when MLFLOW_TRACKING_URI is set
 build = ["transformers>=5.0"]            # build.py counts prompt tokens
 analysis = ["pandas>=2.2", "statsmodels>=0.14", "scipy>=1.13"]  # analyze.py
+report = ["jinja2>=3.1"]                 # report/build.py
 serve = ["vllm==0.33.0"]                 # the version every reported run used
 
 [dependency-groups]

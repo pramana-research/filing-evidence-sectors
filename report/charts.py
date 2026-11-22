@@ -42,7 +42,7 @@ def _label(m, d):
 def _grid_x(b, X, vals, y0, y1, fmt=str, zero=None):
     for v in vals:
         b.append(f'<line x1="{X(v):.1f}" x2="{X(v):.1f}" y1="{y0}" y2="{y1}" stroke="{AXIS if v == zero else GRID}"/>')
-        b.append(t(X(v), y1 + 16, fmt(v), 11, "middle", MUTED, cls="num"))
+        b.append(t(X(v), y1 + 16, fmt(v), 11, "middle", MUTED))
 
 
 # -- 1 · timeline ---------------------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ def timeline(d):
         b.append(dot(X(i), 110, GOOD if i < 2 else SETUP["C2"], f"{a}: {when} IST", 6))
         y0 = 58 if i % 2 == 0 else 138  # three lines above (even steps) or below (odd steps)
         b.append(t(X(i), y0, a, 12, "middle", INK, 600))
-        b.append(t(X(i), y0 + 14, when, 10.5, "middle", MUTED, cls="num"))
+        b.append(t(X(i), y0 + 14, when, 10.5, "middle", MUTED))
         b.append(t(X(i), y0 + 28, c, 10.5, "middle", MUTED))
     b.append(t(30, 218, "All times IST. The protocol and freeze commits are public in pramana-research/filing-evidence.",
                10.5, "start", MUTED))
@@ -192,7 +192,7 @@ def tag_forest(d):
                    "One logistic regression on all tags with a model fixed effect, standard errors clustered by "
                    "company (plain setup, 10 main models). All five are significant after Holm correction.",
                    lo=0.5, hi=10, W=760, L=410, ref_label="1× = no effect",
-                   note="Below 1×: lower odds of the outcome; above 1×: higher. All Holm p < 0.001.")
+                   note="All five Holm p < 0.001.")
 
 
 # -- 6 · accuracy by figures on the line, position, period --------------------------------------------------------
@@ -343,9 +343,9 @@ def cost_scatter(d):
     b = []
     for v in (0.0, 0.25, 0.5, 0.75, 1.0):
         b.append(f'<line x1="{L}" x2="{W - R}" y1="{Y(v):.1f}" y2="{Y(v):.1f}" stroke="{GRID}"/>')
-        b.append(t(L - 8, Y(v) + 4, f"{100 * v:.0f}%", 11, "end", MUTED, cls="num"))
+        b.append(t(L - 8, Y(v) + 4, f"{100 * v:.0f}%", 11, "end", MUTED))
     for v in (0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06):
-        b.append(t(X(v), H - B + 18, f"{1000 * v:.0f} Wh", 11, "middle", MUTED, cls="num"))
+        b.append(t(X(v), H - B + 18, f"{1000 * v:.0f} Wh", 11, "middle", MUTED))
     tar = d["tariff"]
     placed: list[tuple[float, float]] = []  # label positions, nudged apart vertically
     for m in sorted(ms, key=lambda m: -_acc(d, m)["rate"]):
@@ -385,7 +385,7 @@ def quant_pairs(d):
         b.append(t(x0, 56, title, 12, "start", INK, 600))
         for v in ([0, 300, 600, 900] if mx == 900 else [0, 25, 50, 75, 100]):
             b.append(f'<line x1="{X(v):.1f}" x2="{X(v):.1f}" y1="{T - 6}" y2="{T + len(qz) * rowh}" stroke="{GRID}"/>')
-            b.append(t(X(v), T + len(qz) * rowh + 16, str(v), 11, "middle", MUTED, cls="num"))
+            b.append(t(X(v), T + len(qz) * rowh + 16, str(v), 11, "middle", MUTED))
         for i, (q4, v) in enumerate(qz.items()):
             y = T + i * rowh + rowh / 2
             if p == 0:

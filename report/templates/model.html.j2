@@ -1,0 +1,87 @@
+{% extends "base.html.j2" %}
+{% set T = d.sectors_table[m] %}
+{% set rb = d.robustness %}
+{% set h7 = d.h7.models.get(m) %}
+{% block title %}{{ m | name }} · Filing-Evidence Sectors{% endblock %}
+{% block description %}{{ m | name }} on 10,000 SEC-filing questions across ten sectors: accuracy and quietly wrong answers by sector, with check + retry, thinking and three robustness checks.{% endblock %}
+{% block main %}
+<div class="wrap">
+<div class="titleblock">
+  <p class="eyebrow"><a href="{{ PATH }}">Filing-Evidence Sectors</a> · Results per model{% if m in d.supplementary %} · supplementary model{% endif %}</p>
+  <h1>{{ m | name }}</h1>
+  <p class="subtitle">{{ d.n_questions | num }} questions over {{ d.n_filings }} filings of {{ d.n_companies }} companies in ten sectors, answered on one RTX 4090</p>
+  <div class="actions">
+    <a class="btn primary" href="{{ PATH }}">Read the paper</a>
+    <a class="btn" href="{{ PATH }}/pdf/{{ m | slug }}.pdf" download>Download PDF</a>
+    <a class="btn" href="{{ HF }}">Every answer of this model</a>
+  </div>
+</div>
+
+<div class="paper">
+<nav class="toc" aria-label="Contents">
+  <p>On this page</p>
+  <ol>
+    <li><a href="#scorecard">Scorecard</a></li>
+    <li><a href="#sectors">By sector</a></li>
+    <li><a href="#checks">Setups and checks</a></li>
+    <li><a href="#speed">Speed</a></li>
+  </ol>
+</nav>
+<article class="body">
+<section class="brief" aria-labelledby="scorecard" style="margin-bottom:8px">
+  <h2 id="scorecard">Scorecard</h2>
+  <div class="stats">
+    <div class="stat"><div class="v">{{ T.C1.all.accuracy.rate | pct }}</div><div class="l">correct with a checkable quote, plain setup ({{ T.C1.all.accuracy.k | num }} of {{ T.C1.all.accuracy.n | num }})</div></div>
+    <div class="stat"><div class="v bad">{{ T.C1.all.confident_wrong.k | num }}</div><div class="l">quietly wrong answers (confident-wrong) in 10,000, plain setup</div></div>
+    <div class="stat"><div class="v">{{ T.C1.all.abstention_accuracy.rate | pct }}</div><div class="l">correct "not found" when the number was absent</div></div>
+    {% if m in H.wh %}<div class="stat"><div class="v">{{ "%.0f" | format(H.wh[m]) }} Wh</div><div class="l">GPU energy per 1,000 answers (₹{{ "%.2f" | format(H.wh[m] / 1000 * d.tariff.inr) }} at ₹{{ "%.0f" | format(d.tariff.inr) }}/kWh)</div></div>{% endif %}
+  </div>
+</section>
+
+<h2 id="sectors">By sector</h2>
+<p>Plain setup (C1) and check + retry (C2), all 10,000 questions. Accuracy (Acc.) is the share of answerable questions answered correctly with a checkable quote; confident-wrong (CW) is the share of all questions answered wrongly with a quote that passes every check.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Sector</th><th class="n">Acc. C1</th><th class="n">95% CI</th><th class="n">CW C1</th><th class="n">Acc. C2</th><th class="n">CW C2</th></tr></thead>
+<tbody>
+{% for s in d.sectors + ["all"] %}
+<tr{% if s == "all" %} style="font-weight:600"{% endif %}><td>{{ "All sectors" if s == "all" else s }}</td>
+<td class="n">{{ T.C1[s].accuracy.rate | pct }}</td>
+<td class="n ci">{{ "%.1f" | format(100 * T.C1[s].accuracy.ci95[0]) }}–{{ "%.1f" | format(100 * T.C1[s].accuracy.ci95[1]) }}</td>
+<td class="n">{{ T.C1[s].confident_wrong.rate | pct }}</td>
+<td class="n">{{ T.C2[s].accuracy.rate | pct }}</td>
+<td class="n">{{ T.C2[s].confident_wrong.rate | pct }}</td></tr>
+{% endfor %}
+</tbody></table></div>
+
+<h2 id="checks">Setups and checks</h2>
+<p>Each comparison is paired (the same questions) with an exact McNemar test; p is Holm-corrected within the model or the check. CW = confident-wrong. Thinking and the robustness checks use the 1,000-question subset.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Comparison</th><th class="n">Correct</th><th class="n">p</th><th class="n">CW</th><th class="n">p</th></tr></thead>
+<tbody>
+{% if h7 %}
+{% set t = h7.tests %}
+<tr><td>Plain → check + retry (10,000)</td><td class="n">{{ t.C2_accuracy.a | num }} → {{ t.C2_accuracy.b | num }}</td><td class="n">{{ t.C2_accuracy.p_holm | p }}</td><td class="n">{{ t.C2_confident_wrong.a | num }} → {{ t.C2_confident_wrong.b | num }}</td><td class="n">{{ t.C2_confident_wrong.p_holm | p }}</td></tr>
+{% if t.C3_accuracy is defined %}<tr><td>Plain → thinking (subset)</td><td class="n">{{ t.C3_accuracy.a }} → {{ t.C3_accuracy.b }}</td><td class="n">{{ t.C3_accuracy.p_holm | p }}</td><td class="n">{{ t.C3_confident_wrong.a }} → {{ t.C3_confident_wrong.b }}</td><td class="n">{{ t.C3_confident_wrong.p_holm | p }}</td></tr>{% endif %}
+{% endif %}
+{% for key, lab in [("R1", "Plain → Markdown tables, strict quote check (R1)"), ("R2", "Plain → alternative prompt (R2)"), ("R3", "Plain → identical repeat run (R3)")] %}
+{% if m in rb[key].models %}{% set x = rb[key].models[m] %}
+<tr><td>{{ lab }}</td><td class="n">{{ x.accuracy.a }} → {{ x.accuracy.b }}</td><td class="n">{{ x.accuracy.p_holm | p }}</td><td class="n">{{ x.confident_wrong.a }} → {{ x.confident_wrong.b }}</td><td class="n">{{ x.confident_wrong.p_holm | p }}</td></tr>
+{% endif %}
+{% if key == "R1" and m in rb.R1_pipe_free_exploratory.models %}{% set x = rb.R1_pipe_free_exploratory.models[m] %}
+<tr><td>Plain → Markdown tables, pipes ignored (exploratory)</td><td class="n">{{ x.accuracy.a }} → {{ x.accuracy.b }}</td><td class="n">{{ x.accuracy.p_holm | p }}</td><td class="n">{{ x.confident_wrong.a }} → {{ x.confident_wrong.b }}</td><td class="n">{{ x.confident_wrong.p_holm | p }}</td></tr>
+{% endif %}
+{% endfor %}
+{% for q4, v in rb.quantisation_17_3.items() if v.full_precision == m %}
+<tr><td>Full precision → 4-bit build (exploratory)</td><td class="n">{{ v.accuracy.a }} → {{ v.accuracy.b }}</td><td class="n">{{ v.accuracy.p_holm | p }}</td><td class="n">{{ v.confident_wrong.a }} → {{ v.confident_wrong.b }}</td><td class="n">{{ v.confident_wrong.p_holm | p }}</td></tr>
+{% endfor %}
+{% if m in rb.R3.models %}<tr><td colspan="5" class="muted">Repeat run: {{ rb.R3.models[m].outcome_changed.rate | pct }} of questions changed outcome.</td></tr>{% endif %}
+</tbody></table></div>
+
+<h2 id="speed">Speed</h2>
+{% set sp = d.speed[m] %}
+<p>Plain setup: median {{ "%.1f" | format(sp.C1.median_s) }} s per answer (p95 {{ "%.1f" | format(sp.C1.p95_s) }} s) at the runner's fixed concurrency, {{ "{:,.0f}".format(sp.C1.answers_per_hour) }} answers per hour{% if sp.C1.out_tokens_mean %}, {{ "%.0f" | format(sp.C1.out_tokens_mean) }} output tokens per answer on average{% endif %}.{% if sp.C3 is defined %} Thinking: median {{ "%.1f" | format(sp.C3.median_s) }} s per answer{% if sp.C3.out_tokens_mean %}, {{ "%.0f" | format(sp.C3.out_tokens_mean) }} output tokens on average{% endif %}.{% endif %}</p>
+
+<p class="muted" style="margin-top:28px"><a href="{{ PATH }}#models">← All models</a> · Every answer of this model, with its raw reply, is in the <a href="{{ HF }}">dataset</a> under <code>results/{{ m }}/</code>.</p>
+</article></div>
+</div>
+{% endblock %}
