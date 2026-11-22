@@ -50,7 +50,7 @@ stop_run() {
 START="$(date '+%Y-%m-%d %H:%M:%S')"
 log "start (temp max ${TEMP_MAX} C, power max ${POWER_MAX} W, power off after trip: ${SHUTDOWN}, delay ${SHUTDOWN_DELAY}s)"
 hot=0; heavy=0; i=0
-while pgrep -f "^bash .*(run_all|loadcheck|sets/sectors/run)\.sh" >/dev/null; do
+while pgrep -f "^bash .*(run_all|loadcheck|run)\.sh" >/dev/null; do
   if ! r=$(nvidia-smi --query-gpu=temperature.gpu,power.draw,clocks_event_reasons.active \
                       --format=csv,noheader,nounits 2>/dev/null); then
     stop_run "nvidia-smi failed (GPU not responding)"

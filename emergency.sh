@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Emergency stop for the Filing-Evidence Sectors runs, made to be typed from a phone over SSH (e.g. Tailscale).
 #
-#   bash ~/filing-evidence/emergency.sh            # stop the run cleanly, then power off
-#   bash ~/filing-evidence/emergency.sh --now      # stop at once (in-flight answers redone later), power off
-#   bash ~/filing-evidence/emergency.sh --stay-on  # stop the run cleanly, keep the PC on
-#   bash ~/filing-evidence/emergency.sh --dry-run  # only say what would happen
+#   bash ~/filing-evidence-sectors/emergency.sh            # stop the run cleanly, then power off
+#   bash ~/filing-evidence-sectors/emergency.sh --now      # stop at once (in-flight answers redone later), power off
+#   bash ~/filing-evidence-sectors/emergency.sh --stay-on  # stop the run cleanly, keep the PC on
+#   bash ~/filing-evidence-sectors/emergency.sh --dry-run  # only say what would happen
 #
 # Nothing answered is lost either way: every answer is on disk, and `run.sh start` resumes. Powering off asks
 # for your password if the system requires it.
