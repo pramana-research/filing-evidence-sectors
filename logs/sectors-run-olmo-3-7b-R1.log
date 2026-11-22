@@ -1,0 +1,44 @@
+sectors/olmo-3-7b/C1: 1000 to run, 0 already done
+  25/1000
+  50/1000
+  75/1000
+  100/1000
+  125/1000
+  150/1000
+  175/1000
+  200/1000
+  225/1000
+  250/1000
+  275/1000
+  300/1000
+  325/1000
+  350/1000
+  375/1000
+  400/1000
+  425/1000
+  450/1000
+  475/1000
+  500/1000
+  525/1000
+  550/1000
+  575/1000
+  600/1000
+  625/1000
+  650/1000
+  675/1000
+  700/1000
+  725/1000
+  750/1000
+  775/1000
+  800/1000
+  825/1000
+  850/1000
+  875/1000
+  900/1000
+  925/1000
+  950/1000
+  975/1000
+  1000/1000
+accuracy 56/900  confident-wrong 37/1000  abstention 97/100  outcomes {'correct': 56, 'confident_wrong': 37, 'caught_wrong': 277, 'unverifiable_right': 390, 'missed': 134, 'abstained_correctly': 97, 'invented': 3, 'invalid': 6}
+🏃 View run sectors/olmo-3-7b/R1 at: http://127.0.0.1:5000/#/experiments/3/runs/67069bb1b2af43f988d2f47a78587248
+🧪 View experiment at: http://127.0.0.1:5000/#/experiments/3

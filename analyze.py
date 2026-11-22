@@ -66,7 +66,7 @@ def metrics(rows: list[tuple[dict, dict]]) -> dict:
 
 
 def models() -> list[str]:
-    return sorted(p.name for p in RESULTS.iterdir() if p.is_dir() and p.name not in ("analysis", "serve") and (p / "C1" / "answers.jsonl").exists())
+    return sorted(p.name for p in RESULTS.iterdir() if p.is_dir() and p.name not in ("analysis", "serve") and not p.name.endswith("-4bit") and (p / "C1" / "answers.jsonl").exists())
 
 
 def h1(qs: dict[str, dict], ms: list[str]) -> dict:

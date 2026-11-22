@@ -1,0 +1,44 @@
+sectors/granite-4.2-8b/C1: 1000 to run, 0 already done
+  25/1000
+  50/1000
+  75/1000
+  100/1000
+  125/1000
+  150/1000
+  175/1000
+  200/1000
+  225/1000
+  250/1000
+  275/1000
+  300/1000
+  325/1000
+  350/1000
+  375/1000
+  400/1000
+  425/1000
+  450/1000
+  475/1000
+  500/1000
+  525/1000
+  550/1000
+  575/1000
+  600/1000
+  625/1000
+  650/1000
+  675/1000
+  700/1000
+  725/1000
+  750/1000
+  775/1000
+  800/1000
+  825/1000
+  850/1000
+  875/1000
+  900/1000
+  925/1000
+  950/1000
+  975/1000
+  1000/1000
+accuracy 111/900  confident-wrong 17/1000  abstention 98/100  outcomes {'correct': 111, 'confident_wrong': 17, 'caught_wrong': 125, 'unverifiable_right': 604, 'missed': 39, 'abstained_correctly': 98, 'invented': 2, 'invalid': 4}
+🏃 View run sectors/granite-4.2-8b/R1 at: http://127.0.0.1:5000/#/experiments/3/runs/c3a52157ef714d669fb0000e47794b4f
+🧪 View experiment at: http://127.0.0.1:5000/#/experiments/3

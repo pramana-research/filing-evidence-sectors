@@ -181,14 +181,16 @@ def log_mlflow(out: Path, meta: dict, summary: dict) -> str | None:
     import mlflow
 
     mlflow.set_experiment("finance-probe")
-    name = f"{meta['set']}/{meta['profile']}/{meta['setup']}"
-    tags = {"kind": "probe", "benchmark": "filing-evidence", "model": meta["repo"], "set": meta["set"]}
+    name = f"{meta['set']}/{meta['profile']}/{out.name}"  # out.name: the setup, or R1 / R2 / R3
+    tags = {"kind": "probe", "benchmark": "filing-evidence-sectors", "model": meta["repo"], "set": meta["set"],
+            "run": out.name}
     with mlflow.start_run(run_name=name, tags=tags) as run:
         mlflow.log_params({
             "profile": meta["profile"], "repo": meta["repo"], "revision": meta.get("revision"),
             "precision": meta.get("precision"), "setup": meta["setup"], "set": meta["set"],
             "prompt_sha256": meta["prompt_sha256"], "dataset_fingerprint": meta["dataset_fingerprint"],
             "git_commit": meta["git_commit"], "vllm": meta.get("vllm_version"),
+            "run": out.name, "prompt": meta.get("prompt"), "pages": meta.get("pages"),
         })  # fmt: skip
         m = {
             "accuracy": summary["accuracy"]["rate"],

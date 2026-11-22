@@ -1,0 +1,52 @@
+{
+  "set": "sectors",
+  "profile": "glm-4.6v-flash",
+  "setup": "C1",
+  "repo": "zai-org/GLM-4.6V-Flash",
+  "company": "Zhipu (Z.ai)",
+  "precision": "bf16",
+  "revision": "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+  "serve_command": [
+    "vllm",
+    "serve",
+    "zai-org/GLM-4.6V-Flash",
+    "--served-model-name",
+    "glm-4.6v-flash",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000",
+    "--max-model-len",
+    "16384",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--api-key",
+    "<key>",
+    "--seed",
+    "0",
+    "--revision",
+    "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+    "--language-model-only"
+  ],
+  "vllm_version": "0.33.0",
+  "request_extra": {
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "system": null,
+  "max_tokens": 512,
+  "temperature": 0,
+  "prompt": "v1",
+  "pages": "r1",
+  "prompt_sha256": "47e6fde9bcb74cfa13cd7decb02cc06cd9aadb47dea4edc878e232f72fbf4b4b",
+  "retry_sha256": "abd8b267a1d2458a0d1d3fd4adc6c898678cd7fb13208a93d66327f7ae8e85c9",
+  "dataset_fingerprint": "9a007d8046167c38d67d8570435ccd95f4dd7effc43bb3fc06ce4a64fe75346c",
+  "questions": 1000,
+  "limit": null,
+  "git_commit": "1ca2eed8aca9c255429635ed0e8443522058e1bf-dirty",
+  "started": "2026-11-22T14:01:59+00:00",
+  "finished": "2026-11-22T14:07:55+00:00",
+  "c2_reused_c1": false,
+  "mlflow_run_id": "c7374a3f5ec24adfb8be2740238d8f2d"
+}

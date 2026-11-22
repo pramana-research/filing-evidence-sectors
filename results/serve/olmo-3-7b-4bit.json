@@ -1,0 +1,31 @@
+{
+  "profile": "olmo-3-7b-4bit",
+  "repo": "kaitchup/Olmo-3-7B-Instruct-awq-w4a16-asym",
+  "revision": "ccbdd1811885a0c0ea8942855a574929a8b73d0c",
+  "precision": "awq-4bit",
+  "vllm": "0.33.0",
+  "command": [
+    "vllm",
+    "serve",
+    "kaitchup/Olmo-3-7B-Instruct-awq-w4a16-asym",
+    "--served-model-name",
+    "olmo-3-7b-4bit",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000",
+    "--max-model-len",
+    "16384",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--api-key",
+    "<key>",
+    "--seed",
+    "0",
+    "--revision",
+    "ccbdd1811885a0c0ea8942855a574929a8b73d0c",
+    "--chat-template",
+    "templates/olmo-3-7b.jinja"
+  ],
+  "started": "2026-11-22T16:24:07+00:00"
+}

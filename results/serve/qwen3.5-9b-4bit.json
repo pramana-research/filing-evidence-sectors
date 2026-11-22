@@ -1,0 +1,32 @@
+{
+  "profile": "qwen3.5-9b-4bit",
+  "repo": "cyankiwi/Qwen3.5-9B-AWQ-4bit",
+  "revision": "e4d2d39cede8c5d1716d824cd843e2889c648083",
+  "precision": "awq-4bit",
+  "vllm": "0.33.0",
+  "command": [
+    "vllm",
+    "serve",
+    "cyankiwi/Qwen3.5-9B-AWQ-4bit",
+    "--served-model-name",
+    "qwen3.5-9b-4bit",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000",
+    "--max-model-len",
+    "16384",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--api-key",
+    "<key>",
+    "--seed",
+    "0",
+    "--revision",
+    "e4d2d39cede8c5d1716d824cd843e2889c648083",
+    "--language-model-only",
+    "--max-num-seqs",
+    "64"
+  ],
+  "started": "2026-11-22T15:57:52+00:00"
+}

@@ -115,14 +115,72 @@ Paired exact McNemar per model, Holm within each model's family. C2 on all 10,00
 
 C3 lowers confident-wrong: **4 of 5 reasoning models** (pooled: 299 answers stop being confident-wrong, 108 start; p = 7.8e-22). C2 does not lower it: **10 of 10 models**; C2 raises it significantly: **8 of 10 models**.
 
-## Holm correction across the hypotheses (H1–H7; H8 pending: needs R1)
+## Robustness checks (§12), each vs C1 on the 1,000-question subset
+
+### R1
+
+| Model | Acc C1 → R1 | p (Holm) | CW C1 → R1 | p (Holm) |
+|---|---|---|---|---|
+| gemma-3-12b | 558 → 437 | 1.1e-16 | 95 → 76 | 0.08 |
+| glm-4.6v-flash | 673 → 391 | 2.1e-60 | 102 → 44 | 3.9e-11 |
+| gpt-oss-20b | 697 → 499 | 3.1e-33 | 105 → 71 | 0.00095 |
+| granite-4.2-8b | 649 → 111 | 1.8e-146 | 90 → 17 | 7e-17 |
+| llama-3.1-8b | 562 → 378 | 4.2e-32 | 92 → 53 | 1.5e-06 |
+| ministral-3-8b | 648 → 203 | 4.3e-111 | 52 → 19 | 1.5e-06 |
+| nemotron-nano-9b-v2 | 412 → 255 | 9.3e-26 | 92 → 45 | 7.8e-09 |
+| olmo-3-7b | 181 → 56 | 9.4e-24 | 75 → 37 | 5.9e-05 |
+| phi-4 | 566 → 331 | 1.9e-43 | 152 → 69 | 1.9e-15 |
+| qwen3.5-9b | 743 → 268 | 5.4e-125 | 34 → 8 | 1.5e-06 |
+| qwen3-8b | 605 → 551 | 1.4e-05 | 103 → 87 | 0.08 |
+
+Rank stability: Kendall's τ = 0.20 (p = 0.48, 10 models).
+
+### R2
+
+| Model | Acc C1 → R2 | p (Holm) | CW C1 → R2 | p (Holm) |
+|---|---|---|---|---|
+| gemma-3-12b | 558 → 581 | 0.3 | 95 → 89 | 1 |
+| glm-4.6v-flash | 673 → 674 | 1 | 102 → 117 | 0.38 |
+| gpt-oss-20b | 697 → 684 | 1 | 105 → 123 | 0.38 |
+| granite-4.2-8b | 649 → 629 | 0.34 | 90 → 86 | 1 |
+| llama-3.1-8b | 562 → 524 | 0.046 | 92 → 85 | 1 |
+| ministral-3-8b | 648 → 633 | 0.75 | 52 → 65 | 0.29 |
+| nemotron-nano-9b-v2 | 412 → 339 | 3.4e-07 | 92 → 145 | 2.9e-07 |
+| olmo-3-7b | 181 → 89 | 2.5e-13 | 75 → 159 | 4.7e-12 |
+| phi-4 | 566 → 529 | 0.031 | 152 → 123 | 0.022 |
+| qwen3.5-9b | 743 → 715 | 0.016 | 34 → 45 | 0.38 |
+| qwen3-8b | 605 → 612 | 1 | 103 → 83 | 0.13 |
+
+Rank stability: Kendall's τ = 0.87 (p = 0.00012, 10 models).
+
+### R3
+
+| Model | Acc C1 → R3 | p (Holm) | CW C1 → R3 | p (Holm) | outcome changed |
+|---|---|---|---|---|---|
+| ministral-3-8b | 648 → 639 | 0.28 | 52 → 56 | 1 | 3.4% |
+| olmo-3-7b | 181 → 181 | 1 | 75 → 74 | 1 | 1.6% |
+| qwen3.5-9b | 743 → 740 | 0.75 | 34 → 35 | 1 | 0.6% |
+
+**H8:** wrong-period-or-column errors 349 (C1) → 286 (R1); p = 0.00022: supported (before Holm).
+Tag effects (H2–H4) keep their direction under C1, R1, R2 on the subset: H2 yes, H3 yes, H4 yes.
+
+## §17.3 · 4-bit vs full precision (C1, subset; supplementary, exploratory)
+
+| 4-bit build | Acc full → 4-bit | p (Holm) | CW full → 4-bit | p (Holm) |
+|---|---|---|---|---|
+| qwen3.5-9b-4bit | 743 → 711 | 0.00039 | 34 → 42 | 0.35 |
+| ministral-3-8b-4bit | 648 → 639 | 0.75 | 52 → 55 | 0.94 |
+| olmo-3-7b-4bit | 181 → 191 | 0.75 | 75 → 81 | 0.94 |
+
+## Holm correction across the hypotheses (H1–H8)
 
 | # | raw p | Holm p |
 |---|---|---|
 | H1 | 0.079 | 0.079 |
 | H2 | 0.00033 | 0.00066 |
-| H3 | 1.7e-08 | 6.7e-08 |
-| H4 | 8.1e-24 | 4.8e-23 |
-| H5 | 2.3e-06 | 6.9e-06 |
-| H6 | 3.5e-37 | 2.5e-36 |
-| H7 | 7.8e-22 | 3.9e-21 |
+| H3 | 1.7e-08 | 8.4e-08 |
+| H4 | 8.1e-24 | 5.7e-23 |
+| H5 | 2.3e-06 | 9.2e-06 |
+| H6 | 3.5e-37 | 2.8e-36 |
+| H7 | 7.8e-22 | 4.7e-21 |
+| H8 | 0.00022 | 0.00065 |

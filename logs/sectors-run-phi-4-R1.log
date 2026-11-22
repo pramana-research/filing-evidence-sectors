@@ -1,0 +1,44 @@
+sectors/phi-4/C1: 1000 to run, 0 already done
+  25/1000
+  50/1000
+  75/1000
+  100/1000
+  125/1000
+  150/1000
+  175/1000
+  200/1000
+  225/1000
+  250/1000
+  275/1000
+  300/1000
+  325/1000
+  350/1000
+  375/1000
+  400/1000
+  425/1000
+  450/1000
+  475/1000
+  500/1000
+  525/1000
+  550/1000
+  575/1000
+  600/1000
+  625/1000
+  650/1000
+  675/1000
+  700/1000
+  725/1000
+  750/1000
+  775/1000
+  800/1000
+  825/1000
+  850/1000
+  875/1000
+  900/1000
+  925/1000
+  950/1000
+  975/1000
+  1000/1000
+accuracy 331/900  confident-wrong 69/1000  abstention 96/100  outcomes {'correct': 331, 'confident_wrong': 69, 'caught_wrong': 119, 'unverifiable_right': 340, 'missed': 38, 'abstained_correctly': 96, 'invented': 4, 'invalid': 3}
+🏃 View run sectors/phi-4/R1 at: http://127.0.0.1:5000/#/experiments/3/runs/a9c08364b24b414481571ca694f4e75e
+🧪 View experiment at: http://127.0.0.1:5000/#/experiments/3

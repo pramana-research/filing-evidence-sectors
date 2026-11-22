@@ -133,10 +133,11 @@ models:
     verified: false
 
   olmo-3-7b-4bit:
-    repo: unsloth/Olmo-3-7B-Instruct-unsloth-bnb-4bit
-    revision: 5d19c438a3f72bd74a2b1e1f7aa90e24d359c690
+    # the first choice (unsloth bnb-4bit) failed to serve: vLLM 0.33 has no bitsandbytes; GGUF failed too (Dev. 5)
+    repo: kaitchup/Olmo-3-7B-Instruct-awq-w4a16-asym
+    revision: ccbdd1811885a0c0ea8942855a574929a8b73d0c
     company: AllenAI (community 4-bit build)
-    precision: bnb-4bit
+    precision: awq-4bit
     vllm_args: [--chat-template, templates/olmo-3-7b.jinja]
     request: {C1: {}, C3: null}
     verified: false

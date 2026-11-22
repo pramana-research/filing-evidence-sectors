@@ -1,0 +1,78 @@
+W1122 21:53:42.643000 153724 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1122 21:53:42.643000 153724 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1122 21:53:42.644000 153724 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1122 21:53:44.924000 153724 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1122 21:53:44.949000 153724 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+(APIServer pid=153724) INFO 11-22 21:53:47 [startup.py:38] 
+(APIServer pid=153724) INFO 11-22 21:53:47 [startup.py:38]        █     █     █▄   ▄█
+(APIServer pid=153724) INFO 11-22 21:53:47 [startup.py:38]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.33.0
+(APIServer pid=153724) INFO 11-22 21:53:47 [startup.py:38]   █▄█▀ █     █     █     █  model   Edge-Quant/Olmo-3-7B-Instruct-Q4_K_M-GGUF:Q4_K_M
+(APIServer pid=153724) INFO 11-22 21:53:47 [startup.py:38]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=153724) INFO 11-22 21:53:47 [startup.py:38] 
+(APIServer pid=153724) INFO 11-22 21:53:47 [startup.py:96] non-default args: {'model_tag': 'Edge-Quant/Olmo-3-7B-Instruct-Q4_K_M-GGUF:Q4_K_M', 'chat_template': 'templates/olmo-3-7b.jinja', 'host': '127.0.0.1', 'model': 'Edge-Quant/Olmo-3-7B-Instruct-Q4_K_M-GGUF:Q4_K_M', 'tokenizer': 'allenai/Olmo-3-7B-Instruct', 'max_model_len': 16384, 'served_model_name': ['olmo-3-7b-4bit'], 'gpu_memory_utilization': 0.9}
+(APIServer pid=153724) WARNING 11-22 21:53:47 [interface.py:1469] Unknown vLLM environment variable detected: VLLM_VENV
+Traceback (most recent call last):
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 438, in cached_files
+    hf_hub_download(
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 85, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 139, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must use alphanumeric chars, '-', '_' or '.'. The name cannot start or end with '-' or '.' and the maximum length is 96: 'Edge-Quant/Olmo-3-7B-Instruct-Q4_K_M-GGUF:Q4_K_M'.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/krishna-nandula/forge/.venv/bin/vllm", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/vllm/entrypoints/cli/main.py", line 117, in main
+    args.dispatch_function(args)
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/vllm/entrypoints/cli/serve.py", line 156, in cmd
+    uvloop.run(run_server(args))
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/uvloop/__init__.py", line 96, in run
+    return __asyncio.run(
+           ^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1515, in uvloop.loop.Loop.run_until_complete
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/uvloop/__init__.py", line 48, in wrapper
+    return await main
+           ^^^^^^^^^^
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 176, in run_server
+    await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 190, in run_server_worker
+    async with build_async_engine_client(
+  File "/usr/lib/python3.12/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 60, in build_async_engine_client
+    async with build_async_engine_client_from_engine_args(
+  File "/usr/lib/python3.12/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 82, in build_async_engine_client_from_engine_args
+    vllm_config = engine_args.create_engine_config(usage_context=usage_context)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 2270, in create_engine_config
+    maybe_override_with_speculators(
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/vllm/transformers_utils/config.py", line 831, in maybe_override_with_speculators
+    config_dict, _ = PreTrainedConfig.get_config_dict(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/transformers/configuration_utils.py", line 747, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/transformers/configuration_utils.py", line 802, in _get_config_dict
+    resolved_config_file = cached_file(
+                           ^^^^^^^^^^^^
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 294, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/krishna-nandula/forge/.venv/lib/python3.12/site-packages/transformers/utils/hub.py", line 496, in cached_files
+    raise OSError(f"{e}") from e
+OSError: Repo id must use alphanumeric chars, '-', '_' or '.'. The name cannot start or end with '-' or '.' and the maximum length is 96: 'Edge-Quant/Olmo-3-7B-Instruct-Q4_K_M-GGUF:Q4_K_M'.

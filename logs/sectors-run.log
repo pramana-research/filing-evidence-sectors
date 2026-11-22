@@ -118,3 +118,125 @@
 2026-11-22T16:27:11+05:30 job qwen3-8b C3 exit 0 accuracy 653/900  confident-wrong 58/1000  abstention 82/100  outcomes {'correct': 653, 'confident_wrong': 58, 'caught_w
 2026-11-22T16:27:37+05:30 queue finished
 2026-11-22T16:27:37+05:30 queue finished
+2026-11-22T18:50:12+05:30 queue start (pid 124241)
+2026-11-22T18:50:12+05:30 queue start (pid 124241)
+2026-11-22T18:51:12+05:30 job qwen3.5-9b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T18:51:12+05:30 job qwen3.5-9b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T18:57:31+05:30 job qwen3.5-9b R1 exit 1 
+2026-11-22T18:57:31+05:30 job qwen3.5-9b R1 exit 1 
+2026-11-22T18:57:31+05:30 job qwen3.5-9b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T18:57:31+05:30 job qwen3.5-9b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T19:03:21+05:30 job qwen3.5-9b R2 exit 0 accuracy 715/900  confident-wrong 45/1000  abstention 99/100  outcomes {'correct': 715, 'confident_wrong': 45, 'caught_w
+2026-11-22T19:03:21+05:30 job qwen3.5-9b R2 exit 0 accuracy 715/900  confident-wrong 45/1000  abstention 99/100  outcomes {'correct': 715, 'confident_wrong': 45, 'caught_w
+2026-11-22T19:03:21+05:30 job qwen3.5-9b C1 --subset --out-name R3 start
+2026-11-22T19:03:21+05:30 job qwen3.5-9b C1 --subset --out-name R3 start
+2026-11-22T19:09:07+05:30 job qwen3.5-9b R3 exit 0 accuracy 740/900  confident-wrong 35/1000  abstention 99/100  outcomes {'correct': 740, 'confident_wrong': 35, 'caught_w
+2026-11-22T19:09:07+05:30 job qwen3.5-9b R3 exit 0 accuracy 740/900  confident-wrong 35/1000  abstention 99/100  outcomes {'correct': 740, 'confident_wrong': 35, 'caught_w
+2026-11-22T19:10:20+05:30 job gpt-oss-20b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T19:10:20+05:30 job gpt-oss-20b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T19:13:49+05:30 job gpt-oss-20b R1 exit 0 accuracy 499/900  confident-wrong 71/1000  abstention 91/100  outcomes {'correct': 499, 'confident_wrong': 71, 'caught_w
+2026-11-22T19:13:49+05:30 job gpt-oss-20b R1 exit 0 accuracy 499/900  confident-wrong 71/1000  abstention 91/100  outcomes {'correct': 499, 'confident_wrong': 71, 'caught_w
+2026-11-22T19:13:49+05:30 job gpt-oss-20b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T19:13:49+05:30 job gpt-oss-20b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T19:17:16+05:30 job gpt-oss-20b R2 exit 0 accuracy 684/900  confident-wrong 123/1000  abstention 91/100  outcomes {'correct': 684, 'confident_wrong': 123, 'caught
+2026-11-22T19:17:16+05:30 job gpt-oss-20b R2 exit 0 accuracy 684/900  confident-wrong 123/1000  abstention 91/100  outcomes {'correct': 684, 'confident_wrong': 123, 'caught
+2026-11-22T19:18:19+05:30 job granite-4.2-8b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T19:18:19+05:30 job granite-4.2-8b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T19:24:53+05:30 job granite-4.2-8b R1 exit 0 accuracy 111/900  confident-wrong 17/1000  abstention 98/100  outcomes {'correct': 111, 'confident_wrong': 17, 'caught_w
+2026-11-22T19:24:53+05:30 job granite-4.2-8b R1 exit 0 accuracy 111/900  confident-wrong 17/1000  abstention 98/100  outcomes {'correct': 111, 'confident_wrong': 17, 'caught_w
+2026-11-22T19:24:53+05:30 job granite-4.2-8b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T19:24:53+05:30 job granite-4.2-8b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T19:30:39+05:30 job granite-4.2-8b R2 exit 0 accuracy 629/900  confident-wrong 86/1000  abstention 98/100  outcomes {'correct': 629, 'confident_wrong': 86, 'caught_w
+2026-11-22T19:30:39+05:30 job granite-4.2-8b R2 exit 0 accuracy 629/900  confident-wrong 86/1000  abstention 98/100  outcomes {'correct': 629, 'confident_wrong': 86, 'caught_w
+2026-11-22T19:31:57+05:30 job glm-4.6v-flash C1 --subset --out-name R1 --pages r1 start
+2026-11-22T19:31:57+05:30 job glm-4.6v-flash C1 --subset --out-name R1 --pages r1 start
+2026-11-22T19:37:57+05:30 job glm-4.6v-flash R1 exit 0 accuracy 391/900  confident-wrong 44/1000  abstention 98/100  outcomes {'correct': 391, 'confident_wrong': 44, 'caught_w
+2026-11-22T19:37:57+05:30 job glm-4.6v-flash R1 exit 0 accuracy 391/900  confident-wrong 44/1000  abstention 98/100  outcomes {'correct': 391, 'confident_wrong': 44, 'caught_w
+2026-11-22T19:37:57+05:30 job glm-4.6v-flash C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T19:37:57+05:30 job glm-4.6v-flash C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T19:43:21+05:30 job glm-4.6v-flash R2 exit 0 accuracy 674/900  confident-wrong 117/1000  abstention 97/100  outcomes {'correct': 674, 'confident_wrong': 117, 'caught
+2026-11-22T19:43:21+05:30 job glm-4.6v-flash R2 exit 0 accuracy 674/900  confident-wrong 117/1000  abstention 97/100  outcomes {'correct': 674, 'confident_wrong': 117, 'caught
+2026-11-22T19:44:44+05:30 job ministral-3-8b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T19:44:44+05:30 job ministral-3-8b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T19:49:18+05:30 job ministral-3-8b R1 exit 0 accuracy 203/900  confident-wrong 19/1000  abstention 98/100  outcomes {'correct': 203, 'confident_wrong': 19, 'caught_w
+2026-11-22T19:49:18+05:30 job ministral-3-8b R1 exit 0 accuracy 203/900  confident-wrong 19/1000  abstention 98/100  outcomes {'correct': 203, 'confident_wrong': 19, 'caught_w
+2026-11-22T19:49:18+05:30 job ministral-3-8b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T19:49:18+05:30 job ministral-3-8b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T19:53:28+05:30 job ministral-3-8b R2 exit 0 accuracy 633/900  confident-wrong 65/1000  abstention 98/100  outcomes {'correct': 633, 'confident_wrong': 65, 'caught_w
+2026-11-22T19:53:28+05:30 job ministral-3-8b R2 exit 0 accuracy 633/900  confident-wrong 65/1000  abstention 98/100  outcomes {'correct': 633, 'confident_wrong': 65, 'caught_w
+2026-11-22T19:53:28+05:30 job ministral-3-8b C1 --subset --out-name R3 start
+2026-11-22T19:53:28+05:30 job ministral-3-8b C1 --subset --out-name R3 start
+2026-11-22T19:57:36+05:30 job ministral-3-8b R3 exit 0 accuracy 639/900  confident-wrong 56/1000  abstention 98/100  outcomes {'correct': 639, 'confident_wrong': 56, 'caught_w
+2026-11-22T19:57:36+05:30 job ministral-3-8b R3 exit 0 accuracy 639/900  confident-wrong 56/1000  abstention 98/100  outcomes {'correct': 639, 'confident_wrong': 56, 'caught_w
+2026-11-22T19:59:39+05:30 job gemma-3-12b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T19:59:39+05:30 job gemma-3-12b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T20:06:53+05:30 job gemma-3-12b R1 exit 0 accuracy 437/900  confident-wrong 76/1000  abstention 86/100  outcomes {'correct': 437, 'confident_wrong': 76, 'caught_w
+2026-11-22T20:06:53+05:30 job gemma-3-12b R1 exit 0 accuracy 437/900  confident-wrong 76/1000  abstention 86/100  outcomes {'correct': 437, 'confident_wrong': 76, 'caught_w
+2026-11-22T20:06:53+05:30 job gemma-3-12b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T20:06:53+05:30 job gemma-3-12b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T20:13:30+05:30 job gemma-3-12b R2 exit 0 accuracy 581/900  confident-wrong 89/1000  abstention 84/100  outcomes {'correct': 581, 'confident_wrong': 89, 'caught_w
+2026-11-22T20:13:30+05:30 job gemma-3-12b R2 exit 0 accuracy 581/900  confident-wrong 89/1000  abstention 84/100  outcomes {'correct': 581, 'confident_wrong': 89, 'caught_w
+2026-11-22T20:14:38+05:30 job llama-3.1-8b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T20:14:38+05:30 job llama-3.1-8b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T20:19:47+05:30 job llama-3.1-8b R1 exit 0 accuracy 378/900  confident-wrong 53/1000  abstention 90/100  outcomes {'correct': 378, 'confident_wrong': 53, 'caught_w
+2026-11-22T20:19:47+05:30 job llama-3.1-8b R1 exit 0 accuracy 378/900  confident-wrong 53/1000  abstention 90/100  outcomes {'correct': 378, 'confident_wrong': 53, 'caught_w
+2026-11-22T20:19:47+05:30 job llama-3.1-8b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T20:19:47+05:30 job llama-3.1-8b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T20:24:22+05:30 job llama-3.1-8b R2 exit 0 accuracy 524/900  confident-wrong 85/1000  abstention 89/100  outcomes {'correct': 524, 'confident_wrong': 85, 'caught_w
+2026-11-22T20:24:22+05:30 job llama-3.1-8b R2 exit 0 accuracy 524/900  confident-wrong 85/1000  abstention 89/100  outcomes {'correct': 524, 'confident_wrong': 85, 'caught_w
+2026-11-22T20:25:35+05:30 job phi-4 C1 --subset --out-name R1 --pages r1 start
+2026-11-22T20:25:35+05:30 job phi-4 C1 --subset --out-name R1 --pages r1 start
+2026-11-22T20:32:55+05:30 job phi-4 R1 exit 0 accuracy 331/900  confident-wrong 69/1000  abstention 96/100  outcomes {'correct': 331, 'confident_wrong': 69, 'caught_w
+2026-11-22T20:32:55+05:30 job phi-4 R1 exit 0 accuracy 331/900  confident-wrong 69/1000  abstention 96/100  outcomes {'correct': 331, 'confident_wrong': 69, 'caught_w
+2026-11-22T20:32:55+05:30 job phi-4 C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T20:32:55+05:30 job phi-4 C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T20:39:36+05:30 job phi-4 R2 exit 0 accuracy 529/900  confident-wrong 123/1000  abstention 97/100  outcomes {'correct': 529, 'confident_wrong': 123, 'caught
+2026-11-22T20:39:36+05:30 job phi-4 R2 exit 0 accuracy 529/900  confident-wrong 123/1000  abstention 97/100  outcomes {'correct': 529, 'confident_wrong': 123, 'caught
+2026-11-22T20:40:44+05:30 job nemotron-nano-9b-v2 C1 --subset --out-name R1 --pages r1 start
+2026-11-22T20:40:44+05:30 job nemotron-nano-9b-v2 C1 --subset --out-name R1 --pages r1 start
+2026-11-22T20:47:49+05:30 job nemotron-nano-9b-v2 R1 exit 0 accuracy 255/900  confident-wrong 45/1000  abstention 99/100  outcomes {'correct': 255, 'confident_wrong': 45, 'caught_w
+2026-11-22T20:47:49+05:30 job nemotron-nano-9b-v2 R1 exit 0 accuracy 255/900  confident-wrong 45/1000  abstention 99/100  outcomes {'correct': 255, 'confident_wrong': 45, 'caught_w
+2026-11-22T20:47:49+05:30 job nemotron-nano-9b-v2 C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T20:47:49+05:30 job nemotron-nano-9b-v2 C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T20:54:40+05:30 job nemotron-nano-9b-v2 R2 exit 0 accuracy 339/900  confident-wrong 145/1000  abstention 98/100  outcomes {'correct': 339, 'confident_wrong': 145, 'caught
+2026-11-22T20:54:40+05:30 job nemotron-nano-9b-v2 R2 exit 0 accuracy 339/900  confident-wrong 145/1000  abstention 98/100  outcomes {'correct': 339, 'confident_wrong': 145, 'caught
+2026-11-22T20:55:53+05:30 job olmo-3-7b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T20:55:53+05:30 job olmo-3-7b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T21:02:30+05:30 job olmo-3-7b R1 exit 0 accuracy 56/900  confident-wrong 37/1000  abstention 97/100  outcomes {'correct': 56, 'confident_wrong': 37, 'caught_wro
+2026-11-22T21:02:30+05:30 job olmo-3-7b R1 exit 0 accuracy 56/900  confident-wrong 37/1000  abstention 97/100  outcomes {'correct': 56, 'confident_wrong': 37, 'caught_wro
+2026-11-22T21:02:30+05:30 job olmo-3-7b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T21:02:30+05:30 job olmo-3-7b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T21:08:32+05:30 job olmo-3-7b R2 exit 0 accuracy 89/900  confident-wrong 159/1000  abstention 95/100  outcomes {'correct': 89, 'confident_wrong': 159, 'caught_w
+2026-11-22T21:08:32+05:30 job olmo-3-7b R2 exit 0 accuracy 89/900  confident-wrong 159/1000  abstention 95/100  outcomes {'correct': 89, 'confident_wrong': 159, 'caught_w
+2026-11-22T21:08:32+05:30 job olmo-3-7b C1 --subset --out-name R3 start
+2026-11-22T21:08:32+05:30 job olmo-3-7b C1 --subset --out-name R3 start
+2026-11-22T21:14:24+05:30 job olmo-3-7b R3 exit 0 accuracy 181/900  confident-wrong 74/1000  abstention 97/100  outcomes {'correct': 181, 'confident_wrong': 74, 'caught_w
+2026-11-22T21:14:24+05:30 job olmo-3-7b R3 exit 0 accuracy 181/900  confident-wrong 74/1000  abstention 97/100  outcomes {'correct': 181, 'confident_wrong': 74, 'caught_w
+2026-11-22T21:15:27+05:30 job qwen3-8b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T21:15:27+05:30 job qwen3-8b C1 --subset --out-name R1 --pages r1 start
+2026-11-22T21:21:53+05:30 job qwen3-8b R1 exit 0 accuracy 551/900  confident-wrong 87/1000  abstention 81/100  outcomes {'correct': 551, 'confident_wrong': 87, 'caught_w
+2026-11-22T21:21:53+05:30 job qwen3-8b R1 exit 0 accuracy 551/900  confident-wrong 87/1000  abstention 81/100  outcomes {'correct': 551, 'confident_wrong': 87, 'caught_w
+2026-11-22T21:21:53+05:30 job qwen3-8b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T21:21:53+05:30 job qwen3-8b C1 --subset --out-name R2 --prompt v2-alt start
+2026-11-22T21:27:37+05:30 job qwen3-8b R2 exit 0 accuracy 612/900  confident-wrong 83/1000  abstention 96/100  outcomes {'correct': 612, 'confident_wrong': 83, 'caught_w
+2026-11-22T21:27:37+05:30 job qwen3-8b R2 exit 0 accuracy 612/900  confident-wrong 83/1000  abstention 96/100  outcomes {'correct': 612, 'confident_wrong': 83, 'caught_w
+2026-11-22T21:34:00+05:30 job qwen3.5-9b-4bit C1 --subset start
+2026-11-22T21:34:00+05:30 job qwen3.5-9b-4bit C1 --subset start
+2026-11-22T21:39:16+05:30 job qwen3.5-9b-4bit C1 exit 0 accuracy 711/900  confident-wrong 42/1000  abstention 99/100  outcomes {'correct': 711, 'confident_wrong': 42, 'caught_w
+2026-11-22T21:39:16+05:30 job qwen3.5-9b-4bit C1 exit 0 accuracy 711/900  confident-wrong 42/1000  abstention 99/100  outcomes {'correct': 711, 'confident_wrong': 42, 'caught_w
+2026-11-22T21:44:25+05:30 job ministral-3-8b-4bit C1 --subset start
+2026-11-22T21:44:25+05:30 job ministral-3-8b-4bit C1 --subset start
+2026-11-22T21:49:50+05:30 job ministral-3-8b-4bit C1 exit 0 accuracy 639/900  confident-wrong 55/1000  abstention 97/100  outcomes {'correct': 639, 'confident_wrong': 55, 'caught_w
+2026-11-22T21:49:50+05:30 job ministral-3-8b-4bit C1 exit 0 accuracy 639/900  confident-wrong 55/1000  abstention 97/100  outcomes {'correct': 639, 'confident_wrong': 55, 'caught_w
+2026-11-22T21:50:23+05:30 serve olmo-3-7b-4bit failed or stopped
+2026-11-22T21:50:23+05:30 serve olmo-3-7b-4bit failed or stopped
+2026-11-22T21:50:49+05:30 queue finished
+2026-11-22T21:50:49+05:30 queue finished
+2026-11-22T21:54:05+05:30 queue start (pid 153896)
+2026-11-22T21:54:05+05:30 queue start (pid 153896)
+2026-11-22T21:57:35+05:30 job olmo-3-7b-4bit C1 --subset start
+2026-11-22T21:57:35+05:30 job olmo-3-7b-4bit C1 --subset start
+2026-11-22T22:01:53+05:30 job olmo-3-7b-4bit C1 exit 0 accuracy 191/900  confident-wrong 81/1000  abstention 94/100  outcomes {'correct': 191, 'confident_wrong': 81, 'caught_w
+2026-11-22T22:01:53+05:30 job olmo-3-7b-4bit C1 exit 0 accuracy 191/900  confident-wrong 81/1000  abstention 94/100  outcomes {'correct': 191, 'confident_wrong': 81, 'caught_w
+2026-11-22T22:02:19+05:30 queue finished
+2026-11-22T22:02:19+05:30 queue finished
