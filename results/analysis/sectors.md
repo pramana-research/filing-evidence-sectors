@@ -161,6 +161,24 @@ Rank stability: Kendall's τ = 0.87 (p = 0.00012, 10 models).
 | olmo-3-7b | 181 → 181 | 1 | 75 → 74 | 1 | 1.6% |
 | qwen3.5-9b | 743 → 740 | 0.75 | 34 → 35 | 1 | 0.6% |
 
+### R1, pipes ignored in the quote check (exploratory, Deviation 6)
+
+| Model | Acc C1 → R1 strict → R1 pipe-free | p (Holm, C1 vs pipe-free) | CW C1 → pipe-free | p (Holm) |
+|---|---|---|---|---|
+| gemma-3-12b | 558 → 437 → 517 | 0.0093 | 95 → 90 | 1 |
+| glm-4.6v-flash | 673 → 391 → 639 | 0.01 | 102 → 94 | 1 |
+| gpt-oss-20b | 697 → 499 → 645 | 0.0006 | 105 → 96 | 1 |
+| granite-4.2-8b | 649 → 111 → 642 | 1 | 90 → 68 | 0.0068 |
+| llama-3.1-8b | 562 → 378 → 521 | 0.0056 | 92 → 73 | 0.088 |
+| ministral-3-8b | 648 → 203 → 547 | 4.5e-14 | 52 → 47 | 1 |
+| nemotron-nano-9b-v2 | 412 → 255 → 406 | 1 | 92 → 79 | 0.64 |
+| olmo-3-7b | 181 → 56 → 145 | 0.015 | 75 → 51 | 0.057 |
+| phi-4 | 566 → 331 → 450 | 7.7e-15 | 152 → 107 | 2.1e-05 |
+| qwen3.5-9b | 743 → 268 → 749 | 1 | 34 → 32 | 1 |
+| qwen3-8b | 605 → 551 → 599 | 1 | 103 → 97 | 1 |
+
+Rank stability (pipe-free): Kendall's τ = 0.87 (p = 0.00012).
+
 **H8:** wrong-period-or-column errors 349 (C1) → 286 (R1); p = 0.00022: supported (before Holm).
 Tag effects (H2–H4) keep their direction under C1, R1, R2 on the subset: H2 yes, H3 yes, H4 yes.
 

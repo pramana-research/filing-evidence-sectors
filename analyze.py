@@ -16,6 +16,8 @@ from __future__ import annotations
 
 import json
 import math
+import re
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -274,6 +276,33 @@ R3_MODELS = ["qwen3.5-9b", "ministral-3-8b", "olmo-3-7b"]  # §12: best, middle 
 QUANT = {"qwen3.5-9b-4bit": "qwen3.5-9b", "ministral-3-8b-4bit": "ministral-3-8b", "olmo-3-7b-4bit": "olmo-3-7b"}
 
 
+SEPARATOR = re.compile(r"^\|(---\|)+$", re.M)
+
+
+def pipe_free(text: str) -> str:
+    """Deviation 6 (exploratory): R1 text with the Markdown table syntax removed (separator lines dropped, every "|"
+    a space), so a quote is checked for its words and figures, not for whether it kept the pipes."""
+    return SEPARATOR.sub("", text).replace("|", " ")
+
+
+def regrade_pipe_free(model: str, qs: dict[str, dict]) -> dict[str, dict]:
+    """R1 answers graded again with the v1 checker, unchanged, on pipe-free pages and pipe-free quotes."""
+    import checker
+    import build_r1
+
+    pages = {k: pipe_free(v) for k, v in build_r1.load_r1().items()}
+    out = {}
+    for i, a in load_answers(model, "R1").items():
+        reply = a["attempts"][-1]["content"]
+        ans = checker.parse_reply(reply)
+        if ans and isinstance(ans.get("span"), str):
+            ans = {**ans, "span": pipe_free(ans["span"])}
+            reply = json.dumps(ans)
+        g = checker.check(reply, qs[i], pages)
+        out[i] = {"outcome": g.outcome, "category": g.category}
+    return out
+
+
 def kendall_tau(a: dict[str, float], b: dict[str, float]) -> dict:
     from scipy.stats import kendalltau
 
@@ -354,6 +383,23 @@ def robustness(qs: dict[str, dict], ms: list[str], supp: list[str]) -> dict | No
         "same_direction": {h: all((d[h]["or"] > 1) == w for d in dirs.values()) for h, w in want.items()},
         "note": "H5 (10-Q duration items) and H6 (word-scale failures) are too sparse on the 1,000 subset to refit",
     }
+    # Deviation 6 (exploratory, decided after the R1 results were seen): R1 graded with the pipes ignored
+    pf, pf_rank = {}, {}
+    if "R1" in res:
+        sys.path.insert(0, str(ROOT / "v1"))
+        ans_ids = [i for i in subset if qs[i]["gold"]["status"] == "found"]
+        for m in res["R1"]["models"]:
+            g = regrade_pipe_free(m, qs)
+            pf[m] = paired(load_answers(m, "C1"), g, qs, subset)
+            pf[m]["vs_strict_R1"] = {"strict_correct": res["R1"]["models"][m]["accuracy"]["b"],
+                                     "pipe_free_correct": pf[m]["accuracy"]["b"]}  # fmt: skip
+            if m in ms:
+                pf_rank[m] = sum(g[i]["outcome"] == "correct" for i in ans_ids) / len(ans_ids)
+        for key in ("accuracy", "confident_wrong"):
+            for m, adj in zip(pf, holm([pf[m][key]["p"] for m in pf])):
+                pf[m][key]["p_holm"] = adj
+        res["R1_pipe_free_exploratory"] = {"models": pf, "kendall_tau_vs_C1": kendall_tau(acc_rank["C1"], pf_rank),
+                                           "note": "Deviation 6: exploratory, decided after R1 results were seen"}  # fmt: skip
     quant = {}
     for q4, base in QUANT.items():
         c1, other = load_answers(base, "C1"), load_answers(q4, "C1")
@@ -460,6 +506,17 @@ def main() -> None:
                 t = rb[check]["kendall_tau_vs_C1"]
                 lines.append(f"\nRank stability: Kendall's τ = {t['tau']:.2f} (p = {t['p']:.2g}, {t['models']} models).")
             lines.append("")
+        if "R1_pipe_free_exploratory" in rb:
+            x = rb["R1_pipe_free_exploratory"]
+            lines += ["### R1, pipes ignored in the quote check (exploratory, Deviation 6)", "",
+                      "| Model | Acc C1 → R1 strict → R1 pipe-free | p (Holm, C1 vs pipe-free) | CW C1 → pipe-free | p (Holm) |",
+                      "|---|---|---|---|---|"]  # fmt: skip
+            for m, d in x["models"].items():
+                lines.append(f"| {m} | {d['accuracy']['a']} → {d['vs_strict_R1']['strict_correct']} → {d['accuracy']['b']} | "
+                             f"{d['accuracy']['p_holm']:.2g} | {d['confident_wrong']['a']} → {d['confident_wrong']['b']} | "
+                             f"{d['confident_wrong']['p_holm']:.2g} |")  # fmt: skip
+            t = x["kendall_tau_vs_C1"]
+            lines += ["", f"Rank stability (pipe-free): Kendall's τ = {t['tau']:.2f} (p = {t['p']:.2g}).", ""]
         if "H8" in rb:
             h8 = rb["H8"]
             lines.append(f"**H8:** wrong-period-or-column errors {h8['c1']} (C1) → {h8['r1']} (R1); p = {h8['p']:.2g}: {h8['verdict']}.")

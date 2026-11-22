@@ -891,6 +891,379 @@
   },
   "note": "H5 (10-Q duration items) and H6 (word-scale failures) are too sparse on the 1,000 subset to refit"
  },
+ "R1_pipe_free_exploratory": {
+  "models": {
+   "gemma-3-12b": {
+    "accuracy": {
+     "n": 900,
+     "a": 558,
+     "b": 517,
+     "b01": 58,
+     "b10": 99,
+     "p": 0.0013352491869990627,
+     "p_holm": 0.009346744308993439
+    },
+    "confident_wrong": {
+     "n": 1000,
+     "a": 95,
+     "b": 90,
+     "b01": 34,
+     "b10": 39,
+     "p": 0.6399729317539425,
+     "p_holm": 1.0
+    },
+    "wrong_period_or_column": {
+     "n": 900,
+     "a": 38,
+     "b": 33,
+     "b01": 13,
+     "b10": 18,
+     "p": 0.47312965989112854
+    },
+    "answerable": 900,
+    "vs_strict_R1": {
+     "strict_correct": 437,
+     "pipe_free_correct": 517
+    }
+   },
+   "glm-4.6v-flash": {
+    "accuracy": {
+     "n": 900,
+     "a": 673,
+     "b": 639,
+     "b01": 39,
+     "b10": 73,
+     "p": 0.0016946822547182353,
+     "p_holm": 0.010168093528309411
+    },
+    "confident_wrong": {
+     "n": 1000,
+     "a": 102,
+     "b": 94,
+     "b01": 20,
+     "b10": 28,
+     "p": 0.31232680747326935,
+     "p_holm": 1.0
+    },
+    "wrong_period_or_column": {
+     "n": 900,
+     "a": 37,
+     "b": 32,
+     "b01": 9,
+     "b10": 14,
+     "p": 0.4048728942871094
+    },
+    "answerable": 900,
+    "vs_strict_R1": {
+     "strict_correct": 391,
+     "pipe_free_correct": 639
+    }
+   },
+   "gpt-oss-20b": {
+    "accuracy": {
+     "n": 900,
+     "a": 697,
+     "b": 645,
+     "b01": 57,
+     "b10": 109,
+     "p": 6.647590322745831e-05,
+     "p_holm": 0.0005982831290471248
+    },
+    "confident_wrong": {
+     "n": 1000,
+     "a": 105,
+     "b": 96,
+     "b01": 36,
+     "b10": 45,
+     "p": 0.37417441760470777,
+     "p_holm": 1.0
+    },
+    "wrong_period_or_column": {
+     "n": 900,
+     "a": 40,
+     "b": 27,
+     "b01": 14,
+     "b10": 27,
+     "p": 0.05958388801809633
+    },
+    "answerable": 900,
+    "vs_strict_R1": {
+     "strict_correct": 499,
+     "pipe_free_correct": 645
+    }
+   },
+   "granite-4.2-8b": {
+    "accuracy": {
+     "n": 900,
+     "a": 649,
+     "b": 642,
+     "b01": 51,
+     "b10": 58,
+     "p": 0.5657001139736343,
+     "p_holm": 1.0
+    },
+    "confident_wrong": {
+     "n": 1000,
+     "a": 90,
+     "b": 68,
+     "b01": 9,
+     "b10": 31,
+     "p": 0.0006795482549932785,
+     "p_holm": 0.006795482549932785
+    },
+    "wrong_period_or_column": {
+     "n": 900,
+     "a": 37,
+     "b": 29,
+     "b01": 8,
+     "b10": 16,
+     "p": 0.15158963203430176
+    },
+    "answerable": 900,
+    "vs_strict_R1": {
+     "strict_correct": 111,
+     "pipe_free_correct": 642
+    }
+   },
+   "llama-3.1-8b": {
+    "accuracy": {
+     "n": 900,
+     "a": 562,
+     "b": 521,
+     "b01": 50,
+     "b10": 91,
+     "p": 0.0006993659206296753,
+     "p_holm": 0.005594927365037403
+    },
+    "confident_wrong": {
+     "n": 1000,
+     "a": 92,
+     "b": 73,
+     "b01": 16,
+     "b10": 35,
+     "p": 0.010973562899720513,
+     "p_holm": 0.0877885031977641
+    },
+    "wrong_period_or_column": {
+     "n": 900,
+     "a": 33,
+     "b": 28,
+     "b01": 4,
+     "b10": 9,
+     "p": 0.266845703125
+    },
+    "answerable": 900,
+    "vs_strict_R1": {
+     "strict_correct": 378,
+     "pipe_free_correct": 521
+    }
+   },
+   "ministral-3-8b": {
+    "accuracy": {
+     "n": 900,
+     "a": 648,
+     "b": 547,
+     "b01": 36,
+     "b10": 137,
+     "p": 4.456960449704681e-15,
+     "p_holm": 4.4569604497046806e-14
+    },
+    "confident_wrong": {
+     "n": 1000,
+     "a": 52,
+     "b": 47,
+     "b01": 14,
+     "b10": 19,
+     "p": 0.48685024166479707,
+     "p_holm": 1.0
+    },
+    "wrong_period_or_column": {
+     "n": 900,
+     "a": 12,
+     "b": 7,
+     "b01": 4,
+     "b10": 9,
+     "p": 0.266845703125
+    },
+    "answerable": 900,
+    "vs_strict_R1": {
+     "strict_correct": 203,
+     "pipe_free_correct": 547
+    }
+   },
+   "nemotron-nano-9b-v2": {
+    "accuracy": {
+     "n": 900,
+     "a": 412,
+     "b": 406,
+     "b01": 61,
+     "b10": 67,
+     "p": 0.6587012845406403,
+     "p_holm": 1.0
+    },
+    "confident_wrong": {
+     "n": 1000,
+     "a": 92,
+     "b": 79,
+     "b01": 19,
+     "b10": 32,
+     "p": 0.09191454981585423,
+     "p_holm": 0.6434018487109796
+    },
+    "wrong_period_or_column": {
+     "n": 900,
+     "a": 30,
+     "b": 31,
+     "b01": 10,
+     "b10": 9,
+     "p": 1.0
+    },
+    "answerable": 900,
+    "vs_strict_R1": {
+     "strict_correct": 255,
+     "pipe_free_correct": 406
+    }
+   },
+   "olmo-3-7b": {
+    "accuracy": {
+     "n": 900,
+     "a": 181,
+     "b": 145,
+     "b01": 52,
+     "b10": 88,
+     "p": 0.0029587002331942303,
+     "p_holm": 0.01479350116597115
+    },
+    "confident_wrong": {
+     "n": 1000,
+     "a": 75,
+     "b": 51,
+     "b01": 24,
+     "b10": 48,
+     "p": 0.006309827313666047,
+     "p_holm": 0.05678844582299442
+    },
+    "wrong_period_or_column": {
+     "n": 900,
+     "a": 79,
+     "b": 68,
+     "b01": 36,
+     "b10": 47,
+     "p": 0.272268945972048
+    },
+    "answerable": 900,
+    "vs_strict_R1": {
+     "strict_correct": 56,
+     "pipe_free_correct": 145
+    }
+   },
+   "phi-4": {
+    "accuracy": {
+     "n": 900,
+     "a": 566,
+     "b": 450,
+     "b01": 49,
+     "b10": 165,
+     "p": 7.01747246986628e-16,
+     "p_holm": 7.719219716852908e-15
+    },
+    "confident_wrong": {
+     "n": 1000,
+     "a": 152,
+     "b": 107,
+     "b01": 22,
+     "b10": 67,
+     "p": 1.899849174722082e-06,
+     "p_holm": 2.08983409219429e-05
+    },
+    "wrong_period_or_column": {
+     "n": 900,
+     "a": 26,
+     "b": 19,
+     "b01": 7,
+     "b10": 14,
+     "p": 0.18924713134765625
+    },
+    "answerable": 900,
+    "vs_strict_R1": {
+     "strict_correct": 331,
+     "pipe_free_correct": 450
+    }
+   },
+   "qwen3.5-9b": {
+    "accuracy": {
+     "n": 900,
+     "a": 743,
+     "b": 749,
+     "b01": 33,
+     "b10": 27,
+     "p": 0.5189580031896519,
+     "p_holm": 1.0
+    },
+    "confident_wrong": {
+     "n": 1000,
+     "a": 34,
+     "b": 32,
+     "b01": 11,
+     "b10": 13,
+     "p": 0.8388197422027588,
+     "p_holm": 1.0
+    },
+    "wrong_period_or_column": {
+     "n": 900,
+     "a": 17,
+     "b": 12,
+     "b01": 5,
+     "b10": 10,
+     "p": 0.30175781249999994
+    },
+    "answerable": 900,
+    "vs_strict_R1": {
+     "strict_correct": 268,
+     "pipe_free_correct": 749
+    }
+   },
+   "qwen3-8b": {
+    "accuracy": {
+     "n": 900,
+     "a": 605,
+     "b": 599,
+     "b01": 54,
+     "b10": 60,
+     "p": 0.63976936864295,
+     "p_holm": 1.0
+    },
+    "confident_wrong": {
+     "n": 1000,
+     "a": 103,
+     "b": 97,
+     "b01": 19,
+     "b10": 25,
+     "p": 0.4513808323961257,
+     "p_holm": 1.0
+    },
+    "wrong_period_or_column": {
+     "n": 900,
+     "a": 46,
+     "b": 34,
+     "b01": 8,
+     "b10": 20,
+     "p": 0.03569813817739487
+    },
+    "answerable": 900,
+    "vs_strict_R1": {
+     "strict_correct": 551,
+     "pipe_free_correct": 599
+    }
+   }
+  },
+  "kendall_tau_vs_C1": {
+   "tau": 0.8666666666666666,
+   "p": 0.00011518959435626102,
+   "models": 10
+  },
+  "note": "Deviation 6: exploratory, decided after R1 results were seen"
+ },
  "quantisation_17_3": {
   "qwen3.5-9b-4bit": {
    "full_precision": "qwen3.5-9b",
