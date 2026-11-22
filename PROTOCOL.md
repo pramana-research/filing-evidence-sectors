@@ -272,6 +272,7 @@ Every change after this protocol is finalised, with its date and reason, and whe
 | Date | Change | Results existed? |
 |---|---|---|
 | 2026-11-21 | **Deviation 1: sampling (§5).** The first build (draft fingerprint `31c5ed4bdf388a3b`, not frozen) produced 8,029 questions, not 10,000: S1–S4 met their targets in every sector, but S5 (segments), S6 (prose), S7 (units and per-share) and S8 fell short, because (i) v1's rule of one question per item **per company** binds at about 100 questions per company (e.g. Banks S7: 527 candidates, 83 chosen), and (ii) some sectors have few such facts (e.g. utilities: 31 segment candidates in total). Reserve companies (1–3 per sector) could not close gaps of this size. Changes: **(A)** one question per item **per filing** (a company's item may be asked from its 10-K and its 10-Q), keeping at most 3 questions per concept per filing; **(B)** S8 kinds are split evenly where possible and then topped up from any kind; each sector is then filled to exactly 1,000 questions from S4, S1, S2 and S3 in turn (20 at a time). Slice counts per sector are therefore no longer fixed: the actual counts, and every slice below its §5 target, are reported in `stats.json` and the paper. The hypotheses (§2) are tested on the difficulty tags (§6), which span all slices. | **No.** No model had been run on any sectors question |
+| 2026-11-22 | **Deviation 2: exploratory extension (§17).** Adds a "cost and trust on one consumer GPU" analysis: energy and cost per 1,000 answers next to accuracy and confident-wrong, plus a 4-bit vs full-precision check. It is analysis-only for the main runs. The new runs (4-bit, §17.3) are supplementary. No hypothesis is attached. It is reported as exploratory, separately from H1–H8, and changes no frozen data, setup, metric or test in §§2–13. | **Yes.** C1 had finished for all models and C2 for six. The extension was added after those results were seen, which is why it is exploratory, not confirmatory |
 
 ## 15 · Compute plan
 
@@ -293,3 +294,53 @@ On one NVIDIA RTX 4090, from v1's measured request times (an upper bound; reques
 - **Code:** in `github.com/pramana-research/filing-evidence` under `sets/sectors/`, Apache 2.0.
 - **Report:** a research page on pramana-research.com, and a paper. Community research, not peer-reviewed unless
   stated.
+
+## 17 · Exploratory extension: cost and trust on one consumer GPU (Deviation 2)
+
+Added 2026-11-22, after C1 results were seen (§14). It is exploratory: no hypothesis, no confirmatory test, and it is
+reported in its own section.
+
+### 17.1 · Question
+
+On a single consumer GPU, what does a trustworthy answer cost? Many users of filings (auditors, banks, regulated firms)
+cannot send documents to a cloud API. For them the buying question is what one local GPU delivers. Public leaderboards
+measure speed and price on cloud APIs and general tasks, not trust per unit of cost on long-document extraction.
+
+### 17.2 · Cost and speed (analysis-only, from the main runs)
+
+- **Per model and setup:** median and p95 seconds per answer, input and output tokens per answer, and answers per
+  hour at the runner's fixed concurrency (as logged). Every number comes from the stored answers; nothing is re-run.
+- **Energy:** GPU board power sampled each second with `nvidia-smi` during a short, dedicated measurement run per model
+  (C1, a fixed random sample of 500 questions, `random.Random(0)`), at the same fixed 450 W power cap. The result is
+  energy per 1,000 answers (kWh), the hardware-neutral headline.
+- **Money:** kWh converted at stated tariffs, ₹ and US$, both given in the report. Optionally, a separately labelled
+  "with hardware" figure that spreads the GPU's purchase price over a stated life.
+- **Shown together with quality:**
+  - accuracy vs energy per 1,000 answers;
+  - confident-wrong vs energy per 1,000 answers;
+  - correct answers per kWh;
+  - confident-wrong per 1,000 answers.
+- **Prefix caching:** the share of input tokens served from vLLM's prefix cache during the measurement run (many
+  questions share pages), and seconds per answer with caching on and off for one model.
+- **Limits, stated in the report:**
+  - one hardware configuration (RTX 4090 at 450 W);
+  - GPU board power only, not the whole system at the wall;
+  - speed depends on the vLLM version and serving settings, all of which are recorded with the results.
+
+### 17.3 · Quantisation and trust (supplementary runs)
+
+- **Models:** the same 3 as R3 (best, middle and weakest by v1 C1 accuracy, §12).
+- **Variant:** each in a published 4-bit build, pinned by revision. Use the developer's own 4-bit build if one exists,
+  otherwise a widely used community quantisation. The exact repo, method and revision are recorded.
+- **Run:** C1 on the 1,000-question subset (§8), with everything else as in §7–§9.
+- **Compared with:** the same model's full-precision C1 answers on the same 1,000 questions. Reported:
+  - accuracy and confident-wrong rate side by side;
+  - a paired exact McNemar test on each;
+  - the change in energy per 1,000 answers.
+- **Question:** does 4-bit raise the rate of quietly wrong answers, beyond any loss in accuracy?
+- **Compute:** about 3 × 1–2 h, run after the main queue. Labelled supplementary, like v1's Qwen3-8B runs.
+
+### 17.4 · What it is not
+
+It is not a speed leaderboard, and it does not rank hardware. It reports one fixed, documented configuration so that
+others can scale the numbers to theirs.
