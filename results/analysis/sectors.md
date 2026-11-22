@@ -115,9 +115,9 @@ Paired exact McNemar per model, Holm within each model's family. C2 on all 10,00
 
 C3 lowers confident-wrong: **4 of 5 reasoning models** (pooled: 299 answers stop being confident-wrong, 108 start; p = 7.8e-22). C2 does not lower it: **10 of 10 models**; C2 raises it significantly: **8 of 10 models**.
 
-## Holm correction across the hypotheses (H8 pending: needs R1)
+## Holm correction across the hypotheses (H1–H7; H8 pending: needs R1)
 
-| # | raw p | Holm p (over H1–H7) |
+| # | raw p | Holm p |
 |---|---|---|
 | H1 | 0.079 | 0.079 |
 | H2 | 0.00033 | 0.00066 |

@@ -102,15 +102,15 @@ AWAY = {"page header", "table or column header"}  # H2: units stated away from t
 FIG = {"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6+": 6}
 
 
-def tag_frame(qs: dict[str, dict], ms: list[str]):
-    """C1, answerable questions, one row per model x question, with the §6 tags."""
+def tag_frame(qs: dict[str, dict], ms: list[str], setup: str = "C1", ids: set[str] | None = None):
+    """Answerable questions (optionally only `ids`), one row per model x question, with the §6 tags."""
     import pandas as pd
 
     recs = []
     for m in ms:
-        for i, a in load_answers(m, "C1").items():
+        for i, a in load_answers(m, setup).items():
             q = qs[i]
-            if q["gold"]["status"] != "found":
+            if q["gold"]["status"] != "found" or (ids is not None and i not in ids):
                 continue
             t = q["tags"]
             ul = t["units_location"]
@@ -270,6 +270,103 @@ def h7(qs: dict[str, dict], ms: list[str]) -> dict:
     return res
 
 
+R3_MODELS = ["qwen3.5-9b", "ministral-3-8b", "olmo-3-7b"]  # §12: best, middle (5th of 10), weakest by v1 C1
+QUANT = {"qwen3.5-9b-4bit": "qwen3.5-9b", "ministral-3-8b-4bit": "ministral-3-8b", "olmo-3-7b-4bit": "olmo-3-7b"}
+
+
+def kendall_tau(a: dict[str, float], b: dict[str, float]) -> dict:
+    from scipy.stats import kendalltau
+
+    ms = sorted(set(a) & set(b))
+    t = kendalltau([a[m] for m in ms], [b[m] for m in ms])
+    return {"tau": float(t.statistic), "p": float(t.pvalue), "models": len(ms)}
+
+
+def paired(c1: dict, other: dict, qs: dict, ids: list[str]) -> dict:
+    """Accuracy and confident-wrong, check vs C1 on the same questions, with exact McNemar."""
+    ans = [i for i in ids if qs[i]["gold"]["status"] == "found"]
+    return {"accuracy": mcnemar([int(c1[i]["outcome"] == "correct") for i in ans],
+                                [int(other[i]["outcome"] == "correct") for i in ans]),
+            "confident_wrong": mcnemar([int(c1[i]["outcome"] == "confident_wrong") for i in ids],
+                                       [int(other[i]["outcome"] == "confident_wrong") for i in ids]),
+            "wrong_period_or_column": mcnemar([int(c1[i].get("category") == "wrong_period_or_column") for i in ans],
+                                              [int(other[i].get("category") == "wrong_period_or_column") for i in ans]),
+            "answerable": len(ans)}  # fmt: skip
+
+
+def robustness(qs: dict[str, dict], ms: list[str], supp: list[str]) -> dict | None:
+    """§12: R1, R2 (all models), R3 (3 models), each vs C1 on the 1,000-question subset; H8 (R1, pooled over the
+    main models, discordant pairs summed, as H7); rank stability (Kendall's tau of accuracy rankings, C1 vs R1 and
+    vs R2, main models); R3: the share of questions whose outcome changes between the two identical runs;
+    robustness of H2-H4 (their terms refitted on the subset under C1, R1 and R2, with a model fixed effect: same direction?);
+    §17.3: each 4-bit build vs its full-precision C1 on the subset. Holm within each check, across its models."""
+    subset = json.loads((QUESTIONS.parent / "subsets.json").read_text())["c3_and_robustness"]
+    sid = set(subset)
+    res: dict = {}
+    acc_rank: dict[str, dict[str, float]] = {"C1": {}}
+    for check in ("R1", "R2", "R3"):
+        per = {}
+        for m in ms + supp:
+            c1, other = load_answers(m, "C1"), load_answers(m, check)
+            if not other or len(other) < len(subset):
+                continue
+            per[m] = paired(c1, other, qs, subset)
+            if check == "R3":
+                per[m]["outcome_changed"] = rate(sum(c1[i]["outcome"] != other[i]["outcome"] for i in subset), len(subset))
+            if m in ms:
+                ans = [i for i in subset if qs[i]["gold"]["status"] == "found"]
+                acc_rank["C1"][m] = sum(c1[i]["outcome"] == "correct" for i in ans) / len(ans)
+                acc_rank.setdefault(check, {})[m] = sum(other[i]["outcome"] == "correct" for i in ans) / len(ans)
+        if not per:
+            continue
+        for key in ("accuracy", "confident_wrong"):
+            for m, adj in zip(per, holm([per[m][key]["p"] for m in per])):
+                per[m][key]["p_holm"] = adj
+        res[check] = {"models": per}
+        if check in ("R1", "R2"):
+            res[check]["kendall_tau_vs_C1"] = kendall_tau(acc_rank["C1"], acc_rank[check])
+    if not res:
+        return None
+    if "R1" in res:
+        main = [m for m in ms if m in res["R1"]["models"]]
+        b01 = sum(res["R1"]["models"][m]["wrong_period_or_column"]["b01"] for m in main)
+        b10 = sum(res["R1"]["models"][m]["wrong_period_or_column"]["b10"] for m in main)
+        from scipy.stats import binomtest
+
+        a = sum(res["R1"]["models"][m]["wrong_period_or_column"]["a"] for m in main)
+        b = sum(res["R1"]["models"][m]["wrong_period_or_column"]["b"] for m in main)
+        p = float(binomtest(b01, b01 + b10, 0.5).pvalue) if b01 + b10 else 1.0
+        res["H8"] = {"claim": "Markdown tables (R1) lower wrong-period-or-column errors vs C1, pooled over main models",
+                     "c1": a, "r1": b, "b01": b01, "b10": b10, "p": p, "models": main,
+                     "verdict": ("supported (before Holm)" if b < a and p < 0.05 else
+                                 "opposite direction" if b > a and p < 0.05 else "not significant")}  # fmt: skip
+    # H2-H6 directions under each rendering / prompt, on the subset (main models)
+    dirs = {}
+    for setup in ["C1"] + [c for c in ("R1", "R2") if c in res]:
+        df = tag_frame(qs, [m for m in ms if load_answers(m, setup)], setup, sid)
+        rhs = "C(units, Treatment('in_the_row_label')) + figs + later + C(model)"  # the tested terms only (subset)
+        acc, cw = logit(df, "correct", rhs), logit(df, "cw", rhs)
+        dirs[setup] = {"H2": term(cw, "C(units, Treatment('in_the_row_label'))[T.away]"), "H3": term(acc, "figs"),
+                       "H4": term(acc, "later")}  # fmt: skip
+    want = {"H2": True, "H3": False, "H4": False}  # odds ratio above 1?
+    res["tag_effects_on_subset"] = {
+        "terms": dirs,
+        "same_direction": {h: all((d[h]["or"] > 1) == w for d in dirs.values()) for h, w in want.items()},
+        "note": "H5 (10-Q duration items) and H6 (word-scale failures) are too sparse on the 1,000 subset to refit",
+    }
+    quant = {}
+    for q4, base in QUANT.items():
+        c1, other = load_answers(base, "C1"), load_answers(q4, "C1")
+        if other and len(other) >= len(subset):
+            quant[q4] = {"full_precision": base, **paired(c1, other, qs, subset)}
+    if quant:
+        for key in ("accuracy", "confident_wrong"):
+            for m, adj in zip(quant, holm([quant[m][key]["p"] for m in quant])):
+                quant[m][key]["p_holm"] = adj
+        res["quantisation_17_3"] = quant
+    return res
+
+
 def pct(r: dict) -> str:
     return "—" if r["rate"] is None else f"{100 * r['rate']:.1f}"
 
@@ -344,13 +441,48 @@ def main() -> None:
               f"confident-wrong, {pc['b01']} start; p = {pc['p']:.2g}). C2 does not lower it: **{s['C2_does_not_lower_cw']}**; "
               f"C2 raises it significantly: **{s['C2_raises_cw']}**."]  # fmt: skip
 
+    rb = robustness(qs, main_ms, [m for m in ms if m in SUPPLEMENTARY])
+    if rb:
+        (OUT / "robustness.json").write_text(json.dumps(rb, indent=1))
+        lines += ["", "## Robustness checks (§12), each vs C1 on the 1,000-question subset", ""]
+        for check in ("R1", "R2", "R3"):
+            if check not in rb:
+                continue
+            lines += [f"### {check}", "", "| Model | Acc C1 → " + check + " | p (Holm) | CW C1 → " + check + " | p (Holm) |"
+                      + (" outcome changed |" if check == "R3" else ""), "|---|---|---|---|---|" + ("---|" if check == "R3" else "")]  # fmt: skip
+            for m, d in rb[check]["models"].items():
+                row = (f"| {m} | {d['accuracy']['a']} → {d['accuracy']['b']} | {d['accuracy']['p_holm']:.2g} | "
+                       f"{d['confident_wrong']['a']} → {d['confident_wrong']['b']} | {d['confident_wrong']['p_holm']:.2g} |")
+                if check == "R3":
+                    row += f" {pct(d['outcome_changed'])}% |"
+                lines.append(row)
+            if "kendall_tau_vs_C1" in rb[check]:
+                t = rb[check]["kendall_tau_vs_C1"]
+                lines.append(f"\nRank stability: Kendall's τ = {t['tau']:.2f} (p = {t['p']:.2g}, {t['models']} models).")
+            lines.append("")
+        if "H8" in rb:
+            h8 = rb["H8"]
+            lines.append(f"**H8:** wrong-period-or-column errors {h8['c1']} (C1) → {h8['r1']} (R1); p = {h8['p']:.2g}: {h8['verdict']}.")
+        te = rb["tag_effects_on_subset"]["same_direction"]
+        lines.append("Tag effects (H2–H4) keep their direction under C1, R1, R2 on the subset: "
+                     + ", ".join(f"{k} {'yes' if v else 'NO'}" for k, v in te.items()) + ".")
+        if "quantisation_17_3" in rb:
+            lines += ["", "## §17.3 · 4-bit vs full precision (C1, subset; supplementary, exploratory)", "",
+                      "| 4-bit build | Acc full → 4-bit | p (Holm) | CW full → 4-bit | p (Holm) |", "|---|---|---|---|---|"]
+            for m, d in rb["quantisation_17_3"].items():
+                lines.append(f"| {m} | {d['accuracy']['a']} → {d['accuracy']['b']} | {d['accuracy']['p_holm']:.2g} | "
+                             f"{d['confident_wrong']['a']} → {d['confident_wrong']['b']} | {d['confident_wrong']['p_holm']:.2g} |")
+
     ps = {"H1": json.loads((OUT / "h1.json").read_text())["p"], **{k: hh[k]["p"] for k in ["H2", "H3", "H4", "H5", "H6"]},
           "H7": pc["p"]}  # fmt: skip
+    if rb and "H8" in rb:
+        ps["H8"] = rb["H8"]["p"]
     adj = dict(zip(ps, holm(list(ps.values()))))
-    lines += ["", "## Holm correction across the hypotheses (H8 pending: needs R1)", "",
-              "| # | raw p | Holm p (over H1–H7) |", "|---|---|---|"] + \
+    span = "H1–H8" if "H8" in ps else "H1–H7; H8 pending: needs R1"
+    lines += ["", f"## Holm correction across the hypotheses ({span})", "",
+              "| # | raw p | Holm p |", "|---|---|---|"] + \
              [f"| {k} | {ps[k]:.2g} | {adj[k]:.2g} |" for k in ps]  # fmt: skip
-    (OUT / "holm.json").write_text(json.dumps({"raw": ps, "holm_over_h1_h7": adj, "note": "recomputed with H8 once R1 runs"}, indent=1))
+    (OUT / "holm.json").write_text(json.dumps({"raw": ps, "holm": adj, "over": span}, indent=1))
     (OUT / "sectors.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
 

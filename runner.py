@@ -38,7 +38,7 @@ HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE / "v1"))  # v1 modules, frozen copies
 import checker  # noqa: E402
 
-PROMPT = HERE / "prompts" / "v1.txt"
+PROMPTS = {"v1": HERE / "prompts" / "v1.txt", "v2-alt": HERE / "prompts" / "v2-alt.txt"}  # v2-alt: R2 (§12)
 RETRY = HERE / "prompts" / "v1_retry.txt"
 SETS = {"sectors": HERE / "dataset"}
 # touched by `run.sh stop`: finish the in-flight questions, then exit
@@ -239,6 +239,8 @@ def main() -> int:
     ap.add_argument("--subset", action="store_true", help="sectors: only the 1,000-question subset (§8, §12)")
     ap.add_argument("--sample", type=int, default=None, help="N randomly chosen questions (pipeline check)")
     ap.add_argument("--out-name", default=None, help="results folder name (default: the setup)")
+    ap.add_argument("--prompt", default="v1", choices=list(PROMPTS), help="R2: v2-alt (§12)")
+    ap.add_argument("--pages", default="standard", choices=["standard", "r1"], help="R1: Markdown tables (§12)")
     args = ap.parse_args()
 
     from dotenv import load_dotenv
@@ -251,6 +253,13 @@ def main() -> int:
         return 0
 
     qs, pages, fingerprint = load_set(args.set)
+    if args.pages == "r1":  # R1: the same pages re-rendered with Markdown tables, frozen before any R1 run
+        import build_r1
+
+        r1_frozen = json.loads((build_r1.OUT / "FROZEN.json").read_text())["fingerprint"]
+        pages = build_r1.load_r1()
+        if build_r1.fingerprint(pages) != r1_frozen:
+            sys.exit("R1 pages differ from dataset/r1/FROZEN.json: refusing to run")
     if args.limit:
         qs = qs[:: max(1, len(qs) // args.limit)][: args.limit]  # evenly spaced: every slice is covered
     if args.subset:
@@ -278,7 +287,8 @@ def main() -> int:
     serve_dir = HERE / "results" / "serve"
     serve_rec = serve_dir / f"{args.profile}.json"
     serve = json.loads(serve_rec.read_text()) if serve_rec.exists() else {}
-    template, retry_t = PROMPT.read_text(), checker.load_retry_templates(RETRY)
+    prompt_file = PROMPTS[args.prompt]
+    template, retry_t = prompt_file.read_text(), checker.load_retry_templates(RETRY)
     client = Client(args.base_url, args.profile, prof, defaults, args.setup)
     started = datetime.now(UTC).isoformat(timespec="seconds")
 
@@ -332,7 +342,8 @@ def main() -> int:
         "company": prof.get("company"), "precision": prof.get("precision"), "revision": serve.get("revision"),
         "serve_command": serve.get("command"), "vllm_version": info["vllm_version"] or serve.get("vllm"),
         "request_extra": client.extra, "system": client.system, "max_tokens": client.max_tokens,
-        "temperature": client.temperature, "prompt_sha256": hashlib.sha256(PROMPT.read_bytes()).hexdigest(),
+        "temperature": client.temperature, "prompt": args.prompt, "pages": args.pages,
+        "prompt_sha256": hashlib.sha256(prompt_file.read_bytes()).hexdigest(),
         "retry_sha256": hashlib.sha256(RETRY.read_bytes()).hexdigest(), "dataset_fingerprint": fingerprint,
         "questions": len(rows), "limit": args.limit, "git_commit": git_commit(), "started": started,
         "finished": datetime.now(UTC).isoformat(timespec="seconds"),

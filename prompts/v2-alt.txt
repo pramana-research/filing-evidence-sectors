@@ -1,0 +1,27 @@
+Read the filing pages below and answer one question. Use nothing except these pages.
+
+Your whole reply must be a single JSON object. When the number is on the pages:
+{"status": "found", "value": <the figure as it is printed, before any units statement is applied>, "scale": "<the units statement covering that figure, such as \"in thousands\", \"in millions\", or \"none\">", "page": <number of the page the figure is on>, "span": "<the full line containing the figure, copied exactly>"}
+When the item, or the period asked about, does not appear on these pages:
+{"status": "not_found"}
+
+Example (invented company):
+=== PAGE 7 ===
+SAMPLE INDUSTRIES, INC.
+CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (unaudited)
+(Dollars in thousands)
+Three Months Ended Nine Months Ended
+September 30, 2026 2025 2026 2025
+Revenue $ 18,420 $ 16,905 $ 52,113 $ 47,380
+Operating expenses 12,731 11,958 36,804 34,227
+Question: What was Sample Industries' revenue for the nine months ended September 30, 2025?
+Answer: {"status": "found", "value": 47380, "scale": "in thousands", "page": 7, "span": "Revenue $ 18,420 $ 16,905 $ 52,113 $ 47,380"}
+Question: What was Sample Industries' revenue for the six months ended June 30, 2026?
+Answer: {"status": "not_found"}
+
+The pages and the question follow.
+
+{pages}
+
+Question: {question}
+Answer:

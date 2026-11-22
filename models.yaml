@@ -111,3 +111,32 @@ models:
     precision: bf16
     request: {C1: {}, C3: null}
     verified: false
+
+  # §17.3 supplementary 4-bit builds of the three R3 models (rule and choice: PROTOCOL §14, Deviation 5). Each is
+  # served like its full-precision profile (same tokenizer, chat template and vLLM arguments), pinned by revision.
+  qwen3.5-9b-4bit:
+    repo: cyankiwi/Qwen3.5-9B-AWQ-4bit
+    revision: e4d2d39cede8c5d1716d824cd843e2889c648083
+    company: Alibaba (community 4-bit build)
+    precision: awq-4bit
+    vllm_args: [--language-model-only, --max-num-seqs, 64]
+    request: {C1: {chat_template_kwargs: {enable_thinking: false}}, C3: null}
+    verified: false
+
+  ministral-3-8b-4bit:
+    repo: cyankiwi/Ministral-3-8B-Instruct-2512-AWQ-4bit
+    revision: 563842192acb68a00b8864e3bfa5a3e740ece90c
+    company: Mistral (community 4-bit build)
+    precision: awq-4bit
+    vllm_args: [--tokenizer-mode, mistral, --config-format, mistral, --load-format, mistral]
+    request: {C1: {}, C3: null}
+    verified: false
+
+  olmo-3-7b-4bit:
+    repo: unsloth/Olmo-3-7B-Instruct-unsloth-bnb-4bit
+    revision: 5d19c438a3f72bd74a2b1e1f7aa90e24d359c690
+    company: AllenAI (community 4-bit build)
+    precision: bnb-4bit
+    vllm_args: [--chat-template, templates/olmo-3-7b.jinja]
+    request: {C1: {}, C3: null}
+    verified: false

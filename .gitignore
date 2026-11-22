@@ -11,6 +11,7 @@ __pycache__/
 # Data lives on Hugging Face (python hf_data.py pull / push), never in git
 dataset/questions.jsonl
 dataset/pages.jsonl
+dataset/r1/pages.jsonl
 results/**/answers.jsonl
 logs/sectors-serve-*.log
 v1/dataset/

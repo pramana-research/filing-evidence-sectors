@@ -56,11 +56,24 @@ serve_stop() {
 
 job() {  # $1 profile $2 setup [extra runner args]; returns runner's exit code (3 = stopped on request)
   local p="$1" s="$2"; shift 2
+  local tag="$s" a prev=""
+  for a in "$@"; do [ "$prev" = --out-name ] && tag="$a"; prev="$a"; done   # R1/R2/R3 log under their own name
   log "job $p $s $* start"
-  .venv/bin/python runner.py "$p" "$s" --set sectors "$@" >> "$LOGS/sectors-run-$p-$s.log" 2>&1
+  .venv/bin/python runner.py "$p" "$s" --set sectors "$@" < /dev/null >> "$LOGS/sectors-run-$p-$tag.log" 2>&1
   local rc=$?
-  log "job $p $s exit $rc $(grep -E '^accuracy' "$LOGS/sectors-run-$p-$s.log" | tail -1 | cut -c1-120)"
+  log "job $p $tag exit $rc $(grep -E '^accuracy' "$LOGS/sectors-run-$p-$tag.log" | tail -1 | cut -c1-120)"
   return $rc
+}
+
+# §12 robustness checks (C1 settings, the 1,000-question subset), one model load per model: R1 Markdown tables,
+# R2 the alternative prompt, R3 a repeat run (3 models); then the §17.3 supplementary 4-bit builds.
+R3_MODELS=" qwen3.5-9b ministral-3-8b olmo-3-7b "
+QUANT_MODELS=(qwen3.5-9b-4bit ministral-3-8b-4bit olmo-3-7b-4bit)
+
+robust_jobs() {  # $1 profile: prints "name runner-args" for each robustness job not yet done
+  done_job "$1" R1 || echo "R1 --pages r1"
+  done_job "$1" R2 || echo "R2 --prompt v2-alt"
+  if [[ "$R3_MODELS" == *" $1 "* ]]; then done_job "$1" R3 || echo "R3"; fi
 }
 
 done_job() {  # the job finished earlier (summary.json is written only when every question is answered)
@@ -86,6 +99,30 @@ queue() {
       serve_stop
       [ "$rc" = 3 ] && break 2
     done
+  done
+  for p in "${MODELS[@]}" "${QUANT_MODELS[@]}"; do
+    [ -e "$STOP" ] && break
+    if [[ " ${QUANT_MODELS[*]} " == *" $p "* ]]; then
+      todo=$(done_job "$p" C1 || echo "C1")
+    else
+      todo=$(robust_jobs "$p")
+    fi
+    [ -z "$todo" ] && continue
+    if ! serve_start "$p"; then
+      log "serve $p failed or stopped"; serve_stop
+      [ -e "$STOP" ] && break
+      continue
+    fi
+    rc=0
+    while read -r name args; do
+      [ -e "$STOP" ] && break
+      # shellcheck disable=SC2086
+      if [ "$name" = C1 ]; then job "$p" C1 --subset; else job "$p" C1 --subset --out-name "$name" $args; fi
+      rc=$?
+      [ "$rc" = 3 ] && break
+    done <<< "$todo"
+    serve_stop
+    [ "$rc" = 3 ] && break
   done
   serve_stop
   flock -u 9
@@ -135,18 +172,28 @@ models = list(yaml.safe_load(open("models.yaml"))["models"])
 order = ["qwen3.5-9b","gpt-oss-20b","granite-4.2-8b","glm-4.6v-flash","ministral-3-8b","gemma-3-12b",
          "llama-3.1-8b","phi-4","nemotron-nano-9b-v2","olmo-3-7b","qwen3-8b"]
 cfg = yaml.safe_load(open("models.yaml"))["models"]
-tot = {"C1": 10000, "C2": 10000, "C3": 1000}
+tot = {"C1": 10000, "C2": 10000, "C3": 1000, "R1": 1000, "R2": 1000, "R3": 1000}
+r3 = {"qwen3.5-9b", "ministral-3-8b", "olmo-3-7b"}
 done_all = total_all = 0
-for s in ("C1", "C2", "C3"):
+for s in ("C1", "C2", "C3", "R1", "R2", "R3"):
     cells = []
     for m in order:
         if s == "C3" and (cfg[m].get("request") or {}).get("C3") is None:
+            continue
+        if s == "R3" and m not in r3:
             continue
         f = root / m / s / "answers.jsonl"
         n = sum(1 for _ in f.open()) if f.exists() else 0
         done_all += n; total_all += tot[s]
         cells.append(f"{m} {n * 100 // tot[s]}%")
     print(f"{s}: " + " · ".join(cells))
+cells = []
+for m in ("qwen3.5-9b-4bit", "ministral-3-8b-4bit", "olmo-3-7b-4bit"):
+    f = root / m / "C1" / "answers.jsonl"
+    n = sum(1 for _ in f.open()) if f.exists() else 0
+    done_all += n; total_all += 1000
+    cells.append(f"{m} {n * 100 // 1000}%")
+print("4-bit (§17.3): " + " · ".join(cells))
 print(f"overall: {done_all:,} / {total_all:,} answers ({done_all * 100 / total_all:.1f}%)")
 EOF
     nvidia-smi --query-gpu=temperature.gpu,power.draw,memory.used --format=csv,noheader | sed 's/^/GPU: /'

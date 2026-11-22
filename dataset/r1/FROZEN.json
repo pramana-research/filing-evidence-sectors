@@ -1,0 +1,20 @@
+{
+  "frozen": "2026-11-22T13:14:42+00:00",
+  "fingerprint": "7cdf066ee38576e64e0663d33015b8d7c0bed8249777b4898d4e92ec402edf7a",
+  "pages": 2358,
+  "questions": 1000,
+  "pages_sha256": "7cdf066ee38576e64e0663d33015b8d7c0bed8249777b4898d4e92ec402edf7a",
+  "checks": {
+    "v1_pages_identical": 2358,
+    "gold_on_evidence_page": "all answerable subset questions",
+    "lines_unchanged": 14562,
+    "table_lines_rerendered": 52547
+  },
+  "tables": {
+    "tables": 29732,
+    "tables_with_header": 17882,
+    "header_aligned": 13449,
+    "tables_without_data_rows": 3621
+  },
+  "protocol": "PROTOCOL.md \u00a712 R1, rendering rules in render_md.py (Deviation 5)"
+}

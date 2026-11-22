@@ -5,6 +5,7 @@
 
 Hugging Face dataset `pramana-research/filing-evidence-sectors` mirrors this repo's paths:
     dataset/questions.jsonl, dataset/pages.jsonl      the frozen 10,000 questions (fingerprint: dataset/FROZEN.json)
+    dataset/r1/pages.jsonl                            R1's Markdown-table pages (fingerprint: dataset/r1/FROZEN.json)
     results/<model>/<setup>/answers.jsonl             each request, raw reply (with reasoning), parsed answer, grade
     logs/sectors-serve-<model>.log                    the vLLM server log of each model's runs
     README.md                                         the dataset card (hf/README.md here)
@@ -28,14 +29,15 @@ from huggingface_hub import HfApi, hf_hub_download, snapshot_download
 HERE = Path(__file__).parent
 REPO = os.environ.get("FES_HF_REPO", "pramana-research/filing-evidence-sectors")
 V1_REPO = "pramana-research/filing-evidence"
-PATTERNS = ["dataset/questions.jsonl", "dataset/pages.jsonl", "results/**/answers.jsonl", "logs/sectors-serve-*.log"]
+PATTERNS = ["dataset/questions.jsonl", "dataset/pages.jsonl", "dataset/r1/pages.jsonl", "results/**/answers.jsonl", "logs/sectors-serve-*.log"]
 
 
 def pull(revision: str | None = None) -> None:
     snapshot_download(REPO, repo_type="dataset", revision=revision, local_dir=HERE, allow_patterns=PATTERNS)
     hf_hub_download(V1_REPO, "dataset/questions.jsonl", repo_type="dataset", local_dir=HERE / "v1")
-    if subprocess.run([sys.executable, str(HERE / "freeze.py"), "--check"]).returncode != 0:
-        sys.exit("downloaded dataset does not match dataset/FROZEN.json")
+    for script in ("freeze.py", "build_r1.py"):
+        if subprocess.run([sys.executable, str(HERE / script), "--check"]).returncode != 0:
+            sys.exit(f"downloaded data does not match its frozen fingerprint ({script} --check)")
     n = len(list(HERE.glob("results/**/answers.jsonl")))
     print(f"pulled {REPO}: dataset verified against FROZEN.json, {n} answer files; v1 questions in v1/dataset/")
 

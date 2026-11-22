@@ -40,7 +40,7 @@ def revision(repo: str) -> str | None:
 
 def command(name: str) -> list[str]:
     m, d = profile(name)
-    rev = revision(m["repo"])
+    rev = m.get("revision") or revision(m["repo"])  # a profile may pin its revision (the §17.3 4-bit builds)
     cmd = [
         "vllm", "serve", m["repo"],
         "--served-model-name", name,
@@ -67,7 +67,7 @@ def main() -> None:
     record = {
         "profile": name,
         "repo": m["repo"],
-        "revision": revision(m["repo"]),
+        "revision": m.get("revision") or revision(m["repo"]),
         "precision": m["precision"],
         "vllm": vllm.__version__,
         "command": [c if c != os.environ.get("EVAL_API_KEY", "local") else "<key>" for c in cmd],
